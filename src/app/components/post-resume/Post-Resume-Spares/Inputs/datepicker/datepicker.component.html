@@ -1,0 +1,10 @@
+<mat-form-field [class]="class">
+    <mat-label>{{PlaceHolder}}</mat-label>
+    <input matInput [matDatepicker]="picker" 
+    [min]="CurrentDate" 
+    (dateChange)="onDateChange($event.value)" [ngModel]="ReceivedDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  

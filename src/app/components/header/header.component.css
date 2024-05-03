@@ -1,0 +1,35 @@
+.banner {
+    display: flex;
+    border: 1px solid #999;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 2%;
+    margin-top: 1.5%;
+}
+.banner h1
+{
+    font-size: 2vw;
+    letter-spacing: normal;
+    display: inline-block;
+    line-height: 1.4;
+    color: #054a84;
+    border-bottom: 4px solid #ebba16;
+    margin-bottom: 1%;
+}
+.banner p
+{
+    color: #777;
+    line-height: 1.5;
+    font-size: 1.1vw;
+}
+.MainContent
+{
+    width: 80%;
+}
+.Registered
+{
+    width: 20%;
+}

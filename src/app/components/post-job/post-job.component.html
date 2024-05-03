@@ -1,0 +1,70 @@
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="PostJobService.JobRequirmentsForm">
+    <form [formGroup]="PostJobService.JobRequirmentsForm">
+      <ng-template matStepLabel>Job Requirment</ng-template>
+      <app-job-requirment
+        [formGroup]="PostJobService.JobRequirmentsForm"
+      >
+      </app-job-requirment>
+      <div>
+        <button
+          (click)="
+            job.JobRequirments = PostJobService.ReturnJobRequirmentObject(
+            )
+          "
+          [disabled]="PostJobService.JobRequirmentsForm.invalid"
+          mat-button
+          matStepperNext
+          class="btn btn-secondary"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="PostJobService.AboutYouForm" [optional]="false">
+    <form [formGroup]="PostJobService.AboutYouForm">
+      <ng-template matStepLabel>About You</ng-template>
+      <app-about-you
+        [AboutYouForm]="PostJobService.AboutYouForm"
+      >
+      </app-about-you>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          (click)="
+            job.AboutYou = PostJobService.ReturnAboutYouObject(
+            )
+          "
+          [disabled]="PostJobService.AboutYouForm.invalid"
+          mat-button
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step> 
+  <mat-step [stepControl]="PostJobService.JobDetailsForm" [optional]="false">
+    <form [formGroup]="PostJobService.JobDetailsForm">
+      <ng-template matStepLabel>Job Detail</ng-template>
+      <app-job-details
+        [formgroup]="PostJobService.JobDetailsForm"
+      ></app-job-details>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button [disabled]="PostJobService.JobDetailsForm.invalid" (click)="job.JobDetails=PostJobService.ReturnJobDetailsObject()" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="PostJobService.JobDetailsForm" [optional]="false">
+    <form [formGroup]="PostJobService.JobDetailsForm">
+      <ng-template matStepLabel>Subscribe & Publish</ng-template>
+      <app-about-you></app-about-you>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

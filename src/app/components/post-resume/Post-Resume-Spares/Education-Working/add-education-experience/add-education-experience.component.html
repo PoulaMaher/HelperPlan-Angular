@@ -1,0 +1,47 @@
+<div class="Skills Add">
+  <h3>{{ PlaceHolder }} Education Experience</h3>
+  <app-search-select
+    (ValueSelected)="SetEducation($event)"
+    [Options]="data.schoolStatus"
+
+    PlaceHolder="Education"
+  ></app-search-select>
+  <app-search-select
+    (ValueSelected)="SetCourseDuration($event)"
+    [Options]="data.educationdurationStatus"
+
+    class="col-md-7 mb-3"
+    PlaceHolder="Course Duration "
+  ></app-search-select>
+  <app-search-select
+    (ValueSelected)="SetCompletionYear($event)"
+    [Options]="data.yearsStatus"
+
+    class="col-md-7 mb-3"
+    PlaceHolder="Completion Year/Last Attended Year"
+  ></app-search-select>
+  <app-slide-toggle
+    [ReceivedValue]="RequiredEducationToEdit.HaveCompletedCourse"
+    (ValueChanged)="CompletedCourse($event)"
+    PlaceHolder="Have you completed this course?"
+  ></app-slide-toggle>
+  <div style="margin-top: 2.5%">
+    <button
+      (click)="OnClose.emit()"
+      type="button"
+      class="btn btn-primary"
+      style="background-color: rgb(81, 81, 199)"
+     
+    >
+      Back
+    </button>
+    <button
+      (click)="SaveAndDestroy()"
+      type="button"
+      class="btn btn-warning"
+      style="background-color: rgb(105, 105, 113)"
+    >
+      {{ PlaceHolder }}
+    </button>
+  </div>
+</div>

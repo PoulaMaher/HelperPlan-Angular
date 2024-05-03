@@ -1,0 +1,25 @@
+<div class="text-center m-5 p-3 bg-light rounded shadow">
+  <h2 class="text-primary">Add a brief of yourself</h2>
+  <p class="lead">Please provide a brief description about yourself not less than 50 letter.</p>
+</div>
+<div class="d-flex justify-content-center">
+<textarea name="" id=""
+class="form-control"
+ style="width: 500px;height: 500px; "
+ (change)="onCommentChange($event)"
+ ></textarea>
+</div>
+ <button routerLink="/candidateResume/candidateEducation" class="btn btn-primary mt-3 ms-3">back</button>
+ <div class="w-100 d-flex justify-content-center mb-8">
+  <button
+  type="text"
+  class="btn btn-success text-center px-5 "
+  routerLink="/candidatepage"
+  (click)="sendData()"
+  [disabled]="myflag"
+ >
+  Finish
+ </button>
+ </div>
+
+

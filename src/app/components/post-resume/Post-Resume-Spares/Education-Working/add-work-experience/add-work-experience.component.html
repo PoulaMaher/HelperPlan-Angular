@@ -1,0 +1,67 @@
+<form class="Work Add">
+  <h3>{{ PlaceHolder }} Work Experience</h3>
+  <div class="d-flex row col-md-12 mb-3">
+
+    <app-search-select
+    [Options]="data.jopPositionStatus"
+      (ValueSelected)="SetJopPosition($event)"
+      class="col-md-6 mb-3"
+      PlaceHolder="jop position"
+    ></app-search-select>
+    <app-search-select
+    [Options]="Data.NationalityStatusOptions"
+      (ValueSelected)="SetWorkingCompany($event)"
+      class="col-md-6 mb-3"
+      PlaceHolder="Working Country"
+    ></app-search-select>
+  </div>
+  <div class="d-flex row col-md-8 mb-3">
+    <app-datepicker
+      [ReceivedDate]="RequiredWorkingToEdit.StartDate"
+      (dateChange)="SetStartYear($event)"
+      PlaceHolder="Start Year"
+    ></app-datepicker>
+    <app-datepicker
+      [ReceivedDate]="RequiredWorkingToEdit.EndDate"
+      (dateChange)="SetEndYear($event)"
+      PlaceHolder="End Year"
+    ></app-datepicker>
+  </div>
+  <app-search-select
+  [Options]="data.EmployerTypeStatus"
+    (ValueSelected)="SetEmployerType($event)"
+    class="col-md-8 mb-3"
+    PlaceHolder="Employer Type"
+  ></app-search-select>
+  <div class="Duties">
+    <app-multiple-choice
+      (DeleteChoices)="DeleteDuties($event)"
+      (SetChoices)="SetDuties($event)"
+      [Options]="data.MainSkillsStatus"
+      PlaceHolder="Duties"
+    ></app-multiple-choice>
+  </div>
+  <app-slide-toggle
+    [ReceivedValue]="RequiredWorkingToEdit.HaveReferenceLetter"
+    (ValueChanged)="HaveLetter($event)"
+    [PlaceHolder]="'Do you have reference Letter?'"
+  ></app-slide-toggle>
+  <div style="margin-top: 2.5%">
+    <button
+      (click)="OnClose.emit()"
+      type="button"
+      class="btn btn-primary"
+      style="background-color: rgb(81, 81, 199)"
+    >
+      Cancel
+    </button>
+    <button
+      (click)="SaveAndDestroy()"
+      type="button"
+      class="btn btn-warning"
+      style="background-color: rgb(105, 105, 113)"
+    >
+      {{ PlaceHolder }}
+    </button>
+  </div>
+</form>

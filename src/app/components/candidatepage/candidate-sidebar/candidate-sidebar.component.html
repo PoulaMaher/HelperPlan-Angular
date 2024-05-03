@@ -1,0 +1,206 @@
+<div class="ms-3">
+  <div   id="main">
+    <!-- 1 -->
+    <div class="row">
+      <h3 class="col-12 bluecolor">I am looking for </h3>
+    </div>
+<!-- 2 -->
+<div class="row">
+  <div class="col-3 bluecolor">Filter</div>
+  <div class="col-6"></div>
+  <a class="col-3 res " (click)="empty()">Reset</a>
+
+</div>
+<!-- 3 -->
+<div class="row">
+  <div class="col-12 bluecolor">jop position </div>
+</div>
+<!-- 4 -->
+<div class="row">
+  <div class="col-12 greencolor" style="height: 3px; background-color: green;"> </div>
+</div>
+<!-- 5 -->
+<div >
+
+  <input id="f" type="radio" name="position" value="Helper" (change)="filt()" [(ngModel)]="testingfilter.Position"/>
+  <label for="f">Domestic helper</label><br>
+
+  <input id="f" type="radio" name="position" value="Driver" (change)="filt()" [(ngModel)]="testingfilter.Position"/>
+  <label for="f">Driver</label><br>
+
+</div>
+<!-- 6 -->
+<div class="row">
+  <div class="col-12 bluecolor"> StartDate</div>
+</div>
+<!-- 7-->
+<div class="row">
+  <div class="col-12 ">
+    <input type="date" class="form-control" (change)="filt()" [(ngModel)]="testingfilter.StartDate" >
+  </div>
+</div>
+
+<!-- 8-->
+<div class="row">
+  <div class="col-12 bluecolor"> job type </div>
+</div>
+<!-- 9 -->
+<div class="row">
+  <div class="col-12 greencolor " style="height: 3px; background-color: green;"> </div>
+</div>
+<!-- 10-->
+<div >
+
+    <input id="ff" type="radio" name="jobtype" value="full-time" (change)="filt()" [(ngModel)]="testingfilter.Jobtype"/>
+    <label for="ff">full time</label><br>
+
+    <input id="fff" type="radio" name="jobtype" value="part-time" (change)="filt()" [(ngModel)]="testingfilter.Jobtype"/>
+    <label for="fff">part time</label><br>
+
+
+    <input id="ffff" type="radio" name="jobtype" value="temporary" (change)="filt()" [(ngModel)]="testingfilter.Jobtype"/>
+    <label for="ffff">temporory</label><br>
+
+</div>
+<!-- 9-->
+<!-- <div class="row">
+  <div class="col-12 bluecolor"> Contract status</div>
+</div> -->
+<!-- still not -->
+<!-- <div class="row">
+  <div class="col-12">
+    <ng-multiselect-dropdown
+  [placeholder]="'Contract status'"
+  [settings]="dropdownSettings"
+  [data]="contractDropdownList"
+  [(ngModel)]="contractDropdownList"
+  (onSelect)="onItemSelect($event)"
+  (onDeSelect)="onItemDeselect($event)"
+  (onSelectAll)="onSelectAll($event)"
+>
+</ng-multiselect-dropdown>
+  </div>
+</div> -->
+
+<!-- 11-->
+<div class="row">
+  <div class="col-12 bluecolor"> working experience </div>
+</div>
+<!-- 12 -->
+<div class="row">
+  <div class="col-12 greencolor " style="height: 3px; background-color: green;"> </div>
+</div>
+<!-- 14 -->
+<div class="row">
+  <div class="col-12 " >
+    <input class="form-control" type="number" placeholder="experience period" (change)="filt()" [(ngModel)]="testingfilter.Workexperience">
+  </div>
+</div>
+ <!-- 15 -->
+
+<div class="row">
+  <div class="col-12 bluecolor"> language </div>
+</div>
+<!-- 16 -->
+
+<div class="row">
+  <div class="col-12">
+    <ng-multiselect-dropdown
+  [placeholder]="'language'"
+  [settings]="dropdownSettings"
+  [data]="languageDropdownList"
+  [(ngModel)]="languageSelectedItems"
+  (onSelect)="onItemSelect($event)"
+  (onDeSelect)="onItemDeselect($event)"
+  (onSelectAll)="onSelectAll($event)"
+  (onDeSelectAll)="onDeselectAll($event)"
+>
+</ng-multiselect-dropdown>
+  </div>
+</div>
+<!-- 17 -->
+
+<div class="row">
+  <div class="col-12 bluecolor"> Main Skills </div>
+</div>
+
+<!-- 18 -->
+<div class="row">
+  <div class="col-12">
+    <ng-multiselect-dropdown
+  [placeholder]="'Main Skills'"
+  [settings]="dropdownSettings"
+  [data]="skillsDropdownList"
+  [(ngModel)]="skillsSelectedItems"
+  (onSelect)="onItemSelect2($event)"
+  (onDeSelect)="onItemDeselect2($event)"
+  (onSelectAll)="onSelectAll2($event)"
+  (onDeSelectAll)="onDeselectAll2($event)"
+
+>
+</ng-multiselect-dropdown>
+  </div>
+</div>
+
+<!-- 19 -->
+
+<div class="row">
+  <div class="col-12 bluecolor"> Gender </div>
+</div>
+<!-- 20 -->
+<div class="row">
+  <div class="col-12 greencolor " style="height: 3px; background-color: green;"> </div>
+</div>
+<!-- 21-->
+<div >
+
+    <input id="ff" type="radio" name="gender" value="Male" (change)="filt()" [(ngModel)]="testingfilter.Gender"/>
+    <label for="ff">Male</label><br>
+
+    <input id="fff" type="radio" name="gender" value="Female" (change)="filt()" [(ngModel)]="testingfilter.Gender"/>
+    <label for="fff">Female</label><br>
+
+
+</div>
+<!-- 22 -->
+<div class="row">
+  <div class="col-12 bluecolor"> Age </div>
+</div>
+<!-- 23 -->
+<div class="row">
+
+  <div class="col-12 greencolor " style="height: 3px; background-color: green;"> </div>
+
+
+</div>
+<!-- 24 -->
+<div class="row">
+  <div class="col-12 " >
+    <input type="number" class="form-control" placeholder="your age" (change)="filt()" [(ngModel)]="testingfilter.Age">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+

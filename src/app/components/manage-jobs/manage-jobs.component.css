@@ -1,0 +1,20 @@
+.Manage-Jobs {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+.Filter-jobs {
+    width: 25%;
+}
+
+.List-Jobs {
+    width: 60%;
+}
+
+@media (max-width: 992px) {
+    .Filter-jobs {
+        width: 50%;
+    }    
+}

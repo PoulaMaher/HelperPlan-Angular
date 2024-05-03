@@ -1,0 +1,191 @@
+<div class="Post-Resume">
+  <form [formGroup]="AboutYouForm" class="Post-Resume-Form">
+    <h1>About you</h1>
+    <div class="col-md-12 mb-3">
+      <span>Employer Type</span>
+      <br />
+      <div class="wrapper">
+        <div *ngFor="let option of AboutYouService.EmployerType">
+          <input
+            (change)="
+              AboutYouForm.controls['EmployerType'].setValue(option);
+              EmployerType = option;
+              updateemployervalidation(option)
+            "
+            type="radio"
+            [name]="'EmployerType'"
+            [value]="option"
+            [id]="option"
+          />
+          <label [for]="option" [class]="'option ' + option">
+            <span style="font-size: 15px">{{ option }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3" *ngIf="EmployerType == 'Family'">
+      <div class="d-flex justify-content-between">
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            AboutYouForm.get('Family.FamilyType')?.setValue($event);
+          "
+          [class]="'col-md-5 mb-3'"
+          [Data]="AboutYouService.FamilyType"
+          [AllowSingleSelection]="true"
+          [PlaceHolder]="'Family type'"
+        ></app-multiple-search-select>
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            AboutYouForm.get('Family.Nationality')?.setValue($event)
+          "
+          [class]="'col-md-5 mb-3'"
+          [Data]="AboutYouService.Countries"
+          [AllowSingleSelection]="true"
+          [PlaceHolder]="'Nationality'"
+        ></app-multiple-search-select>
+      </div>
+      <app-slide-toggle
+        (ValueChanged)="AboutYouForm.get('Family.HavePets')?.setValue($event)"
+        [PlaceHolder]="'Do you have pets ?'"
+      ></app-slide-toggle>
+    </div>
+    <app-slide-toggle
+      (ValueChanged)="
+        AboutYouForm.controls['ReceiveByEmail'].setValue($event);
+        ReceiveByEmail = !ReceiveByEmail
+      "
+      [PlaceHolder]="'Do you want to receive by email'"
+    ></app-slide-toggle>
+    <div *ngIf="ReceiveByEmail">
+      <mdb-form-control class="p-2 col-md-6 mb-3">
+        <input
+          formControlName="Email"
+          mdbInput
+          name="Email"
+          type="email"
+          id="form1"
+          class="form-control"
+        />
+        <label mdbLabel class="form-label" for="form1">Email </label>
+      </mdb-form-control>
+    </div>
+    <h1>What do you Offer to candidate</h1>
+    <div class="col-md-6 mb-3">
+      <app-multiple-search-select
+        (SelectedItemsChanged)="
+          AboutYouForm.controls['DayOFF'].setValue($event)
+        "
+        [Data]="AboutYouService.DayOff"
+        [AllowSingleSelection]="true"
+        [PlaceHolder]="'Day Off'"
+      ></app-multiple-search-select>
+    </div>
+    <div class="col-md-6 mb-3">
+      <app-multiple-search-select
+        (SelectedItemsChanged)="
+          AboutYouForm.controls['Accomodation'].setValue($event)
+        "
+        [Data]="AboutYouService.Accomodation"
+        [AllowSingleSelection]="true"
+        [PlaceHolder]="'Accomodation'"
+      ></app-multiple-search-select>
+    </div>
+    <div class="col-md-12 mb-3">
+      <span>Monthly Salary Offer</span>
+      <br />
+      <div class="wrapper">
+        <div *ngFor="let option of AboutYouService.SalaryOffer">
+          <input
+            type="radio"
+            (change)="updatesalaryvalidation(option)"
+            [name]="'SalaryOffer'"
+            [value]="option"
+            [id]="option"
+            (change)="
+              AboutYouForm.controls['MonthlySalaryOffer'].setValue(option);
+              MonthlySalaryOffer = option;
+            "
+          />
+          <label [for]="option" [class]="'option ' + option">
+            <span style="font-size: 15px">{{ option }}</span>
+          </label>
+        </div>
+      </div>
+      <div
+        class="col-md-6 mb-3 d-flex justify-content-between"
+        *ngIf="MonthlySalaryOffer == 'Fix'"
+      >
+        <mdb-form-control formGroupName="Fix">
+          <input
+            formControlName="MonthlySalary"
+            mdbInput
+            name="Salary"
+            type="number"
+            id="form1"
+            class="form-control"
+          />
+          <label mdbLabel class="form-label" for="form1">Monthly Salary </label>
+        </mdb-form-control>
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            AboutYouForm.get('Fix.Currency')?.setValue($event)
+          "
+          [class]="'col-md-5 mb-3'"
+          [Data]="AboutYouService.Currency"
+          [AllowSingleSelection]="true"
+          [PlaceHolder]="'Currency'"
+        ></app-multiple-search-select>
+      </div>
+      <div
+        class="col-md-6 mb-3 d-flex justify-content-between"
+        *ngIf="MonthlySalaryOffer == 'Range'"  formGroupName="Range"
+      >
+        <mdb-form-control class="col-md-3 mb-3">
+          <input
+            formControlName="MaxSalary"
+            mdbInput
+            name="Max Salary"
+            type="number"
+            id="form1"
+            class="form-control"
+          />
+          <label mdbLabel class="form-label" for="form1">Max Salary </label>
+        </mdb-form-control>
+        <mdb-form-control class="col-md-3 mb-3">
+          <input
+            formControlName="MinSalary"
+            mdbInput
+            name="Min Salary"
+            type="number"
+            id="form1"
+            class="form-control"
+          />
+          <label mdbLabel class="form-label" for="form1">Min Salary </label>
+        </mdb-form-control>
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            AboutYouForm.get('Range.Currency')?.setValue($event)
+          "
+          [class]="'class=col-md-4 mb-3'"
+          [Data]="AboutYouService.Currency"
+          [AllowSingleSelection]="true"
+          [PlaceHolder]="'Currency'"
+        ></app-multiple-search-select>
+      </div>
+      <div
+        class="col-md-6 mb-3 d-flex justify-content-between"
+        *ngIf="MonthlySalaryOffer == 'Else'"
+      >
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            AboutYouForm.get('Else.Description')?.setValue($event)
+          "
+          [PlaceHolder]="'Description'"
+          [class]="'col-md-12 mb-3'"
+          [AllowSingleSelection]="true"
+          [Data]="AboutYouService.Description"
+        ></app-multiple-search-select>
+      </div>
+    </div>
+  </form>
+</div>

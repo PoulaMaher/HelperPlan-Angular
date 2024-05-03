@@ -1,0 +1,256 @@
+<div class="Post-Resume">
+  <form class="Post-Resume-Form">
+    <h1>Basic Information</h1>
+    <div class="Basic">
+      <div class="col-md-12 mb-3">
+        <span>Job Position</span>
+        <br />
+        <div class="wrapper">
+          <input
+            (change)="
+              formGroup.controls['PositionOffered'].setValue('Domestic Helper');  
+            "
+            type="radio"
+            name="selectPosition"
+            id="Domestic-Helper"
+            required
+          />
+          <input
+            (change)="
+              formGroup.controls['PositionOffered'].setValue('Driver');  
+            "
+            type="radio"
+            name="selectPosition"
+            id="Driver"
+          />
+          <label for="Domestic-Helper" class="option Domestic-Helper">
+            <span style="font-size: 15px">Domestic Helper</span>
+          </label>
+          <label for="Driver" class="option Driver">
+            <span style="font-size: 15px">Driver</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <span>Job Type</span>
+        <br />
+        <div class="wrapper">
+          <input
+            (change)="formGroup.controls['Type'].setValue('Full Time');  "
+            type="radio"
+            name="selectType"
+            id="option-1"
+          />
+          <input
+            (change)="formGroup.controls['Type'].setValue('Part Time');  "
+            type="radio"
+            name="selectType"
+            id="option-2"
+          />
+          <input
+            (change)="formGroup.controls['Type'].setValue('Temporary');  "
+            type="radio"
+            name="selectType"
+            id="option-3"
+            required
+          />
+          <label for="option-1" class="option option-1">
+            <span style="font-size: 15px">Full Time</span>
+          </label>
+          <label for="option-2" class="option option-2">
+            <span style="font-size: 15px">Part Time</span>
+          </label>
+          <label for="option-3" class="option option-3">
+            <span style="font-size: 15px">Temporary</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            formGroup.controls['Location'].setValue($event);  
+          "
+          [AllowSingleSelection]="true"
+          [Data]="JobRequirmentsService.Countries"
+          [PlaceHolder]="'Where is your Job Offer Location?'"
+        ></app-multiple-search-select>
+      </div>
+      <app-datepicker
+        (dateChange)="formGroup.controls['StartDate'].setValue($event);  "
+        [PlaceHolder]="'When is the Job Start Date?'"
+        class="col-md-6 mb-3"
+      ></app-datepicker>
+      <!-- <app-ngx-slider
+      [showTicksValues]="true"
+        [stepsArray]="JobRequirmentsService.StartDateFlexibility"
+      ></app-ngx-slider> -->
+    </div>
+    <h1 style="margin-top: 7.5%">Required Skills & Duties</h1>
+    <div class="Skills">
+      <div class="Language">
+        <h3>Language Skills</h3>
+        <app-multiple-choice
+          (SetChoices)="
+            formGroup.controls['LanguageSkills'].setValue($event);  
+          "
+          [Options]="JobRequirmentsService.LanguageSkills"
+        ></app-multiple-choice>
+      </div>
+      <div class="Main">
+        <h3>Main Skills</h3>
+        <app-multiple-choice
+          (SetChoices)="
+            formGroup.controls['MainSkills'].setValue($event);  
+          "
+          [Options]="JobRequirmentsService.MainSkills"
+        ></app-multiple-choice>
+      </div>
+      <div class="Cooking">
+        <h3>Cooking Skills</h3>
+        <app-multiple-choice
+          (SetChoices)="
+            formGroup.controls['CookingSkills'].setValue($event);  
+          "
+          [Options]="JobRequirmentsService.CookingSkills"
+        ></app-multiple-choice>
+      </div>
+      <div class="Other">
+        <h3>Other Skills</h3>
+        <app-multiple-choice
+          (SetChoices)="
+            formGroup.controls['OtherSkills'].setValue($event);  
+          "
+          [Options]="JobRequirmentsService.OtherSkills"
+        ></app-multiple-choice>
+      </div>
+      <app-multiple-search-select
+        (SelectedItemsChanged)="
+          formGroup.controls['MostImportantSkills'].setValue($event);  
+        "
+        [Data]="JobRequirmentsService.MostImportantSkillsStatus"
+        [PlaceHolder]="'Most Important Skills max 3'"
+        [ChoicesLimit]="3"
+      ></app-multiple-search-select>
+    </div>
+    <h1 style="margin-top: 7.5%">Candidate Preferences</h1>
+    <div class="Preferences">
+      <div class="col-md-6 mb-3">
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            formGroup.controls['PreferedCandidateLocation'].setValue($event);  
+          "
+          [AllowSingleSelection]="true"
+          [Data]="JobRequirmentsService.PreferedCandidateLocation"
+          [PlaceHolder]="'What is your prefered candidate location?'"
+        ></app-multiple-search-select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            formGroup.controls['PreferedCandidateContract'].setValue($event);  
+          "
+          [AllowSingleSelection]="true"
+          [Data]="JobRequirmentsService.PreferedCandidateContract"
+          [PlaceHolder]="'Where is your Preferred Contract Status?'"
+        ></app-multiple-search-select>
+      </div>
+      <div class="col-md-12 mb-3">
+        <span>Gender</span>
+        <br />
+        <div class="wrapper">
+          <input
+            (change)="formGroup.controls['Gender'].setValue('Male');  "
+            type="radio"
+            name="selectGender"
+            id="Male"
+          />
+          <input
+            (change)="formGroup.controls['Gender'].setValue('Female');  "
+            type="radio"
+            name="selectGender"
+            id="Female"
+          />
+          <input
+            (change)="formGroup.controls['Gender'].setValue('Any');  "
+            type="radio"
+            name="selectGender"
+            id="Any"
+            required
+          />
+          <label for="Male" class="option Male">
+            <span style="font-size: 15px">Male</span>
+          </label>
+          <label for="Female" class="option Female">
+            <span style="font-size: 15px">Female</span>
+          </label>
+          <label for="Any" class="option Any">
+            <span style="font-size: 15px">Any</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <app-multiple-search-select
+          (SelectedItemsChanged)="
+            formGroup.controls['Nationality'].setValue($event);  
+          "
+          [Data]="JobRequirmentsService.Countries"
+          [selectAllText]="'Any'"
+          [PlaceHolder]="'Preferred Candidate Nationality'"
+        ></app-multiple-search-select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <app-multiple-search-select
+          [selectAllText]="'Any'"
+          (SelectedItemsChanged)="
+            formGroup.controls['Education'].setValue($event);  
+          "
+          [AllowSingleSelection]="true"
+          [Data]="JobRequirmentsService.Education"
+          [PlaceHolder]="'Preferred Candidate Education Level'"
+        ></app-multiple-search-select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <app-multiple-search-select
+          [selectAllText]="'Any'"
+          (SelectedItemsChanged)="
+            formGroup.controls['Religion'].setValue($event);  
+          "
+          [Data]="JobRequirmentsService.ReligiousStatusOptions"
+          [PlaceHolder]="'Preferred Candidate Religion'"
+        ></app-multiple-search-select>
+      </div>
+      <div class="row" style="margin-top: 2.5%">
+        <div class="col-md-5 mb-3">
+          <span>Age Required :</span>
+          <app-ngx-slider
+            (HighValueChanged)="
+              formGroup.controls['MinimumAge'].setValue($event);  
+            "
+            (ValueChanged)="
+              formGroup.controls['MaximumAge'].setValue($event);  
+            "
+            [ceil]="60"
+            [floor]="18"
+            [highValue]="25"
+            [value]="18"
+          ></app-ngx-slider>
+        </div>
+        <div class="col-md-5 mb-3">
+          <span>Years Of Experience Required :</span>
+          <app-ngx-slider
+            (HighValueChanged)="
+              formGroup.controls['MaximumExperience'].setValue($event);  
+            "
+            (ValueChanged)="
+              formGroup.controls['MinimumExperience'].setValue($event);  
+            "
+            [ceil]="40"
+            [floor]="0"
+            [highValue]="formGroup.controls['MaximumExperience'].value"
+            [value]="formGroup.controls['MinimumExperience'].value"
+          ></app-ngx-slider>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

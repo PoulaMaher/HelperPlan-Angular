@@ -1,0 +1,15 @@
+.Post-Resume
+{
+    display: flex;
+    justify-content: center;
+}
+.Post-Resume-Form
+{
+    margin: 2.5%;
+    width: 70%;
+}
+.Gender-Selector
+{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,17 @@
+<mat-form-field [class]="class">
+    <mat-label>{{PlaceHolder}}</mat-label>
+    <mat-select [formControl]="toppings" multiple>
+      <mat-select-trigger>
+        {{toppings.value?.[0] || ''}}
+        @if ((toppings.value?.length || 0) > 1) {
+          <span class="example-additional-selection">
+            (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        }
+      </mat-select-trigger>
+      @for (Option of Options; track Option) {
+    <mat-option (onSelectionChange)="Push($event)" [value]="Option">{{Option}}</mat-option>
+  }
+    </mat-select>
+  </mat-form-field>
+  

@@ -1,0 +1,7 @@
+<ngx-slider
+  (highValueChange)="HighValueChanged.emit($event)"
+  (valueChange)="ValueChanged.emit($event)"
+  [(value)]="value"
+  [(highValue)]="highValue"
+  [options]="options"
+></ngx-slider>

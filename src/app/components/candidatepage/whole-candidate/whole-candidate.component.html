@@ -1,0 +1,17 @@
+<div class="maincont">
+<div class="row ">
+  <div class="col-12 mb-2">
+    <app-candidate-header></app-candidate-header>
+  </div>
+</div>
+<div class="row canbody">
+  <div class="col-3">
+    <app-candidate-sidebar (ontotalorder)="change($event)"></app-candidate-sidebar>
+  </div>
+  <div class="col-9">
+    <app-candidate-card [recievedtest]="testy" [recievedchange]="testy.Ischange"></app-candidate-card>
+  </div>
+</div>
+</div>
+
+

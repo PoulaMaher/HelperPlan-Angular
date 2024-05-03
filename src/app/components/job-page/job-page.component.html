@@ -1,0 +1,25 @@
+<div class="maincont">
+  <div class="row">
+    <div class="col-12 mb-2">
+      <app-header></app-header>
+    </div>
+  </div>
+  <div class="row canbody">
+    <div class="col-md-3">
+      <app-sidebar (ApplyChanges)="receivequery($event)"></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <mat-paginator
+        [length]="Jobs.length"
+        [pageSize]="pageSize"
+        (page)="onPageChange($event)"
+      >
+      </mat-paginator>
+      <app-find-job
+        *ngFor="let item of Jobs.slice(startIndex, endIndex)"
+        [Job]="item"
+      ></app-find-job>
+      <br />
+    </div>
+  </div>
+</div>

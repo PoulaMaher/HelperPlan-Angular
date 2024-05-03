@@ -1,0 +1,43 @@
+<div class="container-fluid login">
+  <div class="row">
+    <div class="login-container mx-auto">
+      <h2>Login</h2>
+      <div class="social-icons">
+        <button class="facebook-icon">
+          <i class="fa-brands fa-facebook"></i>
+        </button>
+        <button class="google-icon"><i class="fa-brands fa-google"></i></button>
+      </div>
+
+      <form action="login.php" method="POST">
+        <input
+          [(ngModel)]="LoggedUser.Email"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          [(ngModel)]="LoggedUser.Password"
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <div class="col-6 Alert">
+          <label>{{ApiErrors}}</label>
+        </div>      
+        <div class="links row">
+          <div class="col-6">
+            <label><input type="checkbox" name="remember" />Remember me</label>
+          </div>
+          <div class="col-6">
+            <a href="forgot_password.html">Forgot Password?</a>
+          </div>
+        </div>
+        <button type="submit" (click)="LogUser()">Login</button>
+      </form>
+      <a routerLink="/register" id="reg">Newuser?signup here</a>
+    </div>
+  </div>
+</div>

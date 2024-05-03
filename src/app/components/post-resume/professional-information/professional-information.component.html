@@ -1,0 +1,127 @@
+<div class="Post-Resume">
+  <form class="Post-Resume-Form">
+    <div class="Professional-Information col-md-12 mb-3">
+      <h1>Professional Information</h1>
+      <div class="col-md-8 mb-3">
+        <span class="col-md-8 mb-3"
+          >For which position, do you want to apply?</span
+        >
+        <br />
+        <div class="wrapper Job-wrapper col-md-12 mb-3">
+          <input type="radio" name="select" id="option-1" value="Driver" (change)="positionbind($event)"  checked />
+          <input type="radio" name="select" id="option-2" value="Helper" (change)="positionbind($event)" />
+          <label for="option-1" class="option option-1">
+            <img src="assets/Images/driver.png" alt="" />
+            <span> Driver</span>
+          </label>
+          <label for="option-2" class="option option-2">
+            <img src="assets/Images/maid.png" alt="" />
+            <span> Domestic Helper</span>
+          </label>
+        </div>
+        <app-input
+          class="col-md-12 mb-3"
+          placeHolder="How Many Years Of Experience"
+          type="number"
+          (change)="expbind($event)"
+        ></app-input>
+      </div>
+      <div class="Job-Type col-md-8 mb-3">
+        <span class="col-md-8 mb-3">Job Type</span>
+        <div class="col-md-8 mb-3"></div>
+      </div>
+      <app-search-select
+        [Options]="Data.CurrentWorkStatus"
+        class="col-md-8 mb-3"
+        PlaceHolder="What is your current work status?"
+        (ValueSelected)="wstatbind($event)"
+      ></app-search-select>
+      <app-datepicker
+        class="col-md-8 mb-3"
+        PlaceHolder="When is the Job Start Date?"
+        (dateChange)="datebind($event)"
+      ></app-datepicker>
+    </div>
+    <div class="Preference-For-Job col-md-12 mb-3">
+      <h1>Preference For Job</h1>
+
+      <!-- <app-multiple-select
+        class="col-md-8 mb-3"
+        [Options]="Data.PreferedCountryStatus"
+        PlaceHolder="Prefered job Location"
+      ></app-multiple-select> -->
+      <div class="row">
+        <app-input
+          class="col-md-6 mb-3"
+          placeHolder="Salary"
+          type="number"
+          (change)="salbind($event)"
+        ></app-input>
+        <app-search-select
+          class="col-md-6 mb-3"
+          PlaceHolder="Currency $"
+          [Options]="Data.CurrencyStatus"
+          (ValueSelected)="currbind($event)"
+        ></app-search-select>
+      </div>
+      <app-search-select
+        class="col-md-8 mb-3"
+        [Options]="Data.DayOffPreferenceStatus"
+        PlaceHolder="Day off preference "
+        (ValueSelected)="dayoffbind($event)"
+      ></app-search-select>
+      <app-search-select
+        class="col-md-8 mb-3"
+        [Options]="Data.AccomodationPreferenceStatus"
+        PlaceHolder="Accomodation preference "
+        (ValueSelected)="acobind($event)"
+      ></app-search-select>
+    </div>
+    <div class="Main-Skills">
+      <h1>My Skills</h1>
+      <div class="Language Skills">
+        <h3>Language</h3>
+        <app-multiple-choice
+          [Options]="Data.LanguageStatus"
+          (SetChoices)="addlangbind($event)"
+        ></app-multiple-choice>
+      </div>
+      <div class="Main Skills">
+        <h3>Main Skills</h3>
+        <app-multiple-choice
+          [Options]="Data.MainSkillsStatus"
+          (SetChoices)="addmainbind($event)"
+        ></app-multiple-choice>
+      </div>
+      <div class="Cooking Skills">
+        <h3>Cooking Skills</h3>
+        <app-multiple-choice
+          [Options]="Data.cookingSkillsStatus"
+          (SetChoices)="addcookbind($event)"
+        ></app-multiple-choice>
+      </div>
+      <div class="Other Skills">
+        <h3>Other Skills</h3>
+        <!-- <label for="" *ngFor="let item of Data.OtherSkillsStatus"  (change)="addlangbind($event)">
+        <input type="checkbox" [value]="item" >
+            {{item}}
+      </label> -->
+        <app-multiple-choice
+          [Options]="Data.OtherSkillsStatus"
+          (SetChoices)="addotherbind($event)"
+        ></app-multiple-choice>
+      </div>
+      <div class="Personality Skills">
+        <h3>Personality Traits</h3>
+        <app-multiple-choice
+          [Options]="Data.PersonalitySkillsStatus"
+        ></app-multiple-choice>
+      </div>
+      <br />
+      <div class="Submit">
+        <button type="button"  routerLink="/candidateResume/candidatePersonalInfo" class="btn btn-primary">Back</button>
+        <button [disabled]="myflag" routerLink="/candidateResume/candidateEducation" class="btn btn-success ms-2">Next</button>
+      </div>
+    </div>
+  </form>
+</div>

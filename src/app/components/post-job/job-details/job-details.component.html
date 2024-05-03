@@ -1,0 +1,38 @@
+<div class="Post-Resume">
+  <form [formGroup]="formgroup" class="Post-Resume-Form">
+    <h1>Job Description</h1>
+    <div class="Description">
+      <mdb-form-control class="col-md-12 mb-3">
+        <input
+          [formControlName]="'JobTitle'"
+          mdbInput
+          name="JobTitle"
+          type="text"
+          id="form1"
+          class="form-control"
+        />
+        <label mdbLabel class="form-label" for="form1">Job Title</label>
+      </mdb-form-control>
+      <h3>
+        Please give some information about the job position and your offer.
+      </h3>
+      <app-text-editor
+        (onContentChanged)="formgroup.get('JobDescription')?.setValue($event)"
+      ></app-text-editor>
+      <app-slide-toggle
+        (ValueChanged)="
+          formgroup.get('SubscribeToOurTipsAndNewsletters')?.setValue($event)
+        "
+        [PlaceHolder]="'Subscribe to our tips and newsletters?'"
+      ></app-slide-toggle
+      ><br />
+      <app-slide-toggle
+        (ValueChanged)="
+          formgroup.get('ReceivePrivilegedAndDiscountOffers')?.setValue($event)
+        "
+        [PlaceHolder]="'Receive privileged and discount offers.'"
+      ></app-slide-toggle>
+    </div>
+    <button>submit</button>
+  </form>
+</div>

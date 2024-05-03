@@ -1,0 +1,94 @@
+<div class="Post-Resume">
+  <div class="Post-Resume-Form">
+    <div class="Working">
+      <h1>Working Experience</h1>
+      <div class="Skills Show">
+        <app-working-experience
+          (UpdateWorkingExperience)="UpdateWorkingExperience($event)"
+          (DeleteWorkingExperience)="DeleteWorkingExperience($event)"
+          [WorkingExperiences]="WorkingExperiences"
+          (HideAddWorkingExperiencePage)="WorkingDisplay = false"
+        ></app-working-experience>
+        <app-add-work-experience
+          [PlaceHolder]="'Add'"
+          (OnClose)="ToggleWorkingDisplay()"
+          (OnSave)="SaveWorkExperience($event)"
+          [class.d-none]="WorkingDisplay == false"
+        ></app-add-work-experience>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button
+          [class.d-none]="WorkingDisplay == true"
+          (click)="ToggleWorkingDisplay()"
+          type="button"
+          class="btn btn-primary"
+          style="background-color: rgb(81, 81, 199)"
+        >
+          Add Work Experience
+        </button>
+      </div>
+    </div>
+    <div class="Education">
+      <h1>Education Experience</h1>
+      <div class="Skills Show">
+        <app-education-experience
+          (DeleteEducationExperience)="DeleteEducationExperience($event)"
+          (UpdateEducationExperience)="UpdateEducationExperience($event)"
+          [EducationExperiences]="EducationExperiences"
+          (HideAddEducationExperiencePage)="EducationDisplay = false"
+        ></app-education-experience>
+        <app-add-education-experience
+          [PlaceHolder]="'Add'"
+          (OnClose)="ToggleEducationDisplay()"
+          (OnSave)="SaveEducationExperience($event)"
+          [class.d-none]="EducationDisplay == false"
+        ></app-add-education-experience>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button
+          [class.d-none]="EducationDisplay == true"
+          (click)="ToggleEducationDisplay()"
+          type="button"
+          class="btn btn-primary"
+          style="background-color: rgb(81, 81, 199)"
+        >
+          Add Education Experience
+        </button>
+      </div>
+
+    </div>
+    <div>
+
+      <!-- <div  style="width: 390px;height: 200px;"> -->
+        <!-- <mat-form-field>
+          <textarea matInput
+             placeholder="Comment"
+             style="width: 390px;height: 200px;"
+             (change)="onCommentChange($event)">
+          </textarea> -->
+        <!-- </mat-form-field> -->
+      <!-- </div> -->
+    </div>
+
+    <div style="margin-top: 2.5%">
+      <button
+        type="button"
+        class="btn btn-primary "
+        routerLink="/candidateResume/candidateProfessionalInfo"
+      >
+        Back
+      </button>
+      <button
+      type="button"
+      class="btn btn-success ms-2"
+      routerLink="/candidateResume/AddDescription"
+    >
+      next
+    </button>
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+

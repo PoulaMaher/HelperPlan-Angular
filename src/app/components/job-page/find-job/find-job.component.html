@@ -1,0 +1,54 @@
+<div class="row rounded" id="main">
+  <div class="row  justify-content-around">
+    <div class="col-md-3">
+      <img
+        src="https://fakeimg.pl/300/"
+        alt=""
+        style="width: 150px; height: 150px"
+        class="rounded-circle m-2"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="row mt-md-3 mb-1">
+        <h4 class="col-4" style="color: #054a84">{{ Job.Position }}</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4" style="color: darkgray">
+          {{ Job.Type }}
+          <!-- job-place where he work -->
+        </div>
+        <div class="col-md-2" style="color: darkgray">
+          <i class="fa-solid fa-location-dot"></i> {{Job.Country}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-3" style="font-weight: 200">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti
+          eos, quis minima magnam natus obcaecati laudantium ipsam. Similique,
+          sequi ullam sint ex ea dolorum at officia officiis cum minima
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 px-0">
+      <div id="trian" class="text-center">Direct</div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4" style="color: #054a84">
+          <i class="fa-solid fa-hourglass-start"></i>
+           {{Job.YearsOfExperience}} years of experience 
+        </div>
+        <div class="col-md-4" style="color: #054a84">
+          <i class="fa-solid fa-calendar-days"></i>
+          from {{ Job.StartDate.getDate() }} / {{ Job.StartDate.getMonth() }} /
+          {{ Job.StartDate.getFullYear() }}
+        </div>
+        <div class="col-md-4" style="color: #25ae88">
+          <i class="fa-solid fa-circle"></i> {{Job.LanguageSkills}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
