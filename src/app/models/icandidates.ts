@@ -8,7 +8,6 @@ import { IOtherSkills } from "./IOtherSkills";
 export interface ICandidates {
 
     id: number;
-
     phoneNumber: string;
     phoneNumberConfirmed: boolean;
     fname: string;

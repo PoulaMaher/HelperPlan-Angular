@@ -1,0 +1,14 @@
+/* Custom styles for the carousel */
+.my-carousel {
+    /* Set maximum width and center the carousel */
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Custom styles for carousel items */
+.carousel-item {
+    /* Add padding and margin to the carousel items */
+    padding: 20px;
+    margin-right: 15px;
+    /* Adjust as needed */
+}

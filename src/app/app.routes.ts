@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import {HomeComponent} from './components/home/home.component'
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -19,9 +20,10 @@ import { EducationWorkingComponent } from './components/post-resume/education-wo
 import { ProfessionalInformationComponent } from './components/post-resume/professional-information/professional-information.component';
 import { AddDescriptionComponent } from './components/post-resume/candidate-resume/add-description/add-description.component';
 export const routes: Routes = [
+  { path: 'home', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
-  { path: 'Home', component: FindJobComponent },
+  { path: 'FindJob', component: FindJobComponent },
   { path: 'aboutus', component: AboutusComponent },
   {
     path: 'contactus',
@@ -59,5 +61,6 @@ export const routes: Routes = [
   { path: 'job', component: JobPageComponent },
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   // { path: '**', component: ErrorComponent }
 ];
