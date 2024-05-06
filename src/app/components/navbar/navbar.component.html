@@ -55,11 +55,14 @@
             <a class="dropdown-item" routerLink="/pricing">Pricing</a>
           </li>
           <li class="nav-item">
-            <a class="dropdown-item" routerLink="/candidateResume/candidatePersonalInfo">add resume</a>
+            <a
+              class="dropdown-item"
+              routerLink="/candidateResume/candidatePersonalInfo"
+              >add resume</a
+            >
           </li>
-          <div >
-
-            <li  class="nav-item">
+          <div>
+            <li class="nav-item">
               <a class="dropdown-item" routerLink="/contactus">Contact Us</a>
             </li>
             <li class="nav-item">
@@ -77,6 +80,10 @@
       </li>
     </ul>
     <ul *ngIf="!loginService.IsLogged" class="navbar-nav Buttons">
+      <li class="nav-item">
+        <a class="btn btn-danger" routerLink="/dashboard">Admin Dashboard</a
+        ><!-- *ngIf="Role == 'Admin'" -->
+      </li>
       <li class="nav-item">
         <a class="btn btn-success" routerLink="/register">Register</a>
       </li>

@@ -14,10 +14,14 @@ img {
   justify-content: space-between;
 }
 .navbar-collapse .Buttons {
-  width: 20%;
+  width: 30%;
   justify-content: space-around;
 }
 .navbar-collapse .MainLinks {
+<<<<<<< HEAD
   width: 50%;
+=======
+  width: 40.5%;
+>>>>>>> a785613345570e5aaac12d2fa9573f7f6fd35e8a
   justify-content: space-between;
 }
