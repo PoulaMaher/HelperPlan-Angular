@@ -23,7 +23,7 @@ export class Loginservice {
   LoggedUser=new BehaviorSubject(null);
   IsLogged:boolean=false;
   LogUser(LoggedUser:Loggeduser) :Observable<any> {
-    return this.http.post(`${environment.baseUrl}/Account/Login`, LoggedUser);
+    return this.http.post(`${environment.baseUrl}Account/Login`, LoggedUser);
   }
   LogOutUser()  {
     localStorage.removeItem('HelperPlanJWTToken');

@@ -10,4 +10,7 @@ export interface ICandidate {
   mainskills?:string[];
   gender?:string;
   age?:number;
+  photoURL?:string
+  location?:string;
+ 
 }

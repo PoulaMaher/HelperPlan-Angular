@@ -22,7 +22,7 @@ export class PersonalInformationComponent implements OnInit  {
   Date:PersonalInformationDataProviderService=new PersonalInformationDataProviderService();
  mycand!:ICandidates
  disabledflag:number=0;
- myflag:boolean=true;
+ myflag:boolean=false;
 
 //  candmodel:any= {
 //   id: 0,
@@ -64,9 +64,18 @@ export class PersonalInformationComponent implements OnInit  {
   }
  filebind(ele:any)
 {
-  this.mycand.photoURL=ele.target.value
-  this.flagy();
-
+debugger
+  const file = ele.currentTarget.files[ele.currentTarget.files.length - 1];
+console.log(file);
+  if (file) { // Check if file exists
+    this.candservice.frmdata=new FormData()
+   this.candservice.frmdata.append('file',file,file.name)
+console.log(this.candservice.frmdata.get('file'))
+    this.candservice.canfile.file = file;
+   // this.mycand.photoURL = ele.target.value;
+    this.flagy();
+   //ele.currentTarget.files.length=0
+  }
 }
 fnamebind(ele:any)
 {

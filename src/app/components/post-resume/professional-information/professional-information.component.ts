@@ -40,7 +40,7 @@ export class ProfessionalInformationComponent {
     flag3:number=0
     flag4:number=0
     disabledflag:number=0;
-    myflag:boolean=true;
+    myflag:boolean=false;
     mycand!:ICandidates
     constructor(private candservice:FcandidateService)
     {
@@ -212,7 +212,7 @@ export class ProfessionalInformationComponent {
    }
 
    flagy() {
-    // Specify the fields you want to check for emptiness in the main object
+    //Specify the fields you want to check for emptiness in the main object
     const fieldsToCheck: (keyof ICandidates)[] = ['position', 'workexperience', 'jobType', 'availabilityDate', 'exepectedSalary', 'preferredDay', 'accommodationPref'];
 
     // Check if any of the specified fields in the main object are empty

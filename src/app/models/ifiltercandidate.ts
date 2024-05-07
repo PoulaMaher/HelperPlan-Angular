@@ -8,5 +8,9 @@ export interface IFiltercandidate {
   Mainskills:string[];
   Gender:string;
   Age:number;
+  pageIndex:number;
+  pageSize:number;
+  pageCount:number;
   Ischange:boolean;
+
 }

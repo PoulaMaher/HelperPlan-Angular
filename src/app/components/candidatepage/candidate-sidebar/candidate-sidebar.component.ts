@@ -147,17 +147,17 @@ empty(){
   this.testingfilter.Jobtype=''
   this.testingfilter.Position=''
   this.testingfilter.Workexperience=0
+  this.testingfilter.StartDate=new Date(2000, 0, 1);
 
  console.log(this.skillsSelectedItems)
 this.filt()
-
-
 
 }
 
   filt()
   {
     this.testingfilter.Ischange=!this.testingfilter.Ischange
+    this.testingfilter.StartDate = new Date(this.testingfilter.StartDate);
      this.ontotalorder.emit(this.testingfilter)
      console.log(this.testingfilter)
 

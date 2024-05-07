@@ -32,14 +32,14 @@ export const routes: Routes = [
   { path: 'aboutus', component: AboutusComponent },
   {
     path: 'contactus',
-    // canActivate: [authRoutesGuard],
+    canActivate: [authRoutesGuard],
     component: ContactusComponent,
   },
   { path: 'register', component: RegisterComponent },
   { path: 'pricing', component: PricingComponent },
   {
     path: 'AddJob',
-    // canActivate: [authRoutesGuard],
+    canActivate: [authRoutesGuard],
     component: PostJobComponent,
   },
   {

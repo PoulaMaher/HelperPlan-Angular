@@ -1,4 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IFiltercandidate } from '../models/ifiltercandidate';
 import { Observable } from 'rxjs';
@@ -11,25 +12,29 @@ import { ILanguages } from '../models/ILanguages';
 import { IMainSkills } from '../models/IMainSkills';
 import { IEducation } from '../models/IEducation';
 import { IExperience } from '../models/IExperience';
+import { ICandAndFile } from '../models/i-cand-and-file';
 @Injectable({
   providedIn: 'root'
 })
 export class FcandidateService {
   private apiUrl = 'https://localhost:44376/Cadidate/GetFilteredCandidates';
   private postapiUrl = 'https://localhost:44376/Candidate/Insert';
+  private countApi='https://localhost:44376/Candidate/Count'
   testingfilter:IFiltercandidate
   mycandidate!:ICandidates///--------------->
 
   myform!:FormGroup
-
+  canfile!:ICandAndFile
+  frmdata:FormData=new FormData();
   constructor(private http:HttpClient,private fb:FormBuilder) {
-    this.testingfilter={
+
+        this.testingfilter={
       Position: '',
   Jobtype: '',
-  StartDate:new Date(),
+  StartDate:new Date(2000, 0, 1),
   Contract:[],
   Workexperience: 0, Language:[],Mainskills:[],
-  Gender: '',Age: 0,Ischange: false,
+  Gender: '',Age: 0,Ischange: false,pageIndex:0,pageSize:10,pageCount:0,
     }
     /////////initialize candidate/////--------------->
     this.mycandidate= {
@@ -114,6 +119,10 @@ export class FcandidateService {
        // Candidate: undefined
       }]
     };
+    this.canfile = {
+      cands:this.mycandidate /* initialize cand property */,
+      file: null // Initialize file property as null
+    };
     ////form builder----------->
 
        this.myform=this.createCandidateForm(this.mycandidate)
@@ -123,6 +132,10 @@ export class FcandidateService {
    }
    setfiltered(tf:IFiltercandidate){
     this.testingfilter=tf
+  }
+  ///get count
+  getcount():Observable<number>{
+    return this.http.get<number>(this.countApi);
   }
   ////get candidateDto
   getCandidates(filter: IFiltercandidate): Observable<ICandidate[]> {
@@ -136,6 +149,9 @@ export class FcandidateService {
     params = params.append('Workexperience', filter.Workexperience);
     params = params.append('Age', filter.Age);
    params = params.append('Jobtype', filter.Jobtype);
+   params = params.append('pageIndex', filter.pageIndex);
+   params = params.append('pageSize', filter.pageSize);
+
    params = params.append('startDate', this.formatDateTime(filter.StartDate));
    if (filter.Contract) {
     filter.Contract.forEach(contract => {
@@ -169,10 +185,18 @@ export class FcandidateService {
   return this.http.get<ICandidate[]>(this.apiUrl, { params:params });
   }
   ///////////////////--post candidate---------------------->
-  postCandidate(candidate: ICandidates): Observable<ICandidates>
+  // postCandidate(candidate: ICandidates): Observable<ICandidates>
+  // {
+  //   return this.http.post<ICandidates>(this.postapiUrl,candidate);
+  // }
+  postCandidate(candidate: FormData): Observable<FormData>
   {
-    return this.http.post<ICandidates>(this.postapiUrl,candidate);
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data'
+    });
+    return this.http.post<FormData>(this.postapiUrl,candidate);
   }
+
 
   /////////////////////----------------------->
   createCandidateForm(candidate: ICandidates): FormGroup {
@@ -301,8 +325,10 @@ private createCookingSkillsFormArray(cookingSkills: ICookingSkills[]): FormArray
   const minutes = date.getMinutes().toString().padStart(2, '0');
   const seconds = date.getSeconds().toString().padStart(2, '0');
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  }
-  getAllCandidates(): Observable<ICandidates[]> {
+}
+getAllCandidates(): Observable<ICandidates[]> {
     return this.http.get<ICandidates[]>(`https://localhost:44376/Candidate/GetAll`);
   }
+
+
 }
