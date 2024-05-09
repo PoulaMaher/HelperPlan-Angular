@@ -6,5 +6,5 @@ export interface IPlan {
     Price:number
     Type: string
     //navigation Properties
-    Subscribtion:ISubscribtion
+    Subscribtion?:ISubscribtion
 }

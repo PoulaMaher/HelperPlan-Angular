@@ -18,15 +18,22 @@
     </tr>
   </thead>
   <tbody>
+    @for (plan of plans; track $index) {
     <tr>
-      <th scope="row">1</th>
-      <td>Week</td>
-      <td>50 USD</td>
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ plan.Type }}</td>
+      <td>{{ plan.Price }} USD</td>
       <td>
         <button class="btn btn-outline-danger mx-1">Delete</button
         ><button class="btn btn-outline-success mx-1">Edit</button>
-        <button class="btn btn-outline-primary mx-1">Details</button>
+        <button
+          class="btn btn-outline-primary mx-1"
+          (click)="goToDetailsPage(plan.ID)"
+        >
+          Details
+        </button>
       </td>
     </tr>
+    }
   </tbody>
 </table>

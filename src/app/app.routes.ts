@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './components/home/home.component'
+import { HomeComponent } from './components/home/home.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -24,6 +24,7 @@ import { CandidateDashboardComponent } from './components/Admin-Dashboard/candid
 import { PlanDashboardComponent } from './components/Admin-Dashboard/plan-dashboard/plan-dashboard.component';
 import { EmployerDashboardComponent } from './components/Admin-Dashboard/employer-dashboard/employer-dashboard.component';
 import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard-layout/dashboard-layout.component';
+import { PlanDetailsComponent } from './components/Admin-Dashboard/plan-dashboard/plan-details/plan-details/plan-details.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
@@ -98,6 +99,10 @@ export const routes: Routes = [
       {
         path: 'employerDashboard',
         component: EmployerDashboardComponent,
+      },
+      {
+        path: 'planDetails/:id',
+        component: PlanDetailsComponent,
       },
       {
         path: '**', // route every undefined route to the root of this feature
