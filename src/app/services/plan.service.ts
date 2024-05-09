@@ -54,4 +54,5 @@ export class PlanService {
       (plan) => plan.ID == id
     ) || { ID: 1, Name: 'Ay 7aga', Price: 20, Type: 'Ay 7aga' });
   }
+  deletePlanById(id: number): void {}
 }

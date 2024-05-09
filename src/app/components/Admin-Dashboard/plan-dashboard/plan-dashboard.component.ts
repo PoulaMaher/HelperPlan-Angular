@@ -31,4 +31,5 @@ export class PlanDashboardComponent {
     this.currentPlan = this.planService.getPlanById(cId);
     this.router.navigate(['dashboard/planDetails', cId]);
   }
+  handleDelete(cId: number): void {}
 }
