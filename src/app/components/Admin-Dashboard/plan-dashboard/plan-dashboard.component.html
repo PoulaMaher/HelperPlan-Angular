@@ -50,12 +50,23 @@
                 >
                   Cancel
                 </button>
-                <button type="button" class="deletebtn" (click)="handleDelete(plan.ID)">Delete</button>
+                <button
+                  type="button"
+                  class="deletebtn"
+                  (click)="handleDelete(plan.ID)"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </form>
         </div>
-        <button class="btn btn-outline-success mx-1">Edit</button>
+        <button
+          class="btn btn-outline-success mx-1"
+          (click)="goToEditPage(plan.ID)"
+        >
+          Edit
+        </button>
         <button
           class="btn btn-outline-primary mx-1"
           (click)="goToDetailsPage(plan.ID)"

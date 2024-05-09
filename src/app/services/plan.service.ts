@@ -40,7 +40,9 @@ export class PlanService {
   //     `${environment.baseUrl}/Plan/GetById/${id}`
   //   );
   // }
+  //deletePlanById(id: number): void {}
 
+  
   // data for test
   getAllPlans(): IPlan[] {
     //Observable<IPlan[]> {

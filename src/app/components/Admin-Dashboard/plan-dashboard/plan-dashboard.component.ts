@@ -27,9 +27,16 @@ export class PlanDashboardComponent {
     this.currentPlanId = 1;
     this.currentPlan = this.planService.getPlanById(this.currentPlanId);
   }
+
   goToDetailsPage(cId: number): void {
     this.currentPlan = this.planService.getPlanById(cId);
     this.router.navigate(['dashboard/planDetails', cId]);
   }
+
   handleDelete(cId: number): void {}
+
+  goToEditPage(cId: number): void {
+    this.currentPlan = this.planService.getPlanById(cId);
+    this.router.navigate(['dashboard/planEdit', cId]);
+  }
 }

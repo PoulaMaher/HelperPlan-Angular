@@ -25,6 +25,7 @@ import { PlanDashboardComponent } from './components/Admin-Dashboard/plan-dashbo
 import { EmployerDashboardComponent } from './components/Admin-Dashboard/employer-dashboard/employer-dashboard.component';
 import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard-layout/dashboard-layout.component';
 import { PlanDetailsComponent } from './components/Admin-Dashboard/plan-dashboard/plan-details/plan-details/plan-details.component';
+import { PlanEditComponent } from './components/Admin-Dashboard/plan-dashboard/plan-edit/plan-edit/plan-edit.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
@@ -103,6 +104,11 @@ export const routes: Routes = [
       {
         path: 'planDetails/:id',
         component: PlanDetailsComponent,
+      }
+      ,
+      {
+        path: 'planEdit/:id',
+        component: PlanEditComponent,
       },
       {
         path: '**', // route every undefined route to the root of this feature
