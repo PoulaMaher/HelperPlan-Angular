@@ -20,7 +20,7 @@ export class EmployerService {
   }
 
   getEmployerById(id: number): Observable<IEmployer> {
-    return this.httpClient.get<IEmployer>(`${environment.baseUrl}Employer/Get/${id}`);
+    return this.httpClient.get<IEmployer>(`${environment.baseUrl}Employer/GetById/${id}`);
   }
   
   updateEmployer(employer: IEmployer, id: number): Observable<IEmployer> {
