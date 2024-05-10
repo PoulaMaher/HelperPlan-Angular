@@ -4,6 +4,7 @@ import { IJob } from "./IJob"
 import { ISubscribtionHistory } from "./ISubscribtionHistory"
 
 export interface IEmployer{
+    id:number
     Fname: string
     Lname: string
     Phone: string
