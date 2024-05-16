@@ -16,12 +16,11 @@ import { DashboardLayoutComponent } from "./components/Admin-Dashboard/dashboard
 })
 export class AppComponent {
   constructor(private loginService: Loginservice, private router: Router,private route: ActivatedRoute) {
-    // if (localStorage.getItem('HelperPlanJWTToken') != null) {
-    //   this.loginService.DecodeUser(localStorage.getItem('HelperPlanJWTToken'))
-    //   this.router.navigateByUrl('/myaccount');
-    // } else {
-    //   this.router.navigateByUrl('/Login');
-    // }
+    if (localStorage.getItem('HelperPlanJWTToken') != null) {
+      this.loginService.CheckIfTokenIsExpired();
+    } else {
+      this.router.navigateByUrl('/home');
+    }
   }
   title = 'HelperPlace';
   ClassesCSS: string = 'Post-Resume';

@@ -28,9 +28,10 @@ import { PlanDetailsComponent } from './components/Admin-Dashboard/plan-dashboar
 import { PlanEditComponent } from './components/Admin-Dashboard/plan-dashboard/plan-edit/plan-edit/plan-edit.component';
 import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-dashboard/employer-details/employer-details.component';
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
+import { loginInGuard } from '../AuthRoutes/login-in.guard';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'Login', component: LoginComponent },
+  { path: 'Login',canActivate:[loginInGuard], component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
   { path: 'FindJob', component: FindJobComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -39,7 +40,7 @@ export const routes: Routes = [
     canActivate: [authRoutesGuard],
     component: ContactusComponent,
   },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register',canActivate:[loginInGuard], component: RegisterComponent },
   { path: 'pricing', component: PricingComponent },
   {
     path: 'AddJob',
@@ -48,6 +49,7 @@ export const routes: Routes = [
   },
   {
     path: 'candidateResume',
+    canActivate: [authRoutesGuard],
     component: CandidateResumeComponent,
     children: [
       { path: 'candidateEducation', component: EducationWorkingComponent },
@@ -64,7 +66,7 @@ export const routes: Routes = [
   },
   {
     path: 'myaccount',
-    // canActivate: [authRoutesGuard],
+    canActivate: [authRoutesGuard],
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'changepassword', component: ChangePasswordComponent },
@@ -72,15 +74,15 @@ export const routes: Routes = [
       { path: '**', component: ProfileComponent },
     ],
   },
-  { path: 'candidatepage', component: WholeCandidateComponent },
-  { path: 'job', component: JobPageComponent },
+  { path: 'candidatepage',canActivate:[authRoutesGuard], component: WholeCandidateComponent },
+  { path: 'job',canActivate:[authRoutesGuard], component: JobPageComponent },
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   // { path: '**', component: ErrorComponent }
   {
     path: 'dashboard',
-    // canActivate: [authRoutesGuard],
+    canActivate: [authRoutesGuard],
     component: DashboardLayoutComponent,
     children: [
       {
@@ -127,4 +129,5 @@ export const routes: Routes = [
       },
     ],
   },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
