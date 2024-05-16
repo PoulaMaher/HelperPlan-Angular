@@ -24,7 +24,18 @@ import { CandidateDashboardComponent } from './components/Admin-Dashboard/candid
 import { PlanDashboardComponent } from './components/Admin-Dashboard/plan-dashboard/plan-dashboard.component';
 import { EmployerDashboardComponent } from './components/Admin-Dashboard/employer-dashboard/employer-dashboard.component';
 import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard-layout/dashboard-layout.component';
+import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
+import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
+import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
 export const routes: Routes = [
+  {
+    path: 'details/:id',
+    component: CandidateDetailsComponent,
+  },
+  {
+    path: 'delete/:id',
+    component: DeleteCandidateComponent,
+  },
   { path: 'home', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
@@ -46,6 +57,7 @@ export const routes: Routes = [
     path: 'candidateResume',
     component: CandidateResumeComponent,
     children: [
+      { path: 'Updatelayer/:id', component: UpdatelayerComponent },
       { path: 'candidateEducation', component: EducationWorkingComponent },
       {
         path: 'candidatePersonalInfo',
@@ -99,6 +111,7 @@ export const routes: Routes = [
         path: 'employerDashboard',
         component: EmployerDashboardComponent,
       },
+
       {
         path: '**', // route every undefined route to the root of this feature
         redirectTo: ' ',
@@ -106,3 +119,5 @@ export const routes: Routes = [
     ],
   },
 ];
+
+

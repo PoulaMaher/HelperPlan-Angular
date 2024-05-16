@@ -24,64 +24,33 @@ export class PersonalInformationComponent implements OnInit  {
  disabledflag:number=0;
  myflag:boolean=false;
 
-//  candmodel:any= {
-//   id: 0,
-//   phoneNumber: '',
 
-//   fname: '',
-//   lname: '',
-//   location: '',
-
-//   position: '',
-//   contactEmail: '',
-//   photoURL: '',
-//   age: 0,
-//   gender: '',
-//   noKids: 0,
-//   workexperience: 0,
-//   martialStatus: '',
-//   nationality: '',
-//   religion: '',
-//   educationLevel: '',
-//   whatappNumber: '',
-//   hasPassport: false,
-//   jobType: '',
-//   workStatus: '',
-//   availabilityDate: new Date(),
-//   exepectedSalary: 0,
-//   preferredDay: '',
-//   accommodationPref: '',
-
-
-
-// };
  constructor(private candservice:FcandidateService)
  {
    this.mycand=candservice.mycandidate
+   this.candservice.frmdata=new FormData()
+   console.log(this.candservice.frmdata)
+
+
  }
   ngOnInit(): void {
     this.flagy();
   }
  filebind(ele:any)
 {
-debugger
   const file = ele.currentTarget.files[ele.currentTarget.files.length - 1];
-console.log(file);
   if (file) { // Check if file exists
-    this.candservice.frmdata=new FormData()
+
    this.candservice.frmdata.append('file',file,file.name)
-console.log(this.candservice.frmdata.get('file'))
     this.candservice.canfile.file = file;
-   // this.mycand.photoURL = ele.target.value;
     this.flagy();
-   //ele.currentTarget.files.length=0
   }
 }
 fnamebind(ele:any)
 {
   this.mycand.fname=ele.target.value
   this.flagy();
-
+console.log(this.mycand)
 }
 lnamebind(ele:any)
 {
@@ -160,12 +129,10 @@ passbind(ele:any)
 
 }
 flagy() {
-  // Specify the fields you want to check for emptiness
-  const fieldsToCheck: (keyof ICandidates)[] = [ 'fname', 'lname', 'age', 'gender', 'martialStatus', 'nationality', 'religion', 'educationLevel', 'location', 'contactEmail', 'phoneNumber', 'whatappNumber'];
 
-  // Check if any of the specified fields are empty
-  this.myflag = fieldsToCheck.some(field => !this.mycand[field]);
-  console.log(this.myflag);
+  // const fieldsToCheck: (keyof ICandidates)[] = [ 'fname', 'lname', 'age', 'gender', 'martialStatus', 'nationality', 'religion', 'educationLevel', 'location', 'contactEmail', 'phoneNumber', 'whatappNumber'];
+  // this.myflag = fieldsToCheck.some(field => !this.mycand[field]);
+  // console.log(this.myflag);
 }
 
 }

@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FcandidateService } from '../../../../services/fcandidate.service';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ICandidate } from '../../../../models/ICandidate';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-description',
   standalone: true,
-  imports: [RouterLinkActive,RouterLink,RouterOutlet],
+  imports: [RouterLinkActive,RouterLink,RouterOutlet,FormsModule,CommonModule],
   templateUrl: './add-description.component.html',
   styleUrl: './add-description.component.css'
 })
-export class AddDescriptionComponent {
-  myflag:boolean=true;
-  constructor(private candService:FcandidateService){}
+export class AddDescriptionComponent implements OnInit {
+  myflag:boolean=false;
+  constructor(public candService:FcandidateService){}
+  ngOnInit(): void {
+   this.flagy()
+  }
 
 
   onCommentChange(des:any){
@@ -23,37 +28,43 @@ export class AddDescriptionComponent {
   sendData()
   {
 
-    //console.log(this.candService.mycandidate)
     this.candService.canfile.cands=this.candService.mycandidate;
-
-    console.log("here")
-  //  console.log(this.candService.canfile.cands)
-  //  console.log(this.candService.canfile.file)
-   //const f=new FormData();
-   //f.append('cands',JSON.stringify(this.candService.canfile.cands))
-   //f.append('file',this.candService.canfile.file??null)
-   console.log(JSON.stringify(this.candService.canfile.cands))
    this.candService.frmdata.append('cands',JSON.stringify(this.candService.canfile.cands))
-   //console.log( this.candService.frmdata.get('file'))
-  // console.log( this.candService.frmdata.get('cands') )
-    this.candService.postCandidate(this.candService.frmdata).subscribe({
+   if(this.candService.mycandidate.id==0||this.candService.mycandidate.id==null)
+    {
+      this.candService.postCandidate(this.candService.frmdata).subscribe({
+        next: (data:any) => {
+          console.log(data) // Assign the fetched candidates to the candidates array
+        },
+        error: (error) => {
+          console.error('Error fetching candidates:', error); // Log any errors
+        },
+        complete: () => {
+          console.log('Candidates fetched successfully'); // Log completion
+        }
+      })
+    }
+    else{
+      this.candService.updateCandidate(this.candService.frmdata).subscribe({
+        next: (data:any) => {
+          console.log(data) // Assign the fetched candidates to the candidates array
+        },
+        error: (error) => {
+          console.error('Error fetching candidates:', error); // Log any errors
+        },
+        complete: () => {
+          console.log('Candidates fetched successfully'); // Log completion
+        }
+      })
+    }
 
-      next: (data:any) => {
-        console.log(data) // Assign the fetched candidates to the candidates array
-
-      },
-      error: (error) => {
-        console.error('Error fetching candidates:', error); // Log any errors
-      },
-      complete: () => {
-        console.log('Candidates fetched successfully'); // Log completion
-      }
-    })
+    this.candService.mycandidate=this.candService.resetCandidate()
   }
+
   flagy(){
-    if( this.candService.mycandidate.description.length>50)
-      {
-        this.myflag=false
-      }
+    // if( this.candService.mycandidate.description.length>50)
+    //   {
+    //     this.myflag=false
+    //   }
   }
 }

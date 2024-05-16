@@ -1,8 +1,8 @@
 import { ICandidate } from "./ICandidate"
 
 export interface ICookingSkills {
-    ID:number
-    Name:string
+    id: number;
+    name:string
     Description: string
     Level: number
     CandidateID: number
