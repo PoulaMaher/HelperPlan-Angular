@@ -22,7 +22,9 @@ export class PlanDetailsComponent {
     this.route.params.subscribe((params) => {
       this.currentId = params['id'];
     });
-    this.currentPlan = this.planService.getPlanById(this.currentId);
+    this.planService.getPlanById(this.currentId).subscribe(plan =>{
+      this.currentPlan = plan;
+    });
   }
   back(): void {
     this.router.navigate(['/dashboard/planDashboard']);
