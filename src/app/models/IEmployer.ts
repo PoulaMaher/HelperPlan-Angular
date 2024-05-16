@@ -4,19 +4,17 @@ import { IJob } from "./IJob"
 import { ISubscribtionHistory } from "./ISubscribtionHistory"
 
 export interface IEmployer{
-    Fname: string
-    Lname: string
-    Phone: string
-    Location: string
-    DayOff: string
-    Accomodation: string
-    Salary:number
-    KidsNo:number
-    AdultNo:number
-    HasBet:boolean
-    Description:string
-    Title: string
-    Subscribtion: ISubscribtion
-    Jobs: IJob[]
-    SubscribtionHistories:ISubscribtionHistory[]
+    id:number
+    fname: string
+    lname: string
+    phoneNumber: string
+    location: string
+    dayOff: string
+    accomodation: string
+    salary:number
+    kidsNo:number
+    adultNo:number
+    hasBet:boolean
+    description:string
+    title: string
 }

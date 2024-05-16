@@ -1,0 +1,26 @@
+<div class="container my-5">
+  <div class="row gy-5 gy-lg-0 gx-xl-5">
+    <div class="col-12 col-lg-4 m-auto">
+      <div
+        class="card border-0 border-bottom border-primary shadow-lg pt-md-4 pb-md-4 bsb-pricing-popular"
+      >
+        <div class="card-body p-4 p-xxl-5">
+          <h2 class="h4 mb-2">{{ currentPlan.type }} Plan</h2>
+          <h4 class="display-3 fw-bold text-primary mb-0">
+            ${{ currentPlan.price }}
+          </h4>
+          <p class="text-secondary mb-4">USD / Month</p>
+
+          <a class="btn bsb-btn-xl btn-outline-primary rounded-pill"
+            >Edit This Plan</a
+          >
+          <a
+            class="btn bsb-btn-xl btn-outline-danger rounded-pill m-2"
+            (click)="back()"
+            >Back</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="container mt-5">
+    <div class="row" class="row justify-content-center">
+        <div class="col-md-6">
+            <form (ngSubmit)="onSubmit()" #employeeForm="ngForm" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="fname" class="form-label">First Name:</label>
+                            <input type="text" id="fname" name="fname" [(ngModel)]="employee.fname" class="form-control" required>
+                            <div class="invalid-feedback">Please enter the first name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone:</label>
+                            <input type="text" id="phone" name="phone" [(ngModel)]="employee.phoneNumber" class="form-control" required>
+                            <div class="invalid-feedback">Please enter the phone number.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dayoff" class="form-label">Day Off:</label>
+                            <input type="text" id="dayoff" name="dayoff" [(ngModel)]="employee.dayOff" class="form-control"
+                                required>
+                            <div class="invalid-feedback">Please enter the day off information.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="salary" class="form-label">Salary:</label>
+                            <input type="number" id="salary" name="salary" [(ngModel)]="employee.salary" class="form-control"
+                                required>
+                            <div class="invalid-feedback">Please enter the salary.</div>
+                        </div>
+                                                <div class="mb-3">
+                                                    <label for="title" class="form-label">Title:</label>
+                                                    <input type="text" id="title" name="title" [(ngModel)]="employee.title" class="form-control" required>
+                                                    <div class="invalid-feedback">Please enter the title.</div>
+                                                </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description:</label><br>
+                            <textarea id="description" name="description" [(ngModel)]="employee.description" rows="3" cols="50"
+                                class="form-control" required></textarea>
+                            <div class="invalid-feedback">Please enter the description.</div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="lname" class="form-label">Last Name:</label>
+                            <input type="text" id="lname" name="lname" [(ngModel)]="employee.lname" class="form-control" required>
+                            <div class="invalid-feedback">Please enter the last name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location:</label>
+                            <input type="text" id="location" name="location" [(ngModel)]="employee.location" class="form-control"
+                                required>
+                            <div class="invalid-feedback">Please enter the location.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="accommodation" class="form-label">Accommodation:</label>
+                            <input type="text" id="accommodation" name="accommodation" [(ngModel)]="employee.accomodation"
+                                class="form-control" required>
+                            <div class="invalid-feedback">Please enter the accommodation information.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="kidsno" class="form-label">Number of Kids:</label>
+                            <input type="number" id="kidsno" name="kidsno" [(ngModel)]="employee.kidsNo" class="form-control"
+                                required>
+                            <div class="invalid-feedback">Please enter the number of kids.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adultno" class="form-label">Number of Adults:</label>
+                            <input type="number" id="adultno" name="adultno" [(ngModel)]="employee.adultNo" class="form-control"
+                                required>
+                            <div class="invalid-feedback">Please enter the number of adults.</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="hasbet" name="hasbet" [(ngModel)]="employee.hasBet">
+                                <label class="form-check-label ms-2" for="hasbet">Has Bet</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <button type="submit" [disabled]="employeeForm.invalid"
+                            class="btn bsb-btn-xl btn-outline-primary rounded-pill m-2">Update</button>
+                    </div>
+                    <div class="col-2">
+                        <a class="btn bsb-btn-xl btn-outline-danger rounded-pill m-2" (click)="back()">Back</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

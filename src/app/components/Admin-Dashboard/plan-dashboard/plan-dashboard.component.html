@@ -18,15 +18,64 @@
     </tr>
   </thead>
   <tbody>
+    @for (plan of planslst; track $index) {
     <tr>
-      <th scope="row">1</th>
-      <td>Week</td>
-      <td>50 USD</td>
+      <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ plan.type }}</td>
+      <td>{{ plan.price }} USD</td>
       <td>
-        <button class="btn btn-outline-danger mx-1">Delete</button
-        ><button class="btn btn-outline-success mx-1">Edit</button>
-        <button class="btn btn-outline-primary mx-1">Details</button>
+        <button
+          class="btn btn-outline-danger mx-1"
+          onclick="document.getElementById('id01').style.display='block'"
+        >
+          Delete
+        </button>
+        <div id="id01" class="modal">
+          <span
+            onclick="document.getElementById('id01').style.display='none'"
+            class="close"
+            title="Close Modal"
+            >&times;</span
+          >
+          <form class="modal-content">
+            <div class="container">
+              <h1>Delete Plan</h1>
+              <p>Are you sure you want to delete this plan?</p>
+
+              <div class="clearfix">
+                <button
+                  type="button"
+                  class="cancelbtn"
+                  onclick="document.getElementById('id01').style.display='none'"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  class="deletebtn"
+                  (click)="handleDelete(plan.id)"
+                >
+                  Delete {{ plan.id }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <button
+          class="btn btn-outline-success mx-1"
+          (click)="goToEditPage(plan.id)"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-outline-primary mx-1"
+          (click)="goToDetailsPage(plan.id)"
+        >
+          Details
+        </button>
       </td>
     </tr>
+    <h1>{{ plan.name }}</h1>
+    }
   </tbody>
 </table>

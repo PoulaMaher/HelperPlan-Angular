@@ -1,10 +1,10 @@
-import { ISubscribtion } from "./ISubscribtion"
+import { ISubscribtion } from './ISubscribtion';
 
 export interface IPlan {
-    ID:number
-    Name:string
-    Price:number
-    Type: string
-    //navigation Properties
-    Subscribtion:ISubscribtion
+  id: number;
+  name: string;
+  price: number;
+  type: string;
+  //navigation Properties
+  subscribtion?: ISubscribtion;
 }
