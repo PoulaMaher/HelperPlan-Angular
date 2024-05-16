@@ -16,27 +16,39 @@ export class PlanDashboardComponent {
   /**
    *
    */
-  public plans!: IPlan[];
+  public planslst!: IPlan[];
   private currentPlanId!: number;
   private currentPlan!: IPlan;
 
   constructor(private planService: PlanService, private router: Router) {}
 
   ngOnInit(): void {
-    this.plans = this.planService.getAllPlans();
-    this.currentPlanId = 1;
-    this.currentPlan = this.planService.getPlanById(this.currentPlanId);
+    this.planService.getAllPlans().subscribe((plans) => {
+      this.planslst = plans;
+      console.log(plans);
+    });
   }
 
   goToDetailsPage(cId: number): void {
-    this.currentPlan = this.planService.getPlanById(cId);
+    this.currentPlanId = cId;
+    console.log(cId);
+    this.planService.getPlanById(cId).subscribe((plan) => {
+      this.currentPlan = plan;
+    });
+
     this.router.navigate(['dashboard/planDetails', cId]);
   }
+  ngOnChanges(): void {}
 
-  handleDelete(cId: number): void {}
+  handleDelete(cId: number): void {
+    this.currentPlanId = cId;
+  }
 
   goToEditPage(cId: number): void {
-    this.currentPlan = this.planService.getPlanById(cId);
+    this.currentPlanId = cId;
+    this.planService.getPlanById(cId).subscribe((plan) => {
+      this.currentPlan = plan;
+    });
     this.router.navigate(['dashboard/planEdit', cId]);
   }
 }

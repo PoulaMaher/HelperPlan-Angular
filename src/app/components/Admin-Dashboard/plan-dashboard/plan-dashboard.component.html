@@ -18,11 +18,11 @@
     </tr>
   </thead>
   <tbody>
-    @for (plan of plans; track $index) {
+    @for (plan of planslst; track $index) {
     <tr>
       <th scope="row">{{ $index + 1 }}</th>
-      <td>{{ plan.Type }}</td>
-      <td>{{ plan.Price }} USD</td>
+      <td>{{ plan.type }}</td>
+      <td>{{ plan.price }} USD</td>
       <td>
         <button
           class="btn btn-outline-danger mx-1"
@@ -53,9 +53,9 @@
                 <button
                   type="button"
                   class="deletebtn"
-                  (click)="handleDelete(plan.ID)"
+                  (click)="handleDelete(plan.id)"
                 >
-                  Delete
+                  Delete {{ plan.id }}
                 </button>
               </div>
             </div>
@@ -63,18 +63,19 @@
         </div>
         <button
           class="btn btn-outline-success mx-1"
-          (click)="goToEditPage(plan.ID)"
+          (click)="goToEditPage(plan.id)"
         >
           Edit
         </button>
         <button
           class="btn btn-outline-primary mx-1"
-          (click)="goToDetailsPage(plan.ID)"
+          (click)="goToDetailsPage(plan.id)"
         >
           Details
         </button>
       </td>
     </tr>
+    <h1>{{ plan.name }}</h1>
     }
   </tbody>
 </table>
