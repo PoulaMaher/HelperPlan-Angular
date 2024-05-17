@@ -32,7 +32,6 @@ export interface ICandidates {
     availabilityDate: Date;
     expectedSalary: number;
     preferredDay: string;
-
     accommodationPref: string;
     experiences: IExperience[];
     educations: IEducation[];

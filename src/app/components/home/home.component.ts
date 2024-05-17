@@ -4,6 +4,7 @@ import { HomeCarouselComponent } from '../home-carousel/home-carousel.component'
 import { HomeFeaturesComponent } from '../home-features/home-features.component';
 import { HomePlacesComponent } from '../home-places/home-places.component';
 import { Loginservice } from '../login/LoginService/loginservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,5 +19,11 @@ import { Loginservice } from '../login/LoginService/loginservice.service';
   ],
 })
 export class HomeComponent {
-  constructor(public authservice: Loginservice) {}
+  constructor(public authservice: Loginservice, private router:Router) { }
+  Helpers() {
+    this.router.navigate(["/job"])
+  }
+  Candidates() {
+    this.router.navigate(["/candidatepage"])
+   }
 }

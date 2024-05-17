@@ -51,4 +51,7 @@ export class PlanDashboardComponent {
     });
     this.router.navigate(['dashboard/planEdit', cId]);
   }
+  goToAddPage(): void {
+    this.router.navigate(['dashboard/planAdd']);
+  }
 }

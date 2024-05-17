@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="row" class="row justify-content-center">
+        <div class="col-md-6">
+            <form (ngSubmit)="onSubmit()" #employeeForm="ngForm" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="Name" class="form-label">Name:</label>
+                            <input type="text" id="Name" name="Name" [(ngModel)]="plan.name" class="form-control"
+                                required>
+                            <div class="invalid-feedback">Please enter the plan name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">type:</label>
+                            <input type="text" id="type" name="type" [(ngModel)]="plan.type"
+                                class="form-control" required>
+                            <div class="invalid-feedback">Please enter the plan type.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price:</label>
+                            <input type="number" id="price" name="price" [(ngModel)]="plan.price"
+                                class="form-control" required>
+                            <div class="invalid-feedback">Please enter Invalid Price.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <button type="submit" [disabled]="employeeForm.invalid"
+                            class="btn bsb-btn-xl btn-outline-primary rounded-pill m-2">ADD</button>
+                    </div>
+                    <div class="col-2">
+                        <a class="btn bsb-btn-xl btn-outline-danger rounded-pill m-2" (click)="back()">Back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
