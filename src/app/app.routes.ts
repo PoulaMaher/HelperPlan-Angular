@@ -29,6 +29,8 @@ import { PlanEditComponent } from './components/Admin-Dashboard/plan-dashboard/p
 import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-dashboard/employer-details/employer-details.component';
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
+import { AddEmployerComponent } from '../app/components/Admin-Dashboard/employer-dashboard/add-employer/add-employer.component';
+import {AddComponent} from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component'
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'Login',canActivate:[loginInGuard], component: LoginComponent },
@@ -115,6 +117,10 @@ export const routes: Routes = [
         component: PlanEditComponent,
       },
       {
+        path: 'planAdd',
+        component: AddComponent, //plan
+      },
+      {
         path: 'employerDetails/:id',
         component: EmployerDetailsComponent,
       }
@@ -122,6 +128,10 @@ export const routes: Routes = [
       {
         path: 'employerEdit/:id',
         component: EmployerEditComponent,
+      },
+      {
+        path: 'employerAdd',
+        component: AddEmployerComponent,
       },
       {
         path: '**', // route every undefined route to the root of this feature

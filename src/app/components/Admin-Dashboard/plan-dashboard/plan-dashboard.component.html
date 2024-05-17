@@ -4,15 +4,16 @@
   <h1 class="h2">Plans</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
-      <button class="btn btn-outline-primary m-1">Add New Plan</button>
+      <button class="btn btn-outline-primary m-1" (click)="goToAddPage()" >Add New Plan</button>
     </div>
   </div>
 </div>
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Duration</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
       <th scope="col">Price</th>
       <th scope="col">Operations</th>
     </tr>
@@ -21,6 +22,7 @@
     @for (plan of planslst; track $index) {
     <tr>
       <th scope="row">{{ $index + 1 }}</th>
+      <td>{{ plan.name }}</td>
       <td>{{ plan.type }}</td>
       <td>{{ plan.price }} USD</td>
       <td>
@@ -75,7 +77,6 @@
         </button>
       </td>
     </tr>
-    <h1>{{ plan.name }}</h1>
     }
   </tbody>
 </table>

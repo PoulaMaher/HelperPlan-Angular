@@ -1,7 +1,7 @@
 import { ISubscribtion } from './ISubscribtion';
 
 export interface IPlan {
-  id: number;
+  id?: number;
   name: string;
   price: number;
   type: string;
