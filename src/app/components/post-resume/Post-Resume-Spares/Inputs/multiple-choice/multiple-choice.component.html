@@ -1,8 +1,9 @@
 <section class="example-section">
     <h4>{{PlaceHolder}}</h4>
     @for (Option of Options; track Option) {
-        <mat-checkbox (change)="PushOrPull(Option,$event)">{{Option}}</mat-checkbox>
+
+        <mat-checkbox [checked]="SelectedValues.includes(Option)" (change)="PushOrPull(Option,$event)">{{Option}}</mat-checkbox>
+
     }
   </section>
-  
-  
+

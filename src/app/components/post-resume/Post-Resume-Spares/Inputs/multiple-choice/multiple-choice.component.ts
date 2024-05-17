@@ -22,6 +22,6 @@ export class MultipleChoiceComponent {
   @Input() Options: string[] = [];
   @Input() PlaceHolder: string = '';
   @Output() SetChoices = new EventEmitter<string[]>();
-  SelectedValues: string[] = [];
+  @Input()SelectedValues: string[] = [];
   constructor() {}
 }

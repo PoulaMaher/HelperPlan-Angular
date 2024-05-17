@@ -1,15 +1,15 @@
 import { ICandidate } from "./ICandidate"
 
 export interface IExperience {
-    ID:number
-    JobPosition:string
-    WorkingCountry: string
-    StartYear:Date
-    EndYear:Date
-    EmployerType: string
-    Duties: string
-    HasLetterRef: boolean
-    CandidateID: number
+    id:number
+    jobPosition:string
+    workingCountry: string
+    startYear:Date
+    endYear:Date
+    employerType: string
+    duties: string
+    hasLetterRef: boolean
+    candidateID: number
     //Navigation Properties
     //Candidate?: ICandidate
 }

@@ -20,6 +20,9 @@ export class FcandidateService {
   private apiUrl = 'https://localhost:44376/Cadidate/GetFilteredCandidates';
   private postapiUrl = 'https://localhost:44376/Candidate/Insert';
   private countApi='https://localhost:44376/Candidate/Count'
+  private getbyidAPIURL='https://localhost:44376/Candidate/GetById/'
+  private deleteAPIURL='https://localhost:44376/Candidate/Delete/'
+  private updateAPIURL='https://localhost:44376/Cadidate/Update'
   testingfilter:IFiltercandidate
   mycandidate!:ICandidates///--------------->
 
@@ -51,7 +54,7 @@ export class FcandidateService {
       age: 0,
       gender: '',
       noKids: 0,
-      workexperience: 0,
+      workExperience: 0,
       martialStatus: '',
       nationality: '',
       religion: '',
@@ -61,41 +64,41 @@ export class FcandidateService {
       jobType: '',
       workStatus: '',
       availabilityDate: new Date(),
-      exepectedSalary: 0,
+      expectedSalary: 0,
       preferredDay: '',
       accommodationPref: '',
       experiences: [{
-        ID: 0,
-        JobPosition: '',
-        WorkingCountry: '',
-        StartYear: new Date(),
-        EndYear: new Date(),
-        EmployerType: '',
-        Duties: '',
-        HasLetterRef: false,
-        CandidateID: 0,
+        id: 0,
+        jobPosition: '',
+        workingCountry: '',
+        startYear: new Date(),
+        endYear: new Date(),
+        employerType: '',
+        duties: '',
+        hasLetterRef: false,
+        candidateID: 0,
         //Candidate:undefined
       }],
       educations: [{
-        ID: 0,
-        EducationLevel: '',
-        CrsDuration: '',
-        HasComplete: false,
-        CompletionYear: new Date(),
-        CandidateID: 0,
+        id: 0,
+        educationLevel: '',
+        crsDuration: '',
+        hasComplete: false,
+        completionYear: new Date(),
+        candidateID: 0,
         //Candidate: undefined
       }],
       mainSkills: [{
-        ID: 0,
-        Name: '',
+        id: 0,
+        name: '',
         Description: '',
         Level: 0,
         CandidateID: 0,
         //Candidate: undefined
       }],
       languages: [{
-        ID: 0,
-        Name: '',
+        id: 0,
+        name: '',
         Description: '',
         Code: '',
         CandidateID: 0,
@@ -103,16 +106,16 @@ export class FcandidateService {
 
       }],
       otherSkills: [{
-        ID: 0,
-        Name: '',
+        id: 0,
+        name: '',
         Description: '',
         Level: 0,
         CandidateID: 0,
        // Candidate: undefined
       }],
       cookingSkills: [{
-        ID: 0,
-        Name: '',
+        id: 0,
+        name: '',
         Description: '',
         Level: 0,
         CandidateID: 0,
@@ -125,7 +128,7 @@ export class FcandidateService {
     };
     ////form builder----------->
 
-       this.myform=this.createCandidateForm(this.mycandidate)
+       //this.myform=this.createCandidateForm(this.mycandidate)
 
   ///end of form group---------->
 
@@ -169,21 +172,32 @@ export class FcandidateService {
       });
     }
     params = params.append('Gender', filter.Gender);
-    // const params = {
-    //   Position: filter.Position,
-    //   StartDate: filter.StartDate,
-    //   Workexperience: filter.Workexperience,
-    //   Age: filter.Age,
-    //   Jobtype: filter.Jobtype,
-    //   Contract: filter.Contract,
-    //   Language: filter.Language,
-    //   Mainskills: filter.Mainskills,
-    //   Gender: filter.Gender
-    // };
+
 
   }
   return this.http.get<ICandidate[]>(this.apiUrl, { params:params });
   }
+  ////////get by id
+  getCandidateById(id: number): Observable<ICandidates> {
+    return this.http.get<ICandidates>(`${this.getbyidAPIURL}${id}`);
+  }
+  /////////delete
+  deleteCandidate(id: number): Observable<any> {
+    return this.http.delete(`${this.deleteAPIURL}${id}`);
+  }
+  //////////////getall
+  getAllCandidates(): Observable<ICandidates[]> {
+    return this.http.get<ICandidates[]>(`https://localhost:44376/Candidate/GetAll`);
+  }
+  /////////////update
+  updateCandidate(candidate: FormData): Observable<FormData>
+  {
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data'
+    });
+    return this.http.put<FormData>(this.updateAPIURL,candidate);
+  }
+
   ///////////////////--post candidate---------------------->
   // postCandidate(candidate: ICandidates): Observable<ICandidates>
   // {
@@ -198,125 +212,7 @@ export class FcandidateService {
   }
 
 
-  /////////////////////----------------------->
-  createCandidateForm(candidate: ICandidates): FormGroup {
-    return this.fb.group({
-      id: new FormControl(candidate.id),
-      phoneNumber: new FormControl(candidate.phoneNumber, Validators.required),
-      phoneNumberConfirmed: new FormControl(candidate.phoneNumberConfirmed),
-      fname: new FormControl(candidate.fname, Validators.required),
-      lname: new FormControl(candidate.lname, Validators.required),
-      location: new FormControl(candidate.location, Validators.required),
-      description: new FormControl(candidate.description),
-      position: new FormControl(candidate.position),
-      contactEmail: new FormControl(candidate.contactEmail, Validators.email),
-      photoURL: new FormControl(candidate.photoURL),
-      age: new FormControl(candidate.age, Validators.min(0)),
-      gender: new FormControl(candidate.gender),
-      noKids: new FormControl(candidate.noKids),
-      workexperience: new FormControl(candidate.workexperience),
-      martialStatus: new FormControl(candidate.martialStatus),
-      nationality: new FormControl(candidate.nationality),
-      religion: new FormControl(candidate.religion),
-      educationLevel: new FormControl(candidate.educationLevel),
-      whatappNumber: new FormControl(candidate.whatappNumber),
-      hasPassport: new FormControl(candidate.hasPassport),
-      jobType: new FormControl(candidate.jobType),
-      workStatus: new FormControl(candidate.workStatus),
-      availabilityDate: new FormControl(candidate.availabilityDate),
-      exepectedSalary: new FormControl(candidate.exepectedSalary),
-      perferedDay: new FormControl(candidate.preferredDay),
-      accomodationPref: new FormControl(candidate.accommodationPref),
-      experiences: this.createExperienceFormArray(candidate.experiences),
-      educations: this.createEducationFormArray(candidate.educations),
-      mainSkills: this.createMainSkillsFormArray(candidate.mainSkills),
-      languages: this.createLanguagesFormArray(candidate.languages),
-      otherSkills: this.createOtherSkillsFormArray(candidate.otherSkills),
-      cookingSkills: this.createCookingSkillsFormArray(candidate.cookingSkills)
-    });
-  }
-// Create FormArray for experiences
-private createExperienceFormArray(experiences: IExperience[]): FormArray {
-  return this.fb.array(
-    experiences.map(experience => this.fb.group({
-      ID: new FormControl(experience.ID),
-      JobPosition: new FormControl(experience.JobPosition),
-      WorkingCountry: new FormControl(experience.WorkingCountry),
-      StartYear: new FormControl(experience.StartYear),
-      EndYear: new FormControl(experience.EndYear),
-      EmployerType: new FormControl(experience.EmployerType),
-      Duties: new FormControl(experience.Duties),
-      HasLetterRef: new FormControl(experience.HasLetterRef),
-      CandidateID: new FormControl(experience.CandidateID)
-    }))
-  );
-}
 
-// Create FormArray for educations
-private createEducationFormArray(educations: IEducation[]): FormArray {
-  return this.fb.array(
-    educations.map(education => this.fb.group({
-      ID: new FormControl(education.ID),
-      EducationLevel: new FormControl(education.EducationLevel),
-      CrsDuration: new FormControl(education.CrsDuration),
-      HasComplete: new FormControl(education.HasComplete),
-      CompletionYear: new FormControl(education.CompletionYear),
-      CandidateID: new FormControl(education.CandidateID)
-    }))
-  );
-}
-
-// Create FormArray for mainSkills
-private createMainSkillsFormArray(mainSkills: IMainSkills[]): FormArray {
-  return this.fb.array(
-    mainSkills.map(skill => this.fb.group({
-      ID: new FormControl(skill.ID),
-      Name: new FormControl(skill.Name),
-      Description: new FormControl(skill.Description),
-      Level: new FormControl(skill.Level),
-      CandidateID: new FormControl(skill.CandidateID)
-    }))
-  );
-}
-
-// Create FormArray for languages
-private createLanguagesFormArray(languages: ILanguages[]): FormArray {
-  return this.fb.array(
-    languages.map(language => this.fb.group({
-      ID: new FormControl(language.ID),
-      Name: new FormControl(language.Name),
-      Description: new FormControl(language.Description),
-      Code: new FormControl(language.Code),
-      CandidateID: new FormControl(language.CandidateID)
-    }))
-  );
-}
-
-// Create FormArray for otherSkills
-private createOtherSkillsFormArray(otherSkills: IOtherSkills[]): FormArray {
-  return this.fb.array(
-    otherSkills.map(skill => this.fb.group({
-      ID: new FormControl(skill.ID),
-      Name: new FormControl(skill.Name),
-      Description: new FormControl(skill.Description),
-      Level: new FormControl(skill.Level),
-      CandidateID: new FormControl(skill.CandidateID)
-    }))
-  );
-}
-
-// Create FormArray for cookingSkills
-private createCookingSkillsFormArray(cookingSkills: ICookingSkills[]): FormArray {
-  return this.fb.array(
-    cookingSkills.map(skill => this.fb.group({
-      ID: new FormControl(skill.ID),
-      Name: new FormControl(skill.Name),
-      Description: new FormControl(skill.Description),
-      Level: new FormControl(skill.Level),
-      CandidateID: new FormControl(skill.CandidateID)
-    }))
-  );
-}
  formatDateTime(date: Date): string {
   const year = date.getFullYear()
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -326,9 +222,211 @@ private createCookingSkillsFormArray(cookingSkills: ICookingSkills[]): FormArray
   const seconds = date.getSeconds().toString().padStart(2, '0');
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
-getAllCandidates(): Observable<ICandidates[]> {
-    return this.http.get<ICandidates[]>(`https://localhost:44376/Candidate/GetAll`);
-  }
+ resetCandidate()
+ {
+  var mycandidate:ICandidates
+ return mycandidate= {
+    id: 0,
+    phoneNumber: '',
+    phoneNumberConfirmed: false,
+    fname: '',
+    lname: '',
+    location: '',
+    description: '',
+    position: '',
+    contactEmail: '',
+    photoURL: '',
+    age: 0,
+    gender: '',
+    noKids: 0,
+    workExperience: 0,
+    martialStatus: '',
+    nationality: '',
+    religion: '',
+    educationLevel: '',
+    whatappNumber: '',
+    hasPassport: false,
+    jobType: '',
+    workStatus: '',
+    availabilityDate: new Date(),
+    expectedSalary: 0,
+    preferredDay: '',
+    accommodationPref: '',
+    experiences: [{
+      id: 0,
+      jobPosition: '',
+      workingCountry: '',
+      startYear: new Date(),
+      endYear: new Date(),
+      employerType: '',
+      duties: '',
+      hasLetterRef: false,
+      candidateID: 0,
+      //Candidate:undefined
+    }],
+    educations: [{
+      id: 0,
+      educationLevel: '',
+      crsDuration: '',
+      hasComplete: false,
+      completionYear: new Date(),
+      candidateID: 0,
+      //Candidate: undefined
+    }],
+    mainSkills: [{
+      id: 0,
+      name: '',
+      Description: '',
+      Level: 0,
+      CandidateID: 0,
+      //Candidate: undefined
+    }],
+    languages: [{
+      id: 0,
+      name: '',
+      Description: '',
+      Code: '',
+      CandidateID: 0,
+     // Candidate: undefined
 
+    }],
+    otherSkills: [{
+      id: 0,
+      name: '',
+      Description: '',
+      Level: 0,
+      CandidateID: 0,
+     // Candidate: undefined
+    }],
+    cookingSkills: [{
+      id: 0,
+      name: '',
+      Description: '',
+      Level: 0,
+      CandidateID: 0,
+     // Candidate: undefined
+    }]
+  };
+
+ }
+ /////////////////////----------------------->
+//   createCandidateForm(candidate: ICandidates): FormGroup {
+//     return this.fb.group({
+//       id: new FormControl(candidate.id),
+//       phoneNumber: new FormControl(candidate.phoneNumber, Validators.required),
+//       phoneNumberConfirmed: new FormControl(candidate.phoneNumberConfirmed),
+//       fname: new FormControl(candidate.fname, Validators.required),
+//       lname: new FormControl(candidate.lname, Validators.required),
+//       location: new FormControl(candidate.location, Validators.required),
+//       description: new FormControl(candidate.description),
+//       position: new FormControl(candidate.position),
+//       contactEmail: new FormControl(candidate.contactEmail, Validators.email),
+//       photoURL: new FormControl(candidate.photoURL),
+//       age: new FormControl(candidate.age, Validators.min(0)),
+//       gender: new FormControl(candidate.gender),
+//       noKids: new FormControl(candidate.noKids),
+//       workexperience: new FormControl(candidate.workExperience),
+//       martialStatus: new FormControl(candidate.martialStatus),
+//       nationality: new FormControl(candidate.nationality),
+//       religion: new FormControl(candidate.religion),
+//       educationLevel: new FormControl(candidate.educationLevel),
+//       whatappNumber: new FormControl(candidate.whatappNumber),
+//       hasPassport: new FormControl(candidate.hasPassport),
+//       jobType: new FormControl(candidate.jobType),
+//       workStatus: new FormControl(candidate.workStatus),
+//       availabilityDate: new FormControl(candidate.availabilityDate),
+//       exepectedSalary: new FormControl(candidate.expectedSalary),
+//       perferedDay: new FormControl(candidate.preferredDay),
+//       accomodationPref: new FormControl(candidate.accommodationPref),
+//       experiences: this.createExperienceFormArray(candidate.experiences),
+//       educations: this.createEducationFormArray(candidate.educations),
+//       mainSkills: this.createMainSkillsFormArray(candidate.mainSkills),
+//       languages: this.createLanguagesFormArray(candidate.languages),
+//       otherSkills: this.createOtherSkillsFormArray(candidate.otherSkills),
+//       cookingSkills: this.createCookingSkillsFormArray(candidate.cookingSkills)
+//     });
+//   }
+// // Create FormArray for experiences
+// private createExperienceFormArray(experiences: IExperience[]): FormArray {
+//   return this.fb.array(
+//     experiences.map(experience => this.fb.group({
+//       ID: new FormControl(experience.id),
+//       JobPosition: new FormControl(experience.jobPosition),
+//       WorkingCountry: new FormControl(experience.workingCountry),
+//       StartYear: new FormControl(experience.startYear),
+//       EndYear: new FormControl(experience.endYear),
+//       EmployerType: new FormControl(experience.employerType),
+//       Duties: new FormControl(experience.duties),
+//       HasLetterRef: new FormControl(experience.hasLetterRef),
+//       CandidateID: new FormControl(experience.candidateID)
+//     }))
+//   );
+// }
+
+// // Create FormArray for educations
+// private createEducationFormArray(educations: IEducation[]): FormArray {
+//   return this.fb.array(
+//     educations.map(education => this.fb.group({
+//       ID: new FormControl(education.id),
+//       EducationLevel: new FormControl(education.educationLevel),
+//       CrsDuration: new FormControl(education.crsDuration),
+//       HasComplete: new FormControl(education.hasComplete),
+//       CompletionYear: new FormControl(education.completionYear),
+//       CandidateID: new FormControl(education.candidateID)
+//     }))
+//   );
+// }
+
+// // Create FormArray for mainSkills
+// private createMainSkillsFormArray(mainSkills: IMainSkills[]): FormArray {
+//   return this.fb.array(
+//     mainSkills.map(skill => this.fb.group({
+//       ID: new FormControl(skill.ID),
+//       Name: new FormControl(skill.name),
+//       Description: new FormControl(skill.Description),
+//       Level: new FormControl(skill.Level),
+//       CandidateID: new FormControl(skill.CandidateID)
+//     }))
+//   );
+// }
+
+// // Create FormArray for languages
+// private createLanguagesFormArray(languages: ILanguages[]): FormArray {
+//   return this.fb.array(
+//     languages.map(language => this.fb.group({
+//       ID: new FormControl(language.ID),
+//       Name: new FormControl(language.name),
+//       Description: new FormControl(language.Description),
+//       Code: new FormControl(language.Code),
+//       CandidateID: new FormControl(language.CandidateID)
+//     }))
+//   );
+// }
+
+// // Create FormArray for otherSkills
+// private createOtherSkillsFormArray(otherSkills: IOtherSkills[]): FormArray {
+//   return this.fb.array(
+//     otherSkills.map(skill => this.fb.group({
+//       ID: new FormControl(skill.ID),
+//       Name: new FormControl(skill.name),
+//       Description: new FormControl(skill.Description),
+//       Level: new FormControl(skill.Level),
+//       CandidateID: new FormControl(skill.CandidateID)
+//     }))
+//   );
+// }
+
+// // Create FormArray for cookingSkills
+// private createCookingSkillsFormArray(cookingSkills: ICookingSkills[]): FormArray {
+//   return this.fb.array(
+//     cookingSkills.map(skill => this.fb.group({
+//       ID: new FormControl(skill.ID),
+//       Name: new FormControl(skill.name),
+//       Description: new FormControl(skill.Description),
+//       Level: new FormControl(skill.Level),
+//       CandidateID: new FormControl(skill.CandidateID)
+//     }))
+//   );
+// }
 
 }

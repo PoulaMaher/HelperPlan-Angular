@@ -1,8 +1,8 @@
 import { ICandidate } from "./ICandidate"
 
 export interface ILanguages {
-    ID: number
-    Name: string
+    id: number;
+    name: string
     Description: string
     Code: string
     CandidateID: number

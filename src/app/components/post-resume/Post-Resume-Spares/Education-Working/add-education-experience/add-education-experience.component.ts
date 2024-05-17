@@ -36,36 +36,36 @@ export class AddEducationExperienceComponent{
   }
   EducationFactory(){
     return{
-      ID:0,
-      EducationLevel :'',
-      CrsDuration:'',
-      HasComplete:false,
-      CompletionYear: new Date(),
-      CandidateID:0
+      id:0,
+      educationLevel :'',
+      crsDuration:'',
+      hasComplete:false,
+      completionYear: new Date(),
+      candidateID:0
     }
   }
   CompletedCourse(HaveCompletedCourse: boolean) {
     //this.NewEducationExperience.HaveCompletedCourse = HaveCompletedCourse;
-    this.edu.HasComplete=HaveCompletedCourse
+    this.edu.hasComplete=HaveCompletedCourse
   }
   SetCompletionYear(CompletionYear: string) {
 
-    this.edu.CompletionYear.setFullYear(parseInt(CompletionYear))
+    this.edu.completionYear.setFullYear(parseInt(CompletionYear))
   }
   SetCourseDuration(CourseDuration: string) {
    // this.NewEducationExperience.CourseDuration = CourseDuration;
-    this.edu.CrsDuration=CourseDuration
+    this.edu.crsDuration=CourseDuration
   }
   SetEducation(Education: string) {
    // this.NewEducationExperience.Education = Education;
-   this.edu.EducationLevel =Education
+   this.edu.educationLevel =Education
   }
   SaveAndDestroy()
   {
     this.OnSave.emit(this.NewEducationExperience);
     this.OnClose.emit();
     this.NewEducationExperience = new  Educationexperience();
-    if(this.mycand.educations[0].EducationLevel.length==0)
+    if(this.mycand.educations[0].educationLevel.length==0)
       {
 
         this.mycand.educations[0] = Object.assign({}, this.edu);

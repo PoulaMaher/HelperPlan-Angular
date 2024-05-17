@@ -3,12 +3,14 @@
   <div class="d-flex row col-md-12 mb-3">
 
     <app-search-select
+  [ReceivedValue]="RequiredWorkingToEdit.JobPosition"
     [Options]="data.jopPositionStatus"
       (ValueSelected)="SetJopPosition($event)"
       class="col-md-6 mb-3"
       PlaceHolder="jop position"
     ></app-search-select>
     <app-search-select
+     [ReceivedValue]="RequiredWorkingToEdit.WorkingCountry"
     [Options]="Data.NationalityStatusOptions"
       (ValueSelected)="SetWorkingCompany($event)"
       class="col-md-6 mb-3"
@@ -28,6 +30,7 @@
     ></app-datepicker>
   </div>
   <app-search-select
+  [ReceivedValue]="RequiredWorkingToEdit.EmployerType"
   [Options]="data.EmployerTypeStatus"
     (ValueSelected)="SetEmployerType($event)"
     class="col-md-8 mb-3"
@@ -35,6 +38,7 @@
   ></app-search-select>
   <div class="Duties">
     <app-multiple-choice
+      [SelectedValues]="RequiredWorkingToEdit.Duties"
       (DeleteChoices)="DeleteDuties($event)"
       (SetChoices)="SetDuties($event)"
       [Options]="data.MainSkillsStatus"
