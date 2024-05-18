@@ -18,6 +18,7 @@ export class PlanEditComponent {
   planID!: number;
   constructor(private httpClient: HttpClient, private planService: PlanService, private route: ActivatedRoute, private router:Router) {
     this.plan = {
+      id:1,
       name: "",
       type: "",
       price: 0

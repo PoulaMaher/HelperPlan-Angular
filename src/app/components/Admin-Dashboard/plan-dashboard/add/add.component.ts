@@ -17,6 +17,7 @@ export class AddComponent {
   plan!: IPlan;
   constructor(private httpClient: HttpClient, private planService: PlanService, private router: Router) {
     this.plan = {
+      id:1,
       name: "",
       type: "",
       price: 0
