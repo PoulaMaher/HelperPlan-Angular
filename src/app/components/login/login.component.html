@@ -9,24 +9,43 @@
         <button class="google-icon"><i class="fa-brands fa-google"></i></button>
       </div>
 
-      <form action="login.php" method="POST">
+      <form [formGroup]="LoginForm" action="login.php" method="POST">
         <input
-          [(ngModel)]="LoggedUser.Email"
+          formControlName="Email"
           type="email"
           name="email"
           placeholder="Email"
           required
         />
+        <div
+          *ngIf="
+            LoginForm.controls['Email'].invalid &&
+            (LoginForm.controls['Email'].dirty ||
+              LoginForm.controls['Email'].touched)
+          "
+        >
+          <small *ngIf="LoginForm.controls['Email'].errors!['required']"
+            >Email is required.</small
+          >
+        </div>
         <input
-          [(ngModel)]="LoggedUser.Password"
+          formControlName="Password"
           type="password"
           name="password"
           placeholder="Password"
           required
         />
-        <div class="col-6 Alert">
-          <label>{{ApiErrors}}</label>
-        </div>      
+        <div
+          *ngIf="
+            LoginForm.controls['Password'].invalid &&
+            (LoginForm.controls['Password'].dirty ||
+              LoginForm.controls['Password'].touched)
+          "
+        >
+          <small *ngIf="LoginForm.controls['Password'].errors!['required']"
+            >Password is required.</small
+          >
+        </div>
         <div class="links row">
           <div class="col-6">
             <label><input type="checkbox" name="remember" />Remember me</label>
@@ -35,7 +54,14 @@
             <a href="forgot_password.html">Forgot Password?</a>
           </div>
         </div>
-        <button type="submit" (click)="LogUser()">Login</button>
+        <button
+          class="btn btn-primary btn-lg"
+          [disabled]="LoginForm.invalid"
+          type="button"
+          (click)="LogUser()"
+        >
+          Login
+        </button>
       </form>
       <a routerLink="/register" id="reg">Newuser?signup here</a>
     </div>

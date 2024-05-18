@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment.development';
 export class Registerservice {
   
   AddUser(Role:string,RegisteredUser:UserRegister): Observable<any> {
-    return this.Http.post(`${environment.baseUrl}/Account/Register?Role=${Role}`, RegisteredUser);
+    return this.Http.post(`${environment.baseUrl}/api/Account/Register?Role=${Role}`, RegisteredUser);
   }
   constructor(private Http: HttpClient) {}
   }

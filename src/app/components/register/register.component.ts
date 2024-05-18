@@ -1,25 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { Registerservice } from './RegisterService/registerservice.service';
+import { Component } from '@angular/core';
 import { UserRegister } from './UserRegister/user-register';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {
+  FormGroup,
+  FormsModule,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { Loginservice } from '../login/LoginService/loginservice.service';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MdbFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  RegisterForm = new FormGroup({
+    Name: new FormControl(null, Validators.required),
+    Password: new FormControl(null, Validators.required),
+    Email: new FormControl(null, Validators.required),
+    Role: new FormControl(null, Validators.required),
+    AgreeToAllTerms: new FormControl(false,Validators.requiredTrue),
+  });
   registeredUser: UserRegister = new UserRegister();
-  Role: string = '';
-  constructor(public registerService: Registerservice) {}
+  constructor(public LoginService: Loginservice) {}
   AddUser(): void {
-    this.registerService.AddUser(this.Role, this.registeredUser).subscribe({
+    this.LoginService.AddUser(this.RegisterForm.value['Role']!, {
+      Name: this.RegisterForm.value['Name']!,
+      Password: this.RegisterForm.value['Password']!,
+      Email:this.RegisterForm.value['Email']!
+    }).subscribe({
       next: (res) => {
-        console.log(res);
+        this.LoginService.LogUser({
+          Email: this.RegisterForm.value['Email']!,
+          Password: this.RegisterForm.value['Password']!,
+        }).subscribe({
+          next: (res) => {
+            this.LoginService.DecodeUser(res['token']);
+          },
+        });
       },
-      error: () => {},
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
 }

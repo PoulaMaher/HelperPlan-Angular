@@ -17,7 +17,7 @@ export class PlanDashboardComponent {
    *
    */
   public planslst!: IPlan[];
-  private currentPlanId!: number;
+  private currentPlanId!: number | undefined;
   private currentPlan!: IPlan;
 
   constructor(private planService: PlanService, private router: Router) {}

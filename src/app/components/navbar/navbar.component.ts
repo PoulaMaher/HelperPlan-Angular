@@ -10,19 +10,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  LoggedUser: any;
   Role: string = '';
+  IsLogged: boolean = false;
   constructor(public loginService: Loginservice) {
     this.loginService.LoggedUser.subscribe({
       next: () => {
         if (this.loginService.LoggedUser.value != null) {
-          this.LoggedUser = this.loginService.LoggedUser;
           this.Role =
-            this.LoggedUser._value[
+            this.loginService.LoggedUser.value[
               'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
             ];
-        } else {
-          this.LoggedUser = '';
+            this.IsLogged = true;
+          } else {
+          this.IsLogged = false;
           this.Role = '';
         }
       },

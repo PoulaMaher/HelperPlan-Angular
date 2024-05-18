@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
@@ -20,7 +20,6 @@ import { EducationWorkingComponent } from './components/post-resume/education-wo
 import { ProfessionalInformationComponent } from './components/post-resume/professional-information/professional-information.component';
 import { AddDescriptionComponent } from './components/post-resume/candidate-resume/add-description/add-description.component';
 import { AdminDashboardComponent } from './components/Admin-Dashboard/admin-dashboard/admin-dashboard.component';
-import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
 import { PlanDashboardComponent } from './components/Admin-Dashboard/plan-dashboard/plan-dashboard.component';
 import { EmployerDashboardComponent } from './components/Admin-Dashboard/employer-dashboard/employer-dashboard.component';
 import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard-layout/dashboard-layout.component';
@@ -30,10 +29,19 @@ import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
 import { AddEmployerComponent } from '../app/components/Admin-Dashboard/employer-dashboard/add-employer/add-employer.component';
+<<<<<<< HEAD
 import {AddComponent} from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component'
 import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
 import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
 import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
+=======
+import { AddComponent } from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component';
+import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
+import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
+import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
+import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
+
+>>>>>>> 84955c38fc86d52ab1873539b73917e8fbf7d194
 export const routes: Routes = [
   {
     path: 'details/:id',
@@ -44,7 +52,7 @@ export const routes: Routes = [
     component: DeleteCandidateComponent,
   },
   { path: 'home', component: HomeComponent },
-  { path: 'Login',canActivate:[loginInGuard], component: LoginComponent },
+  { path: 'Login', canActivate: [loginInGuard], component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
   { path: 'FindJob', component: FindJobComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -53,7 +61,11 @@ export const routes: Routes = [
     canActivate: [authRoutesGuard],
     component: ContactusComponent,
   },
-  { path: 'register',canActivate:[loginInGuard], component: RegisterComponent },
+  {
+    path: 'register',
+    canActivate: [loginInGuard],
+    component: RegisterComponent,
+  },
   { path: 'pricing', component: PricingComponent },
   {
     path: 'AddJob',
@@ -88,8 +100,12 @@ export const routes: Routes = [
       { path: '**', component: ProfileComponent },
     ],
   },
-  { path: 'candidatepage',canActivate:[authRoutesGuard], component: WholeCandidateComponent },
-  { path: 'job',canActivate:[authRoutesGuard], component: JobPageComponent },
+  {
+    path: 'candidatepage',
+    canActivate: [authRoutesGuard],
+    component: WholeCandidateComponent,
+  },
+  { path: 'job', canActivate: [authRoutesGuard], component: JobPageComponent },
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -122,8 +138,7 @@ export const routes: Routes = [
       {
         path: 'planDetails/:id',
         component: PlanDetailsComponent,
-      }
-      ,
+      },
       {
         path: 'planEdit/:id',
         component: PlanEditComponent,
@@ -135,8 +150,7 @@ export const routes: Routes = [
       {
         path: 'employerDetails/:id',
         component: EmployerDetailsComponent,
-      }
-      ,
+      },
       {
         path: 'employerEdit/:id',
         component: EmployerEditComponent,
@@ -151,5 +165,5 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

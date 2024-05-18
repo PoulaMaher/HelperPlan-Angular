@@ -54,6 +54,7 @@
           <li class="nav-item">
             <a class="dropdown-item" routerLink="/pricing">Pricing</a>
           </li>
+          <div *ngIf="IsLogged">
           <li class="nav-item">
             <a
               class="dropdown-item"
@@ -61,7 +62,6 @@
               >add resume</a
             >
           </li>
-          <div>
             <li class="nav-item">
               <a class="dropdown-item" routerLink="/contactus">Contact Us</a>
             </li>

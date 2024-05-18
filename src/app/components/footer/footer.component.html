@@ -59,13 +59,10 @@
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">Pages</h6>
           <p>
-            <a href="#!" class="text-reset">About Us</a>
+            <a class="text-reset" routerLink="/aboutus">About Us</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Contact Us</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">News & Tips</a>
+            <a class="text-reset" routerLink="/contactus">Contact Us</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -75,13 +72,13 @@
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
           <p>
-            <a href="#!" class="text-reset">Search & Find Job</a>
+            <a class="text-reset" *ngIf="role != 'Employer'" routerLink="/job">Search & Find Job</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Find Helpers, Maids or Drivers</a>
+            <a class="text-reset" *ngIf="role != 'Candidate'" routerLink="/candidatepage">Find Helpers, Maids or Drivers</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Find a Domestic Helper Agency</a>
+            <a class="text-reset" routerLink="/pricing">Pricing</a>
           </p>
         </div>
         <!-- Grid column -->

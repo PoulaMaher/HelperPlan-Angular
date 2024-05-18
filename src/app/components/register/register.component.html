@@ -10,83 +10,148 @@
                   Sign up
                 </p>
 
-                <form class="mx-1 mx-md-4">
-                  <div class="d-flex flex-row align-items-center mb-4">
+                <form [formGroup]="RegisterForm" class="mx-1 mx-md-4">
+                  <div class="d-flex flex-row align-items-center">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
+                    <mdb-form-control class="p-2 col-md-12 mb-3">
                       <input
+                        mdbInput
+                        formControlName="Name"
                         name="Name"
-                        [(ngModel)]="registeredUser.Name"
                         type="text"
                         id="form3Example1c"
                         class="form-control"
+                        required="Enter Your Name"
                       />
-                      <label class="form-label" for="form3Example1c"
-                        >Your Name</label
+                      <label mdbLabel class="form-label" for="form3Example1c"
+                        >Your Name
+                      </label>
+                      <div
+                        *ngIf="
+                          RegisterForm.controls['Name'].invalid &&
+                          (RegisterForm.controls['Name'].dirty ||
+                            RegisterForm.controls['Name'].touched)
+                        "
                       >
+                        <small
+                          *ngIf="
+                            RegisterForm.controls['Name'].errors!['required']
+                          "
+                          >Username is required.</small
+                        >
+                      </div>
+                    </mdb-form-control>
+                  </div>
+
+                  <div>
+                    <div class="d-flex flex-row align-items-center">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <mdb-form-control class="p-2 col-md-12 mb-3">
+                        <input
+                          mdbInput
+                          formControlName="Email"
+                          name="Email"
+                          type="email"
+                          id="form3Example3c"
+                          class="form-control"
+                          required="Enter Your Email"
+                        />
+                        <label mdbLabel class="form-label" for="form3Example3c"
+                          >Your Email
+                        </label>
+                        <div
+                          *ngIf="
+                            RegisterForm.controls['Email'].invalid &&
+                            (RegisterForm.controls['Email'].dirty ||
+                              RegisterForm.controls['Email'].touched)
+                          "
+                        >
+                          <small
+                            *ngIf="
+                              RegisterForm.controls['Email'].errors!['required']
+                            "
+                            >Email is required.</small
+                          >
+                        </div>
+                      </mdb-form-control>
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
-                      <input
-                        name="Email"
-                        [(ngModel)]="registeredUser.Email"
-                        type="email"
-                        id="form3Example3c"
-                        class="form-control"
-                      />
-                      <label class="form-label" for="form3Example3c"
-                        >Your Email</label
-                      >
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
+                    <mdb-form-control class="p-2 col-md-12 mb-3">
                       <input
+                        mdbInput
+                        formControlName="Password"
                         name="Password"
-                        [(ngModel)]="registeredUser.Password"
                         type="password"
                         id="form3Example4c"
                         class="form-control"
+                        required="Please Enter Password"
                       />
-                      <label class="form-label" for="form3Example4c"
-                        >Password</label
+                      <label mdbLabel class="form-label" for="form3Example4c"
+                        >Password
+                      </label>
+                      <div
+                        *ngIf="
+                          RegisterForm.controls['Password'].invalid &&
+                          (RegisterForm.controls['Password'].dirty ||
+                            RegisterForm.controls['Password'].touched)
+                        "
                       >
-                    </div>
+                        <small
+                          *ngIf="
+                            RegisterForm.controls['Password'].errors![
+                              'required'
+                            ]
+                          "
+                          >Password is required.</small
+                        >
+                      </div>
+                    </mdb-form-control>
                   </div>
-                  <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="d-flex flex-row align-items-center">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
+                    <mdb-form-control class="p-2 col-md-12 mb-3">
                       <input
-                        name="ConfirmPassword"
+                        mdbInput
+                        name="Password"
                         type="password"
                         id="form3Example4cd"
                         class="form-control"
+                        required
                       />
-                      <label class="form-label" for="form3Example4cd"
-                        >Repeat your password</label
-                      >
-                    </div>
+                      <label mdbLabel class="form-label" for="form3Example4cd"
+                        >Repeat your password
+                      </label>
+                    </mdb-form-control>
                   </div>
-
-                  <div class="form-check d-flex justify-content-center mb-5">
+                  <div class="d-flex flex-row align-items-center">
+                    <select
+                      class="col-12 Alert"
+                      formControlName="Role"
+                      name="Role"
+                    >
+                      <option [value]="null" selected>Select Role</option>
+                      <option value="Employer">Employer</option>
+                      <option value="Candidate">Candidate</option>
+                    </select>
+                  </div>
+                  <div
+                    *ngIf="
+                      RegisterForm.controls['Role'].invalid &&
+                      (RegisterForm.controls['Role'].dirty ||
+                        RegisterForm.controls['Role'].touched)
+                    "
+                  >
+                    <small
+                      *ngIf="RegisterForm.controls['Role'].errors!['required']"
+                      >Role is required.</small
+                    >
+                  </div>
+                  <div class="d-flex flex-row align-items-center">
                     <input
+                      formControlName="AgreeToAllTerms"
                       class="form-check-input me-2"
                       type="checkbox"
                       value=""
@@ -97,9 +162,9 @@
                       <a href="#!">Terms of service</a>
                     </label>
                   </div>
-
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button
+                      [disabled]="RegisterForm.invalid"
                       (click)="AddUser()"
                       type="button"
                       data-mdb-button-init
@@ -108,12 +173,6 @@
                     >
                       Register
                     </button>
-                  </div>
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <select class="col-12 Alert" [(ngModel)]="Role" name="Role">
-                      <option value="Employer">Employer</option>
-                      <option value="Candidate">Candidate</option>
-                    </select>
                   </div>
                 </form>
               </div>
