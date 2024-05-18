@@ -17,7 +17,7 @@ import { DashboardLayoutComponent } from "./components/Admin-Dashboard/dashboard
 export class AppComponent {
   constructor(private loginService: Loginservice, private router: Router,private route: ActivatedRoute) {
     if (localStorage.getItem('HelperPlanJWTToken') != null) {
-      this.loginService.CheckIfTokenIsExpired();
+      loginService.CheckIfTokenIsExpired()
     } else {
       this.router.navigateByUrl('/home');
     }

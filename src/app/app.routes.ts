@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
@@ -31,7 +31,7 @@ import { EmployerEditComponent } from './components/Admin-Dashboard/employer-das
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'Login',canActivate:[loginInGuard], component: LoginComponent },
+  { path: 'Login', canActivate: [loginInGuard], component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
   { path: 'FindJob', component: FindJobComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -40,7 +40,11 @@ export const routes: Routes = [
     canActivate: [authRoutesGuard],
     component: ContactusComponent,
   },
-  { path: 'register',canActivate:[loginInGuard], component: RegisterComponent },
+  {
+    path: 'register',
+    canActivate: [loginInGuard],
+    component: RegisterComponent,
+  },
   { path: 'pricing', component: PricingComponent },
   {
     path: 'AddJob',
@@ -74,8 +78,12 @@ export const routes: Routes = [
       { path: '**', component: ProfileComponent },
     ],
   },
-  { path: 'candidatepage',canActivate:[authRoutesGuard], component: WholeCandidateComponent },
-  { path: 'job',canActivate:[authRoutesGuard], component: JobPageComponent },
+  {
+    path: 'candidatepage',
+    canActivate: [authRoutesGuard],
+    component: WholeCandidateComponent,
+  },
+  { path: 'job', canActivate: [authRoutesGuard], component: JobPageComponent },
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -108,8 +116,7 @@ export const routes: Routes = [
       {
         path: 'planDetails/:id',
         component: PlanDetailsComponent,
-      }
-      ,
+      },
       {
         path: 'planEdit/:id',
         component: PlanEditComponent,
@@ -117,8 +124,7 @@ export const routes: Routes = [
       {
         path: 'employerDetails/:id',
         component: EmployerDetailsComponent,
-      }
-      ,
+      },
       {
         path: 'employerEdit/:id',
         component: EmployerEditComponent,
@@ -129,5 +135,5 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

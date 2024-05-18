@@ -5,46 +5,51 @@ import { Loggeduser } from '../LoggedUser/loggeduser';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../../../environments/environment.development';
+import { UserRegister } from '../../register/UserRegister/user-register';
 @Injectable({
   providedIn: 'root',
 })
 export class Loginservice {
   constructor(public http: HttpClient, private router: Router) {}
   LoggedUser = new BehaviorSubject(null);
+  Token: string | null = '';
   IsLogged: boolean = false;
+  AddUser(Role: string, RegisteredUser: UserRegister): Observable<any> {
+    return this.http.post(
+      `${environment.baseUrl}/api/Account/Register?Role=${Role}`,
+      RegisteredUser
+    );
+  }
   LogUser(LoggedUser: Loggeduser): Observable<any> {
     return this.http.post(
-      `${environment.baseUrl}api/Account/Login`,
+      `${environment.baseUrl}/api/Account/Login`,
+      LoggedUser
+    );
+  }
+  UpdateUser(LoggedUser: Loggeduser): Observable<any> {
+    return this.http.post(
+      `${environment.baseUrl}/api/Account/Login`,
       LoggedUser
     );
   }
   CheckIfTokenIsExpired() {
-    let CurrentDate = new Date();
-    console.log()
-    if(this.LoggedUser.value!=null)
-    if (CurrentDate.getSeconds() > this.LoggedUser.value!['exp']) {
-      localStorage.removeItem('HelperPlanJWTToken')
-      this.router.navigateByUrl('/Login');
-    }else{
-      this.DecodeUser(localStorage.getItem('HelperPlanJWTToken'))
+    this.DecodeUser(localStorage.getItem('HelperPlanJWTToken'));
+    if (new Date(this.LoggedUser.value!['exp'] * 1000) < new Date()) {
+      this.LogOutUser();
     }
   }
   DecodeUser(Token: any) {
     localStorage.setItem('HelperPlanJWTToken', Token);
+    this.Token = Token;
     let DecodedUser: any = jwtDecode(
       localStorage.getItem('HelperPlanJWTToken')!
     );
     this.LoggedUser.next(DecodedUser);
-    console.log(this.LoggedUser.value);
     this.IsLogged = true;
     console.log();
     this.RouteConsideringToRole();
   }
   RouteConsideringToRole() {
-    if (this.LoggedUser.value == null) {
-      this.router.navigateByUrl('/Login');
-      return;
-    }
     switch (
       this.LoggedUser.value![
         'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
@@ -56,12 +61,16 @@ export class Loginservice {
       case 'Employer':
         this.router.navigateByUrl('/candidatepage');
         break;
+        case 'Admin':
+          this.router.navigateByUrl('/dashboard/adminDashboard');
+          break;  
     }
   }
   LogOutUser() {
     localStorage.removeItem('HelperPlanJWTToken');
     this.IsLogged = false;
     this.LoggedUser.next(null);
+    this.Token = null;
     this.router.navigate(['/Login']);
   }
 }

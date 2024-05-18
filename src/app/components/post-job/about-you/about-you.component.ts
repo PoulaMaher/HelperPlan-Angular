@@ -5,10 +5,9 @@ import {
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MultipleSearchSelectComponent } from '../../post-resume/Post-Resume-Spares/Inputs/multiple-search-select/multiple-search-select.component';
 import { AboutYouService } from './AboutYouService/about-you-service';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule,Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SlideToggleComponent } from '../../post-resume/Post-Resume-Spares/Inputs/slide-toggle/slide-toggle.component';
-import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-about-you',
   standalone: true,
