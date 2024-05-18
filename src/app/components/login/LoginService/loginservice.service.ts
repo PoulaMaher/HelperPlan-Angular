@@ -6,6 +6,9 @@ import { Router, defaultUrlMatcher } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../../../environments/environment.development';
 import { UserRegister } from '../../register/UserRegister/user-register';
+import { Changes } from '../../profile/ChangesClass/changes';
+import { PasswordChanges } from '../../change-password/PasswordChanges/password-changes';
+import { AbstractControl } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
@@ -20,31 +23,49 @@ export class Loginservice {
       RegisteredUser
     );
   }
+  GetUserDetails(): Observable<any> {
+    return this.http.get(
+      `${environment.baseUrl}/api/Account/GetUserDetails?UserId=${
+        this.LoggedUser.value![
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ]
+      }`
+    );
+  }
   LogUser(LoggedUser: Loggeduser): Observable<any> {
     return this.http.post(
       `${environment.baseUrl}/api/Account/Login`,
       LoggedUser
     );
   }
-  UpdateUser(LoggedUser: Loggeduser): Observable<any> {
-    return this.http.post(
-      `${environment.baseUrl}/api/Account/Login`,
-      LoggedUser
+
+  UpdateUser(changes: Changes): Observable<any> {
+    return this.http.patch(
+      `${environment.baseUrl}/api/Account/UpdateUser?UserId=${
+        this.LoggedUser.value![
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ]
+      }`,
+      changes
     );
   }
-  CheckIfTokenIsExpired() {
+  UpdateUserPassword(PasswordChanges: PasswordChanges): Observable<any> {
+    return this.http.patch(
+      `${environment.baseUrl}/api/Account/UpdateUserPassword?UserId=${
+        this.LoggedUser.value![
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ]
+      }`,
+      PasswordChanges
+    );
+  }
+  IfTokenIsExpired() {
     this.DecodeUser(localStorage.getItem('HelperPlanJWTToken'));
     if (new Date(this.LoggedUser.value!['exp'] * 1000) < new Date()) {
-      this.LogOutUser();
+      return true;
+    } else {
+      return false;
     }
-    let CurrentDate = new Date();
-    if (this.LoggedUser.value != null)
-      if (CurrentDate.getSeconds() > this.LoggedUser.value!['exp']) {
-        localStorage.removeItem('HelperPlanJWTToken');
-        this.router.navigateByUrl('/Login');
-      } else {
-        this.DecodeUser(localStorage.getItem('HelperPlanJWTToken'));
-      }
   }
   DecodeUser(Token: any) {
     localStorage.setItem('HelperPlanJWTToken', Token);
@@ -69,9 +90,9 @@ export class Loginservice {
       case 'Employer':
         this.router.navigateByUrl('/candidatepage');
         break;
-        case 'Admin':
-          this.router.navigateByUrl('/dashboard/adminDashboard');
-          break;  
+      case 'Admin':
+        this.router.navigateByUrl('/dashboard/adminDashboard');
+        break;
     }
   }
   LogOutUser() {
@@ -80,5 +101,19 @@ export class Loginservice {
     this.LoggedUser.next(null);
     this.Token = null;
     this.router.navigate(['/Login']);
+  }
+  passwordMatchValidator(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const password = control.get('NewPassword');
+    const confirmPassword = control.get('ConfirmPassword');
+    if (
+      password &&
+      confirmPassword &&
+      password.value !== confirmPassword.value
+    ) {
+      return { passwordMismatch: true };
+    }
+    return null;
   }
 }

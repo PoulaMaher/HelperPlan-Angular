@@ -82,8 +82,8 @@
                     <mdb-form-control class="p-2 col-md-12 mb-3">
                       <input
                         mdbInput
-                        formControlName="Password"
-                        name="Password"
+                        formControlName="NewPassword"
+                        name="NewPassword"
                         type="password"
                         id="form3Example4c"
                         class="form-control"
@@ -94,19 +94,27 @@
                       </label>
                       <div
                         *ngIf="
-                          RegisterForm.controls['Password'].invalid &&
-                          (RegisterForm.controls['Password'].dirty ||
-                            RegisterForm.controls['Password'].touched)
+                          RegisterForm.controls['NewPassword'].invalid &&
+                          (RegisterForm.controls['NewPassword'].dirty ||
+                            RegisterForm.controls['NewPassword'].touched)
                         "
                       >
                         <small
                           *ngIf="
-                            RegisterForm.controls['Password'].errors![
+                            RegisterForm.controls['NewPassword'].errors![
                               'required'
                             ]
                           "
                           >Password is required.</small
                         >
+                        <small
+                        *ngIf="
+                          RegisterForm.controls['NewPassword'].errors![
+                            'pattern'
+                          ]
+                        "
+                        >Must Have at Least 1 digit , one Alpha , one non - alpha and at least of 13 digit</small
+                      >
                       </div>
                     </mdb-form-control>
                   </div>
@@ -115,6 +123,7 @@
                     <mdb-form-control class="p-2 col-md-12 mb-3">
                       <input
                         mdbInput
+                        formControlName="ConfirmPassword"
                         name="Password"
                         type="password"
                         id="form3Example4cd"
@@ -124,6 +133,26 @@
                       <label mdbLabel class="form-label" for="form3Example4cd"
                         >Repeat your password
                       </label>
+                      <div
+                      *ngIf="
+                        RegisterForm.controls['ConfirmPassword']?.invalid &&
+                        (RegisterForm.controls['ConfirmPassword']?.dirty ||
+                        RegisterForm.controls['ConfirmPassword']?.touched)
+                      "
+                    >
+                      <div
+                        *ngIf="
+                          (RegisterForm.controls['ConfirmPassword']?.errors)!['required']
+                        "
+                      >
+                        Password is required.
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="RegisterForm.errors?.['passwordMismatch'] && (RegisterForm.controls['NewPassword']?.dirty || RegisterForm.controls['NewPassword']?.touched)"
+                    >
+                      Passwords do not match.
+                    </div>              
                     </mdb-form-control>
                   </div>
                   <div class="d-flex flex-row align-items-center">
