@@ -29,14 +29,11 @@ import { PlanEditComponent } from './components/Admin-Dashboard/plan-dashboard/p
 import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-dashboard/employer-details/employer-details.component';
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
-<<<<<<< HEAD
 import { AddEmployerComponent } from '../app/components/Admin-Dashboard/employer-dashboard/add-employer/add-employer.component';
 import {AddComponent} from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component'
-=======
 import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
 import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
 import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
->>>>>>> c58ae57691fd1a37f5b7c85c382522f5813fe6cf
 export const routes: Routes = [
   {
     path: 'details/:id',
