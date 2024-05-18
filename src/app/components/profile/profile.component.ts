@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 import { Loginservice } from '../login/LoginService/loginservice.service';
-import { FormControl, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
-import { PhoneNumber } from 'libphonenumber-js';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { Changes } from './ChangesClass/changes';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
@@ -28,12 +34,43 @@ export class ProfileComponent {
       this.AuthService.LoggedUser.value![
         'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
       ],
+      [Validators.required, Validators.email]
+    ),
+    Location: new FormControl(
+      this.AuthService.LoggedUser.value![
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country'
+      ],
       Validators.required
     ),
     PhoneNumber: new FormControl(
-      null,
-      Validators.minLength(11)
+      this.AuthService.LoggedUser.value![
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mobilephone'
+      ],
+      [Validators.required, Validators.minLength(11)]
     ),
+    Password: new FormControl(null, Validators.required),
   });
-  constructor(public AuthService: Loginservice) {}
+  UpdateUser(changes: Changes) {
+    this.AuthService.UpdateUser(changes).subscribe({
+      next: (res) => {
+        this.AuthService.DecodeUser(res['token']);
+        alert('Account Updated Successfully');
+      },
+      error: (error) => {
+        alert(error.error);
+      },
+    });
+  }
+  constructor(public AuthService: Loginservice) {
+    AuthService.GetUserDetails().subscribe({
+      next: (res) => {
+        this.ProfileForm.controls['Location'].setValue(res.location);
+        this.ProfileForm.controls['PhoneNumber'].setValue(res.mobileNumber);
+        this.ProfileForm.controls['Name'].setValue(res.name);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

@@ -55,7 +55,7 @@
             <a class="dropdown-item" routerLink="/pricing">Pricing</a>
           </li>
           <div *ngIf="IsLogged">
-          <li class="nav-item">
+          <li *ngIf="Role=='Candidate'" class="nav-item">
             <a
               class="dropdown-item"
               routerLink="/candidateResume/candidatePersonalInfo"
