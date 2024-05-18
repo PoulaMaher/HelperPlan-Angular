@@ -54,15 +54,15 @@ export class AddWorkExperienceComponent {
   expfactory()
   {
     return{
-      ID:0,
-      JobPosition:'',
-      WorkingCountry: '',
-      StartYear:new Date(),
-      EndYear:new Date(),
-      EmployerType: '',
-      Duties: '',
-      HasLetterRef: false,
-      CandidateID: 0,
+      id:0,
+      jobPosition:'',
+      workingCountry: '',
+      startYear:new Date(),
+      endYear:new Date(),
+      employerType: '',
+      duties: '',
+      hasLetterRef: false,
+      candidateID: 0,
       //candidate:null
 
     }
@@ -71,40 +71,40 @@ export class AddWorkExperienceComponent {
   SetDuties(Duty: any) {
     //this.NewWorkExperience.Duties.push(Duty);
     this.stringflag=Duty
-    this.exp.Duties=Duty.join(',')
-    console.log(this.exp.Duties)
+    this.exp.duties=Duty.join(',')
+    console.log(this.exp.duties)
   }
   DeleteDuties(Duty: any) {
     let index = this.stringflag.findIndex((x) => x === Duty);
     this.stringflag.splice(index,1);
     Duty=this.stringflag
-    this.exp.Duties=Duty.join(',')
-    console.log(this.exp.Duties)
+    this.exp.duties=Duty.join(',')
+    console.log(this.exp.duties)
 
   }
   HaveLetter(HaveReferenceLetter: boolean) {
-    this.exp.HasLetterRef=HaveReferenceLetter;
+    this.exp.hasLetterRef=HaveReferenceLetter;
 
   }
   SetEndYear(EndDate: Date) {
 
-    this.exp.EndYear=EndDate;
+    this.exp.endYear=EndDate;
 
   }
   SetStartYear(StartDate: Date) {
-    this.exp.StartYear=StartDate;
+    this.exp.startYear=StartDate;
 
   }
   SetEmployerType(EmployerType: string) {
-    this.exp.EmployerType=EmployerType;
+    this.exp.employerType=EmployerType;
 
   }
   SetWorkingCompany(WorkingCompany: any) {
-    this.exp.WorkingCountry=WorkingCompany;
+    this.exp.workingCountry=WorkingCompany;
   }
   SetJopPosition(JopPosition: any) {
       //console.log(this.exp.JobPosition)
-    this.exp.JobPosition=JopPosition;
+    this.exp.jobPosition=JopPosition;
     //console.log(this.exp.JobPosition)
 
   }
@@ -119,7 +119,7 @@ export class AddWorkExperienceComponent {
     this.OnSave.emit(this.NewWorkExperience)
     this.OnClose.emit(true);
     this.NewWorkExperience = new Workingexperience();
-    if(this.mycand.experiences[0].JobPosition.length==0)
+    if(this.mycand.experiences[0].jobPosition.length==0)
       {
 
         this.mycand.experiences[0] = Object.assign({}, this.exp);

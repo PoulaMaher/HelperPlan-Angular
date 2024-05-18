@@ -17,7 +17,7 @@ export class PlanDashboardComponent {
    *
    */
   public planslst!: IPlan[];
-  private currentPlanId!: number;
+  private currentPlanId!: number | undefined;
   private currentPlan!: IPlan;
 
   constructor(private planService: PlanService, private router: Router) {}
@@ -50,5 +50,8 @@ export class PlanDashboardComponent {
       this.currentPlan = plan;
     });
     this.router.navigate(['dashboard/planEdit', cId]);
+  }
+  goToAddPage(): void {
+    this.router.navigate(['dashboard/planAdd']);
   }
 }

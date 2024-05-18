@@ -20,7 +20,6 @@ import { EducationWorkingComponent } from './components/post-resume/education-wo
 import { ProfessionalInformationComponent } from './components/post-resume/professional-information/professional-information.component';
 import { AddDescriptionComponent } from './components/post-resume/candidate-resume/add-description/add-description.component';
 import { AdminDashboardComponent } from './components/Admin-Dashboard/admin-dashboard/admin-dashboard.component';
-import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
 import { PlanDashboardComponent } from './components/Admin-Dashboard/plan-dashboard/plan-dashboard.component';
 import { EmployerDashboardComponent } from './components/Admin-Dashboard/employer-dashboard/employer-dashboard.component';
 import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard-layout/dashboard-layout.component';
@@ -29,7 +28,22 @@ import { PlanEditComponent } from './components/Admin-Dashboard/plan-dashboard/p
 import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-dashboard/employer-details/employer-details.component';
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
+import { AddEmployerComponent } from '../app/components/Admin-Dashboard/employer-dashboard/add-employer/add-employer.component';
+import { AddComponent } from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component';
+import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
+import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
+import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
+import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
+
 export const routes: Routes = [
+  {
+    path: 'details/:id',
+    component: CandidateDetailsComponent,
+  },
+  {
+    path: 'delete/:id',
+    component: DeleteCandidateComponent,
+  },
   { path: 'home', component: HomeComponent },
   { path: 'Login', canActivate: [loginInGuard], component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
@@ -56,6 +70,7 @@ export const routes: Routes = [
     canActivate: [authRoutesGuard],
     component: CandidateResumeComponent,
     children: [
+      { path: 'Updatelayer/:id', component: UpdatelayerComponent },
       { path: 'candidateEducation', component: EducationWorkingComponent },
       {
         path: 'candidatePersonalInfo',
@@ -122,12 +137,20 @@ export const routes: Routes = [
         component: PlanEditComponent,
       },
       {
+        path: 'planAdd',
+        component: AddComponent, //plan
+      },
+      {
         path: 'employerDetails/:id',
         component: EmployerDetailsComponent,
       },
       {
         path: 'employerEdit/:id',
         component: EmployerEditComponent,
+      },
+      {
+        path: 'employerAdd',
+        component: AddEmployerComponent,
       },
       {
         path: '**', // route every undefined route to the root of this feature

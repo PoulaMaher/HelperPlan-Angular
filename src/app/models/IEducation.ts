@@ -1,11 +1,11 @@
 import { ICandidate } from "./ICandidate"
 
 export interface IEducation {
-    ID:number
-    EducationLevel :string
-    CrsDuration:string
-    HasComplete:boolean
-    CompletionYear: Date
-    CandidateID:number
+    id:number
+    educationLevel :string
+    crsDuration:string
+    hasComplete:boolean
+    completionYear: Date
+    candidateID:number
     //Candidate?: ICandidate
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Loggeduser } from '../LoggedUser/loggeduser';
-import { Router } from '@angular/router';
+import { Router, defaultUrlMatcher } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../../../environments/environment.development';
 import { UserRegister } from '../../register/UserRegister/user-register';
@@ -37,6 +37,14 @@ export class Loginservice {
     if (new Date(this.LoggedUser.value!['exp'] * 1000) < new Date()) {
       this.LogOutUser();
     }
+    let CurrentDate = new Date();
+    if (this.LoggedUser.value != null)
+      if (CurrentDate.getSeconds() > this.LoggedUser.value!['exp']) {
+        localStorage.removeItem('HelperPlanJWTToken');
+        this.router.navigateByUrl('/Login');
+      } else {
+        this.DecodeUser(localStorage.getItem('HelperPlanJWTToken'));
+      }
   }
   DecodeUser(Token: any) {
     localStorage.setItem('HelperPlanJWTToken', Token);

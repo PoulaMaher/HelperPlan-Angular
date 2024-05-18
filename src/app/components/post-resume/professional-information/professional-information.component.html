@@ -8,8 +8,8 @@
         >
         <br />
         <div class="wrapper Job-wrapper col-md-12 mb-3">
-          <input type="radio" name="select" id="option-1" value="Driver" (change)="positionbind($event)"  checked />
-          <input type="radio" name="select" id="option-2" value="Helper" (change)="positionbind($event)" />
+          <input type="radio" name="position" id="option-1" value="Driver" [(ngModel)]="mycand.position"  (change)="positionbind($event)"  checked />
+          <input type="radio" name="position" id="option-2" value="Helper"  [(ngModel)]="mycand.position" (change)="positionbind($event)" />
           <label for="option-1" class="option option-1">
             <img src="assets/Images/driver.png" alt="" />
             <span> Driver</span>
@@ -19,24 +19,30 @@
             <span> Domestic Helper</span>
           </label>
         </div>
-        <app-input
-          class="col-md-12 mb-3"
+
+        <input
+          class="col-md-12 mb-3 form-control"
           placeHolder="How Many Years Of Experience"
           type="number"
+          name="workExperience"
+          [(ngModel)]="mycand.workExperience"
           (change)="expbind($event)"
-        ></app-input>
+        />
       </div>
       <div class="Job-Type col-md-8 mb-3">
         <span class="col-md-8 mb-3">Job Type</span>
         <div class="col-md-8 mb-3"></div>
       </div>
       <app-search-select
+      [ReceivedValue]="mycand.jobType"
+
         [Options]="Data.CurrentWorkStatus"
         class="col-md-8 mb-3"
         PlaceHolder="What is your current work status?"
         (ValueSelected)="wstatbind($event)"
       ></app-search-select>
       <app-datepicker
+      [ReceivedDate]="mycand.availabilityDate"
         class="col-md-8 mb-3"
         PlaceHolder="When is the Job Start Date?"
         (dateChange)="datebind($event)"
@@ -51,26 +57,48 @@
         PlaceHolder="Prefered job Location"
       ></app-multiple-select> -->
       <div class="row">
-        <app-input
-          class="col-md-6 mb-3"
-          placeHolder="Salary"
+        <div class="col-md-3">
+          <label for="" class="label-control">Salary</label>
+           </div>
+        <div class="col-md-2"> </div>
+        <div class="col-md-3">
+          <label for="" class="label-control">currency</label>
+
+           </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-3">
+        <input
+          class="col-md-3 mb-3 form-control"
+          placeholder="Salary"
           type="number"
+          name="expectedSalary"
+          [(ngModel)]="mycand.expectedSalary"
           (change)="salbind($event)"
-        ></app-input>
-        <app-search-select
-          class="col-md-6 mb-3"
-          PlaceHolder="Currency $"
-          [Options]="Data.CurrencyStatus"
-          (ValueSelected)="currbind($event)"
-        ></app-search-select>
+        />
+      </div>
+      <div class="col-2"></div>
+      <div class="col-md-3">
+      <select name="" id=""  (change)="currbind($event)" class="">
+        <option value=""></option>
+
+        <option *ngFor="let item of Data.CurrencyStatus" [value]="item">{{item}}</option>
+      </select>
+    </div>
+
       </div>
       <app-search-select
+      [ReceivedValue]="mycand.preferredDay"
+
         class="col-md-8 mb-3"
         [Options]="Data.DayOffPreferenceStatus"
         PlaceHolder="Day off preference "
         (ValueSelected)="dayoffbind($event)"
       ></app-search-select>
       <app-search-select
+      [ReceivedValue]="mycand.accommodationPref"
         class="col-md-8 mb-3"
         [Options]="Data.AccomodationPreferenceStatus"
         PlaceHolder="Accomodation preference "
@@ -82,6 +110,7 @@
       <div class="Language Skills">
         <h3>Language</h3>
         <app-multiple-choice
+        [SelectedValues]="mylangs"
           [Options]="Data.LanguageStatus"
           (SetChoices)="addlangbind($event)"
         ></app-multiple-choice>
@@ -89,6 +118,7 @@
       <div class="Main Skills">
         <h3>Main Skills</h3>
         <app-multiple-choice
+        [SelectedValues]="mymainskills"
           [Options]="Data.MainSkillsStatus"
           (SetChoices)="addmainbind($event)"
         ></app-multiple-choice>
@@ -96,6 +126,7 @@
       <div class="Cooking Skills">
         <h3>Cooking Skills</h3>
         <app-multiple-choice
+        [SelectedValues]="mycookingskills"
           [Options]="Data.cookingSkillsStatus"
           (SetChoices)="addcookbind($event)"
         ></app-multiple-choice>
@@ -107,16 +138,17 @@
             {{item}}
       </label> -->
         <app-multiple-choice
+        [SelectedValues]="myotherskills"
           [Options]="Data.OtherSkillsStatus"
           (SetChoices)="addotherbind($event)"
         ></app-multiple-choice>
       </div>
-      <div class="Personality Skills">
+      <!-- <div class="Personality Skills">
         <h3>Personality Traits</h3>
         <app-multiple-choice
           [Options]="Data.PersonalitySkillsStatus"
         ></app-multiple-choice>
-      </div>
+      </div> -->
       <br />
       <div class="Submit">
         <button type="button"  routerLink="/candidateResume/candidatePersonalInfo" class="btn btn-primary">Back</button>

@@ -4,7 +4,39 @@
   <h1 class="h2">Candidates</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
-      <button class="btn btn-outline-primary m-1">Add New Candidate</button>
+      <button class="btn btn-outline-primary m-1" routerLink="/candidateResume/candidatePersonalInfo" >Add New Candidate</button>
     </div>
   </div>
+
 </div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">position</th>
+      <th scope="col">address</th>
+      <th scope="col">gender</th>
+      <th scope="col">age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of allcandidates" >
+    <tr>
+
+      <th scope="row">{{item.fname}} {{item.lname}}</th>
+      <td>{{item.position}}</td>
+      <td>{{item.location}}</td>
+      <td>{{item.gender}}</td>
+      <td>{{item.age}}</td>
+
+
+      <td>
+
+        <button class="btn btn-outline-danger mx-1" (click)="navigateTodelete(item.id)" >Delete</button
+        ><button class="btn btn-outline-success mx-1"(click)="navigateToEdit(item.id)" >Edit</button>
+        <button class="btn btn-outline-primary mx-1" (click)="navigateToDetails(item.id)">Details</button>
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>

@@ -18,6 +18,8 @@ export class AppComponent {
   constructor(private loginService: Loginservice, private router: Router,private route: ActivatedRoute) {
     if (localStorage.getItem('HelperPlanJWTToken') != null) {
       loginService.CheckIfTokenIsExpired()
+      this.loginService.DecodeUser(localStorage.getItem('HelperPlanJWTToken'))
+      this.loginService.RouteConsideringToRole();
     } else {
       this.router.navigateByUrl('/home');
     }

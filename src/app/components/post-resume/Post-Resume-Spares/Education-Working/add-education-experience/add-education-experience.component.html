@@ -1,12 +1,15 @@
 <div class="Skills Add">
   <h3>{{ PlaceHolder }} Education Experience</h3>
   <app-search-select
+    [ReceivedValue]="RequiredEducationToEdit.Education"
     (ValueSelected)="SetEducation($event)"
     [Options]="data.schoolStatus"
 
     PlaceHolder="Education"
   ></app-search-select>
   <app-search-select
+  [ReceivedValue]="RequiredEducationToEdit.CourseDuration"
+
     (ValueSelected)="SetCourseDuration($event)"
     [Options]="data.educationdurationStatus"
 
@@ -14,9 +17,9 @@
     PlaceHolder="Course Duration "
   ></app-search-select>
   <app-search-select
+  [ReceivedValue]="RequiredEducationToEdit.CompletionYear"
     (ValueSelected)="SetCompletionYear($event)"
     [Options]="data.yearsStatus"
-
     class="col-md-7 mb-3"
     PlaceHolder="Completion Year/Last Attended Year"
   ></app-search-select>
@@ -31,7 +34,7 @@
       type="button"
       class="btn btn-primary"
       style="background-color: rgb(81, 81, 199)"
-     
+
     >
       Back
     </button>

@@ -31,7 +31,10 @@ import { MatInputModule } from '@angular/material/input';
   ],
 })
 export class EducationWorkingComponent {
-  constructor(private candService:FcandidateService){}
+  constructor(private candService:FcandidateService){
+    debugger
+   this.handlebinding()
+  }
   UpdateWorkingExperience($event: any) {
     let index = $event.index
     delete $event.index
@@ -65,7 +68,7 @@ export class EducationWorkingComponent {
     console.log(des.target.value);
     this.candService.mycandidate.description=des.target.value
   }
-  
+
   WorkingDisplay: boolean = false;
   EducationDisplay: boolean = false;
 
@@ -75,6 +78,33 @@ export class EducationWorkingComponent {
   ToggleEducationDisplay(): void {
     this.EducationDisplay = !this.EducationDisplay;
   }
+  handlebinding(){
+    if(this.candService.mycandidate.experiences[0].jobPosition.length!=0)
+      {
+
+    this.candService.mycandidate.experiences.forEach(experience=>{
+          this.wrkexp.StartDate= new Date(experience.startYear)
+          this.wrkexp.EndDate=new Date(experience.endYear)
+          this.wrkexp.EmployerType=experience.employerType
+          this.wrkexp.JobPosition=experience.jobPosition
+          this.wrkexp.WorkingCountry=experience.workingCountry
+          this.wrkexp.Duties=experience.duties.split(',')
+          this.WorkingExperiences.push(this.wrkexp)
+    })
+      }
+      if(this.candService.mycandidate.educations[0].educationLevel.length!=0)
+        {
+
+      this.candService.mycandidate.educations.forEach(education=>{
+            this.eduexp.Education= education.educationLevel
+            this.eduexp.CompletionYear=education.completionYear.toString()
+            this.eduexp.CourseDuration=education.crsDuration
+            this.eduexp.HaveCompletedCourse=education.hasComplete
+            this.EducationExperiences.push(this.eduexp)
+      })
+        }
+
+  }
   @Input() WorkingExperiences: Workingexperience[] = [
 
 
@@ -83,5 +113,7 @@ export class EducationWorkingComponent {
   @Input() EducationExperiences: Educationexperience[] = [
 
   ];
+  wrkexp:Workingexperience=new Workingexperience
+  eduexp:Educationexperience=new Educationexperience
   Options: string[] = ['full', 'part', 'temporary'];
 }

@@ -20,7 +20,7 @@ export interface ICandidates {
     age: number;
     gender: string;
     noKids: number;
-    workexperience: number;
+    workExperience: number;
     martialStatus: string;
     nationality: string;
     religion: string;
@@ -30,9 +30,8 @@ export interface ICandidates {
     jobType: string;
     workStatus: string;
     availabilityDate: Date;
-    exepectedSalary: number;
+    expectedSalary: number;
     preferredDay: string;
-
     accommodationPref: string;
     experiences: IExperience[];
     educations: IEducation[];

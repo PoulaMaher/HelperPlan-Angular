@@ -17,8 +17,7 @@ import { Router } from '@angular/router';
 export class EmployerDashboardComponent implements OnInit{
   EmployersList: IEmployer[] = [];
   currentEmpID: number = 0 ;
-  constructor(private httpClient:HttpClient,private employerService:EmployerService,private router:Router) {
-    
+  constructor(private httpClient:HttpClient,private employerService:EmployerService,private router:Router) { 
   }
   ngOnInit(): void {
     this.getAllEmps();
@@ -35,6 +34,8 @@ export class EmployerDashboardComponent implements OnInit{
     this.employerService.deleteEmployer(id).subscribe((res) => {
       console.log(res);
     });
+    this.router.navigate(['dashboard/employerDashboard', this.currentEmpID]);
+    window.location.reload();
   }
   goToEditPage(id: number) { 
     this.currentEmpID = id;
@@ -46,5 +47,8 @@ export class EmployerDashboardComponent implements OnInit{
   goToDetailsPage(id: number) {
     this.currentEmpID = id;
     this.router.navigate(['dashboard/employerDetails', this.currentEmpID]);
+  }
+  goToAddPage() {
+    this.router.navigate(['dashboard/employerAdd']);
   }
 }
