@@ -27,6 +27,7 @@ export class AddComponent {
       price: 0,
     };
   }
+
   onSubmit() {
     this.planService.addPlan(this.plan).subscribe((res) => {
       console.log(this.plan);

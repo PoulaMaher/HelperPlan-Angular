@@ -23,6 +23,7 @@ export class LoginComponent {
     this.LoginService.LogUser({Email:this.LoginForm.value['Email']!,Password:this.LoginForm.value['Password']!}).subscribe({
       next: (res) => {
         this.LoginService.DecodeUser(res['token'])
+        this.LoginService.RouteConsideringToRole()
       },
       error: (err) => {
       },

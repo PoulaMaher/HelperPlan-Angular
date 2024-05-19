@@ -34,6 +34,11 @@ import { CandidateDetailsComponent } from './components/candidateCrud/Details/ca
 import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
 import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
 import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
+import { PaymentFailedComponent } from './components/payment-failed/payment-failed.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { AddAdminComponent } from './components/Admin-Dashboard/admin-dashboard/add-admin/add-admin.component';
+import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard/edit-admin/edit-admin.component';
+import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
 
 export const routes: Routes = [
   {
@@ -44,6 +49,8 @@ export const routes: Routes = [
     path: 'delete/:id',
     component: DeleteCandidateComponent,
   },
+  { path: 'Payment-Failed', component: PaymentFailedComponent },
+  { path: 'Payment-Success', component: PaymentSuccessComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Login', canActivate: [loginInGuard], component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
@@ -102,7 +109,7 @@ export const routes: Routes = [
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: '**', component: ErrorComponent }
+  { path: '**', component: ErrorPageComponent },
   {
     path: 'dashboard',
     canActivate: [authRoutesGuard],
@@ -115,6 +122,18 @@ export const routes: Routes = [
       {
         path: 'adminDashboard',
         component: AdminDashboardComponent,
+      },
+      {
+        path: 'addAdmin',
+        component: AddAdminComponent,
+      },
+      {
+        path: 'editAdmin/:id',
+        component: EditAdminComponent,
+      },
+      {
+        path: 'adminDetails/:id',
+        component: AdminDetailsComponent,
       },
       {
         path: 'candidateDashboard',

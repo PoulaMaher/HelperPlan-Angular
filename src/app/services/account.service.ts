@@ -15,12 +15,15 @@ export class AccountService {
     return this.httpClient.get<IAdmin[]>(`${environment.baseUrl}/Account/GetAdmins`)
   }
   UpdateAdmin(id:number,admin:IAdmin): Observable<IAdmin> {
-    return this.httpClient.put<IAdmin>(`${environment.baseUrl}/Account/UpdateAdmin?=${id}`,admin)
+    return this.httpClient.put<IAdmin>(`${environment.baseUrl}/Account/UpdateAdmin/${id}`,admin)
   }
   deleteAdmin(id:number): Observable<IAdmin> {
-    return this.httpClient.delete<IAdmin>(`${environment.baseUrl}/Account/AddAdmin?id=${id}`)
+    return this.httpClient.delete<IAdmin>(`${environment.baseUrl}/Account/DeleteAdmin/${id}`)
   }
   AddAdmin(admin:IAdmin): Observable<IAdmin> {
     return this.httpClient.post<IAdmin>(`${environment.baseUrl}/Account/AddAdmin`,admin)
+  }
+  getAdmin(id:number): Observable<IAdmin> {
+    return this.httpClient.get<IAdmin>(`${environment.baseUrl}/Account/getAdmin/${id}`)
   }
 }

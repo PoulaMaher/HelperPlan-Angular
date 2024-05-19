@@ -5,7 +5,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { Loginservice } from './components/login/LoginService/loginservice.service';
 import { PostJobComponent } from './components/post-job/post-job.component';
-import { ActivatedRoute } from '@angular/router';
 import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard-layout/dashboard-layout.component';
 @Component({
   selector: 'app-root',
@@ -22,17 +21,13 @@ import { DashboardLayoutComponent } from './components/Admin-Dashboard/dashboard
   ],
 })
 export class AppComponent {
-  constructor(
-    private loginService: Loginservice,
-    private router: Router,
-  ) {
+  constructor(private loginService: Loginservice, private router: Router) {
     if (localStorage.getItem('HelperPlanJWTToken') != null) {
       this.loginService.DecodeUser(localStorage.getItem('HelperPlanJWTToken'));
       if (loginService.IfTokenIsExpired()) {
         this.loginService.LogOutUser();
       }
     } else {
-      this.router.navigateByUrl('/home');
     }
   }
   title = 'HelperPlace';
