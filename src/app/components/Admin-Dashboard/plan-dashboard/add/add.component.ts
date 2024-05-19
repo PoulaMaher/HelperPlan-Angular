@@ -25,6 +25,7 @@ export class AddComponent {
       name: '',
       type: '',
       price: 0,
+      duration: 1,
     };
   }
 

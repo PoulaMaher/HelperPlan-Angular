@@ -5,6 +5,7 @@ export interface IPlan {
   name: string;
   price: number;
   type: string;
+  duration: number;
   //navigation Properties
   subscribtion?: ISubscribtion;
 }
