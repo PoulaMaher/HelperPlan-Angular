@@ -23,7 +23,6 @@ export class HomeCarouselComponent implements OnInit {
     this.candidateService.getAllCandidates().subscribe({
       next: (res) => {
         this.randomCandidates = res;
-        console.log(this.randomCandidates);
       },
       error: (err) => {
         console.log(err);

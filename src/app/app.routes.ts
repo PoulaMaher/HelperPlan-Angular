@@ -29,19 +29,14 @@ import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
 import { AddEmployerComponent } from '../app/components/Admin-Dashboard/employer-dashboard/add-employer/add-employer.component';
-<<<<<<< HEAD
-import {AddComponent} from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component'
-import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
-import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
-import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
-=======
 import { AddComponent } from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component';
 import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
 import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
 import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
 import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
+import { PaymentFailedComponent } from './components/payment-failed/payment-failed.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 
->>>>>>> 84955c38fc86d52ab1873539b73917e8fbf7d194
 export const routes: Routes = [
   {
     path: 'details/:id',
@@ -51,6 +46,8 @@ export const routes: Routes = [
     path: 'delete/:id',
     component: DeleteCandidateComponent,
   },
+  { path: 'Payment-Failed', component: PaymentFailedComponent },
+  { path: 'Payment-Success', component: PaymentSuccessComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Login', canActivate: [loginInGuard], component: LoginComponent },
   { path: 'JobPage', component: JobPageComponent },
@@ -109,7 +106,7 @@ export const routes: Routes = [
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  // { path: '**', component: ErrorComponent }
+  { path: '**', component: ErrorPageComponent },
   {
     path: 'dashboard',
     canActivate: [authRoutesGuard],
