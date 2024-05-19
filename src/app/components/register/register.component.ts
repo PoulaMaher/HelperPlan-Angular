@@ -19,24 +19,30 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 })
 export class RegisterComponent {
   RegisterForm = new FormGroup({
-    Name: new FormControl(null, Validators.required),
-    Password: new FormControl(null, Validators.required),
+    Name: new FormControl(null, [Validators.required,Validators.minLength(5)]),
+    NewPassword: new FormControl(null, [
+      Validators.required,
+      Validators.pattern('^(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z\\d]).{13,}$'),
+    ]),
+    ConfirmPassword: new FormControl(null, [
+      Validators.required,
+    ]),
     Email: new FormControl(null, Validators.required),
     Role: new FormControl(null, Validators.required),
-    AgreeToAllTerms: new FormControl(false,Validators.requiredTrue),
-  });
+    AgreeToAllTerms: new FormControl(false, Validators.requiredTrue),
+  },this.LoginService.passwordMatchValidator);
   registeredUser: UserRegister = new UserRegister();
   constructor(public LoginService: Loginservice) {}
   AddUser(): void {
     this.LoginService.AddUser(this.RegisterForm.value['Role']!, {
       Name: this.RegisterForm.value['Name']!,
-      Password: this.RegisterForm.value['Password']!,
-      Email:this.RegisterForm.value['Email']!
+      Password: this.RegisterForm.value['NewPassword']!,
+      Email: this.RegisterForm.value['Email']!,
     }).subscribe({
       next: (res) => {
         this.LoginService.LogUser({
           Email: this.RegisterForm.value['Email']!,
-          Password: this.RegisterForm.value['Password']!,
+          Password: this.RegisterForm.value['NewPassword']!,
         }).subscribe({
           next: (res) => {
             this.LoginService.DecodeUser(res['token']);

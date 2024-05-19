@@ -5,13 +5,27 @@
         <div class="p-3 py-5">
           <div class="row mt-3">
             <div class="col-md-12">
-              <label class="labels">Role</label>
-              <input
-                formControlName="Role"
-                type="text"
-                class="form-control"
-                placeholder="Employer"
-              />
+              <select
+              class="form-control"
+              formControlName="Role"
+              name="Role"
+            >
+              <option [value]="null" selected>Select Role</option>
+              <option value="Employer">Employer</option>
+              <option value="Candidate">Candidate</option>
+            </select>
+            <div
+            *ngIf="
+              ProfileForm.controls['Role'].invalid &&
+              (ProfileForm.controls['Role'].dirty ||
+              ProfileForm.controls['Role'].touched)
+            "
+          >
+            <small
+              *ngIf="ProfileForm.controls['Role'].errors!['required']"
+              >Role is required.</small
+            >
+          </div>
             </div>
             <div class="col-md-12">
               <label class="labels">Email *</label>
@@ -21,14 +35,39 @@
                 class="form-control"
                 placeholder="Enter Your Email"
               />
+              <div
+              *ngIf="
+                ProfileForm.controls['Email'].invalid &&
+                (ProfileForm.controls['Email'].dirty ||
+                ProfileForm.controls['Email'].touched)
+              "
+            >
+              <small
+                *ngIf="ProfileForm.controls['Email'].errors!['required']"
+                >Email is required.</small
+              >
+            </div>  
             </div>
             <div class="col-md-12">
               <label class="labels">Location *</label>
               <input
+                formControlName="Location"
                 type="text"
                 class="form-control"
                 placeholder="Choose your Location"
               />
+              <div
+              *ngIf="
+                ProfileForm.controls['Location'].invalid &&
+                (ProfileForm.controls['Location'].dirty ||
+                ProfileForm.controls['Location'].touched)
+              "
+            >
+              <small
+                *ngIf="ProfileForm.controls['Location'].errors!['required']"
+                >Location is required.</small
+              >
+            </div>  
             </div>
           </div>
         </div>
@@ -40,11 +79,23 @@
             <div class="col-md-12">
               <label class="labels">Name *</label>
               <input
-              formControlName="Name"
+                formControlName="Name"
                 type="text"
                 class="form-control"
                 placeholder="Enter Your Name"
               />
+              <div
+              *ngIf="
+                ProfileForm.controls['Name'].invalid &&
+                (ProfileForm.controls['Name'].dirty ||
+                ProfileForm.controls['Name'].touched)
+              "
+            >
+              <small
+                *ngIf="ProfileForm.controls['Name'].errors!['required']"
+                >Name is required.</small
+              >
+            </div>  
             </div>
             <div class="col-md-12">
               <label class="labels">Mobile Number</label>
@@ -54,20 +105,32 @@
                 class="form-control"
                 placeholder="Enter Your Mobile Number"
               />
+              <div
+              *ngIf="
+                ProfileForm.controls['PhoneNumber'].invalid &&
+                (ProfileForm.controls['PhoneNumber'].dirty ||
+                ProfileForm.controls['PhoneNumber'].touched)
+              "
+            >
+              <small
+                *ngIf="ProfileForm.controls['PhoneNumber'].errors!['required']"
+                >Phone Number is required.</small
+              >
+            </div>  
             </div>
             <div class="col-md-12">
-              <label class="labels">Language Preference</label>
+              <label class="labels">Password</label>
               <input
-                type="text"
+                formControlName="Password"
+                type="password"
                 class="form-control"
-                placeholder="Choose Your Language Preference"
+                placeholder="Enter Password To Apply Changes"
               />
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col-md-6 border-Left">
         <div class="p-3 py-1">
@@ -135,7 +198,20 @@
     <div class="row">
       <div class="p-3 py-5 w-25 m-auto">
         <div class="row mt-3">
-          <button [disabled]="ProfileForm.invalid" class="btn btn-primary profile-button">
+          <button
+            [disabled]="ProfileForm.invalid"
+            (click)="
+              UpdateUser({
+                Email: ProfileForm.value['Email']!,
+                Role: ProfileForm.value['Role']!,
+                Location: ProfileForm.value['Location']!,
+                Name: ProfileForm.value['Name']!,
+                MoileNumber: ProfileForm.value['PhoneNumber']!,
+                Password: ProfileForm.value['Password']!
+              })
+            "
+            class="btn btn-primary profile-button"
+          >
             Save Profile
           </button>
         </div>
