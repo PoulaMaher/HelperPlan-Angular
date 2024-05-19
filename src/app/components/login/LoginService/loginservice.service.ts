@@ -77,8 +77,6 @@ export class Loginservice {
     );
     this.LoggedUser.next(DecodedUser);
     this.IsLogged = true;
-    console.log();
-    this.RouteConsideringToRole();
   }
   RouteConsideringToRole() {
     switch (

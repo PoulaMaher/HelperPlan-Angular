@@ -8,18 +8,23 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class PlanService {
-  
   private currentPlan!: IPlan;
   constructor(private httpclient: HttpClient) {}
   // get data from API
   getAllPlans(): Observable<IPlan[]> {
     return this.httpclient.get<IPlan[]>(`${environment.baseUrl}/Plan/GetAll`);
   }
-  addPlan(plan:IPlan): Observable<IPlan> {
-    return this.httpclient.post<IPlan>(`${environment.baseUrl}/Plan/Insert`,plan);
+  addPlan(plan: IPlan): Observable<IPlan> {
+    return this.httpclient.post<IPlan>(
+      `${environment.baseUrl}/Plan/Insert`,
+      plan
+    );
   }
-  UpdatePlan(plan:IPlan,id:number): Observable<IPlan> {
-    return this.httpclient.put<IPlan>(`${environment.baseUrl}/Plan/Update?id=${id}`,plan);
+  UpdatePlan(plan: IPlan, id: number): Observable<IPlan> {
+    return this.httpclient.put<IPlan>(
+      `${environment.baseUrl}/Plan/Update?id=${id}`,
+      plan
+    );
   }
 
   getPlanById(id: number): Observable<IPlan> {
@@ -31,6 +36,4 @@ export class PlanService {
   deletePlanById(id: number): void {
     this.httpclient.delete<IPlan>(`${environment.baseUrl}/Plan/Delete/${id}`);
   }
-
-  
 }
