@@ -46,6 +46,7 @@ export class RegisterComponent {
         }).subscribe({
           next: (res) => {
             this.LoginService.DecodeUser(res['token']);
+            this.LoginService.RouteConsideringToRole();
           },
         });
       },

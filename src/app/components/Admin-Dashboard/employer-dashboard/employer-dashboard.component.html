@@ -26,9 +26,9 @@
       <td>{{ employer.phoneNumber }}</td>
       <td>{{ employer.location }}</td>
       <td>
-        <button class="btn btn-outline-danger mx-1" onclick="document.getElementById('id01').style.display='block'">
+        <!-- <button class="btn btn-outline-danger mx-1" onclick="document.getElementById('id01').style.display='block'">
           Delete
-        </button>
+        </button> -->
         <div id="id01" class="modal">
           <span onclick="document.getElementById('id01').style.display='none'" class="close"
             title="Close Modal">&times;</span>
@@ -41,13 +41,17 @@
                 <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'">
                   Cancel
                 </button>
-                <button type="button" class="deletebtn" (click)="handleDelete(employer.id)" onclick="document.getElementById('id01').style.display='none'">
+                <button type="button" class="deletebtn" (click)="handleDelete(employer.id)"
+                  onclick="document.getElementById('id01').style.display='none'">
                   Delete
                 </button>
               </div>
             </div>
           </form>
         </div>
+        <button type="button" class="btn btn-outline-danger mx-1" (click)="handleDelete(employer.id)">
+          Delete
+        </button>
         <button class="btn btn-outline-success mx-1" (click)="goToEditPage(employer.id)">
           Edit
         </button>

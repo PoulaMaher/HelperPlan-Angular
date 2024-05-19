@@ -34,7 +34,6 @@ export class EmployerDashboardComponent implements OnInit{
     this.employerService.deleteEmployer(id).subscribe((res) => {
       console.log(res);
     });
-    this.router.navigate(['dashboard/employerDashboard', this.currentEmpID]);
     window.location.reload();
   }
   goToEditPage(id: number) { 
