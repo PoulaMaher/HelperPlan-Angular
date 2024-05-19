@@ -3,8 +3,7 @@
   <!-- Section: Social media -->
   <section
     class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-  >
-  </section>
+  ></section>
   <!-- Section: Social media -->
 
   <!-- Section: Links  -->
@@ -34,7 +33,7 @@
             <a class="text-reset" routerLink="/aboutus">About Us</a>
           </p>
           <p>
-            <a class="text-reset" routerLink="/contactus">Contact Us</a>
+            <a class="text-reset" routerLink="/paymentSuccess">Contact Us</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -44,10 +43,17 @@
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
           <p>
-            <a class="text-reset" *ngIf="role != 'Employer'" routerLink="/job">Search & Find Job</a>
+            <a class="text-reset" *ngIf="role != 'Employer'" routerLink="/job"
+              >Search & Find Job</a
+            >
           </p>
           <p>
-            <a class="text-reset" *ngIf="role != 'Candidate'" routerLink="/candidatepage">Find Helpers, Maids or Drivers</a>
+            <a
+              class="text-reset"
+              *ngIf="role != 'Candidate'"
+              routerLink="/candidatepage"
+              >Find Helpers, Maids or Drivers</a
+            >
           </p>
           <p>
             <a class="text-reset" routerLink="/pricing">Pricing</a>

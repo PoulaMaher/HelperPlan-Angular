@@ -9,34 +9,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add.component.html',
-  styleUrl: './add.component.css'
+  styleUrl: './add.component.css',
 })
 export class AddComponent {
   plan!: IPlan;
-  constructor(private httpClient: HttpClient, private planService: PlanService, private router: Router) {
+  constructor(
+    private httpClient: HttpClient,
+    private planService: PlanService,
+    private router: Router
+  ) {
     this.plan = {
-<<<<<<< HEAD
-      id :0,
-=======
-      id:1,
->>>>>>> 84955c38fc86d52ab1873539b73917e8fbf7d194
-      name: "",
-      type: "",
-      price: 0
-    }
-   }
+      id: 0,
+      name: '',
+      type: '',
+      price: 0,
+    };
+  }
   onSubmit() {
     this.planService.addPlan(this.plan).subscribe((res) => {
-      console.log(this.plan)
-      console.log(res)
+      console.log(this.plan);
+      console.log(res);
       this.router.navigate(['/dashboard/planDashboard']);
-    })
+    });
   }
 
   back(): void {
     this.router.navigate(['/dashboard/planDashboard']);
   }
-
 }

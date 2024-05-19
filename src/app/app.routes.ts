@@ -29,19 +29,12 @@ import { EmployerDetailsComponent } from './components/Admin-Dashboard/employer-
 import { EmployerEditComponent } from './components/Admin-Dashboard/employer-dashboard/employer-edit/employer-edit.component';
 import { loginInGuard } from '../AuthRoutes/login-in.guard';
 import { AddEmployerComponent } from '../app/components/Admin-Dashboard/employer-dashboard/add-employer/add-employer.component';
-<<<<<<< HEAD
-import {AddComponent} from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component'
-import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
-import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
-import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
-=======
 import { AddComponent } from '../app/components/Admin-Dashboard/plan-dashboard/add/add.component';
 import { CandidateDetailsComponent } from './components/candidateCrud/Details/candidate-details/candidate-details.component';
 import { DeleteCandidateComponent } from './components/candidateCrud/delete/delete-candidate/delete-candidate.component';
 import { UpdatelayerComponent } from './components/post-resume/updatelayer/updatelayer/updatelayer.component';
 import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
 
->>>>>>> 84955c38fc86d52ab1873539b73917e8fbf7d194
 export const routes: Routes = [
   {
     path: 'details/:id',
