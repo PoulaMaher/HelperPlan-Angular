@@ -36,6 +36,9 @@ import { UpdatelayerComponent } from './components/post-resume/updatelayer/updat
 import { CandidateDashboardComponent } from './components/Admin-Dashboard/candidate-dashboard/candidate-dashboard.component';
 import { PaymentFailedComponent } from './components/payment-failed/payment-failed.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { AddAdminComponent } from './components/Admin-Dashboard/admin-dashboard/add-admin/add-admin.component';
+import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard/edit-admin/edit-admin.component';
+import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
 
 export const routes: Routes = [
   {
@@ -119,6 +122,18 @@ export const routes: Routes = [
       {
         path: 'adminDashboard',
         component: AdminDashboardComponent,
+      },
+      {
+        path: 'addAdmin',
+        component: AddAdminComponent,
+      },
+      {
+        path: 'editAdmin/:id',
+        component: EditAdminComponent,
+      },
+      {
+        path: 'adminDetails/:id',
+        component: AdminDetailsComponent,
       },
       {
         path: 'candidateDashboard',

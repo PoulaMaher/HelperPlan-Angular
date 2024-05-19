@@ -27,25 +27,26 @@ export class AdminDashboardComponent {
     });
   }
 
-  handleDelete(id: number) {
-    this.accountService.deleteAdmin(id).subscribe((res) => {
+  handleDelete(id: number) { debugger
+    this.currentAdminID = id;
+    this.accountService.deleteAdmin(this.currentAdminID).subscribe((res) => {
       console.log(res);
     });
     this.router.navigate(['dashboard/adminDashboard', this.currentAdminID]);
     window.location.reload();
   }
-  // goToEditPage(id: number) {
-  //   this.currentAdminID = id;
-  //   this.accountService.getEmployerById(id).subscribe((res) => {
-  //     console.log(res);
-  //   });
-  //   this.router.navigate(['dashboard/employerEdit', this.currentEmpID]);
-  // }
+  goToEditPage(id: number) {
+    this.currentAdminID = id;
+    this.accountService.getAdmin(id).subscribe((res) => {
+      console.log(res);
+    });
+    this.router.navigate(['dashboard/editAdmin',this.currentAdminID]);
+  }
   goToDetailsPage(id: number) {
     this.currentAdminID = id;
     this.router.navigate(['dashboard/adminDetails', this.currentAdminID]);
   }
   goToAddPage() {
-    this.router.navigate(['dashboard/adminAdd']);
+    this.router.navigate(['dashboard/addAdmin']);
   }
 }
