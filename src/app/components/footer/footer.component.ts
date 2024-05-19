@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
 })
@@ -20,8 +20,8 @@ export class FooterComponent {
             this.authservice.LoggedUser.value[
               'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
             ];
-        }else{
-          this.role=''
+        } else {
+          this.role = '';
         }
       },
       error: () => {},

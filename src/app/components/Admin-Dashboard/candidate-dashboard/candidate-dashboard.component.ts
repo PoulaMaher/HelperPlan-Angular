@@ -5,29 +5,31 @@ import { ICandidates } from '../../../models/icandidates';
 import { FcandidateService } from '../../../services/fcandidate.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-candidate-dashboard',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,CommonModule,FormsModule],
+  imports: [RouterLink, RouterOutlet, CommonModule, FormsModule],
   templateUrl: './candidate-dashboard.component.html',
-  styleUrl: './candidate-dashboard.component.css'
+  styleUrl: './candidate-dashboard.component.css',
 })
 export class CandidateDashboardComponent implements OnInit {
-allcandidates!:ICandidates[]
-constructor(private candidatesservice:FcandidateService,private router: Router){
-}
+  allcandidates!: ICandidates[];
+  constructor(
+    private candidatesservice: FcandidateService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.candidatesservice.getAllCandidates().subscribe({
-      next: (data:ICandidates[]) => {
+      next: (data: ICandidates[]) => {
         this.allcandidates = data; // Assign the fetched candidates to the candidates array
-
       },
       error: (error) => {
         console.error('Error fetching candidates:', error); // Log any errors
       },
       complete: () => {
         console.log('Candidates fetched successfully'); // Log completion
-      }
+      },
     });
   }
   navigateToDetails(id: number) {
@@ -40,4 +42,3 @@ constructor(private candidatesservice:FcandidateService,private router: Router){
     this.router.navigate(['/candidateResume/Updatelayer', id]);
   }
 }
-
