@@ -21,9 +21,9 @@
       <td>{{ Admin.userName }}</td>
       <td>{{ Admin.email }}</td>
       <td>
-        <button class="btn btn-outline-danger mx-1" onclick="document.getElementById('id01').style.display='block'">
+        <!-- <button class="btn btn-outline-danger mx-1" onclick="document.getElementById('id01').style.display='block'">
           Delete
-        </button>
+        </button> -->
         <div id="id01" class="modal">
           <span onclick="document.getElementById('id01').style.display='none'" class="close"
             title="Close Modal">&times;</span>
@@ -44,7 +44,11 @@
             </div>
           </form>
         </div>
-        <button class="btn btn-outline-success mx-1">
+        <button type="button" class="btn btn-outline-danger mx-1" (click)="handleDelete(Admin.id)"
+          >
+          Delete 
+        </button>
+        <button class="btn btn-outline-success mx-1" (click)="goToEditPage(Admin.id)">
           Edit
         </button>
         <button class="btn btn-outline-primary mx-1" (click)="goToDetailsPage(Admin.id)">

@@ -16,19 +16,19 @@ export class Loginservice {
   IsLogged: boolean = false;
   AddUser(Role: string, RegisteredUser: UserRegister): Observable<any> {
     return this.http.post(
-      `${environment.baseUrl}/api/Account/Register?Role=${Role}`,
+      `${environment.baseUrl}/Account/Register?Role=${Role}`,
       RegisteredUser
     );
   }
   LogUser(LoggedUser: Loggeduser): Observable<any> {
     return this.http.post(
-      `${environment.baseUrl}/api/Account/Login`,
+      `${environment.baseUrl}/Account/Login`,
       LoggedUser
     );
   }
   UpdateUser(LoggedUser: Loggeduser): Observable<any> {
     return this.http.post(
-      `${environment.baseUrl}/api/Account/Login`,
+      `${environment.baseUrl}/Account/Login`,
       LoggedUser
     );
   }

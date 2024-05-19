@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import { HttpClient } from '@angular/common/http';
-=======
->>>>>>> 84955c38fc86d52ab1873539b73917e8fbf7d194
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ICandidates } from '../../../models/icandidates';
 import { FcandidateService } from '../../../services/fcandidate.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-<<<<<<< HEAD
-=======
-
->>>>>>> 84955c38fc86d52ab1873539b73917e8fbf7d194
 @Component({
   selector: 'app-candidate-dashboard',
   standalone: true,
