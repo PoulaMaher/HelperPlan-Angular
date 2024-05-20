@@ -11,18 +11,24 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './plan-edit.component.html',
-  styleUrl: './plan-edit.component.css'
+  styleUrl: './plan-edit.component.css',
 })
 export class PlanEditComponent {
   plan!: IPlan;
   planID!: number;
-  constructor(private httpClient: HttpClient, private planService: PlanService, private route: ActivatedRoute, private router:Router) {
+  constructor(
+    private httpClient: HttpClient,
+    private planService: PlanService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.plan = {
-      id:1,
-      name: "",
-      type: "",
-      price: 0
-    }
+      id: 1,
+      name: '',
+      type: '',
+      price: 0,
+      duration: 1,
+    };
   }
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -31,14 +37,13 @@ export class PlanEditComponent {
   }
 
   onSubmit() {
-      this.planService.UpdatePlan(this.plan, this.planID).subscribe((res) => {
-      console.log(this.plan)
-      console.log(res)
-        this.router.navigate(['/dashboard/planDashboard']);
-    })
+    this.planService.UpdatePlan(this.plan, this.planID).subscribe((res) => {
+      console.log(this.plan);
+      console.log(res);
+      this.router.navigate(['/dashboard/planDashboard']);
+    });
   }
   back(): void {
     this.router.navigate(['/dashboard/planDashboard']);
   }
-  
-  }
+}

@@ -25,7 +25,7 @@ export class Loginservice {
   }
   GetUserDetails(): Observable<any> {
     return this.http.get(
-      `${environment.baseUrl}/api/Account/GetUserDetails?UserId=${
+      `${environment.baseUrl}/Account/GetUserDetails?UserId=${
         this.LoggedUser.value![
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
         ]
@@ -43,7 +43,7 @@ export class Loginservice {
 
   UpdateUser(changes: Changes): Observable<any> {
     return this.http.patch(
-      `${environment.baseUrl}/api/Account/UpdateUser?UserId=${
+      `${environment.baseUrl}/Account/UpdateUser?UserId=${
         this.LoggedUser.value![
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
         ]
@@ -53,7 +53,7 @@ export class Loginservice {
   }
   UpdateUserPassword(PasswordChanges: PasswordChanges): Observable<any> {
     return this.http.patch(
-      `${environment.baseUrl}/api/Account/UpdateUserPassword?UserId=${
+      `${environment.baseUrl}/Account/UpdateUserPassword?UserId=${
         this.LoggedUser.value![
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
         ]

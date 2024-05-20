@@ -54,6 +54,7 @@ export class ProfileComponent {
     this.AuthService.UpdateUser(changes).subscribe({
       next: (res) => {
         this.AuthService.DecodeUser(res['token']);
+        this.AuthService.RouteConsideringToRole()
         alert('Account Updated Successfully');
       },
       error: (error) => {
@@ -64,9 +65,10 @@ export class ProfileComponent {
   constructor(public AuthService: Loginservice) {
     AuthService.GetUserDetails().subscribe({
       next: (res) => {
+        console.log(res)
         this.ProfileForm.controls['Location'].setValue(res.location);
         this.ProfileForm.controls['PhoneNumber'].setValue(res.mobileNumber);
-        this.ProfileForm.controls['Name'].setValue(res.name);
+        this.ProfileForm.controls['Email'].setValue(res.email);
       },
       error: (err) => {
         console.log(err);

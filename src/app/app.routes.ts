@@ -39,7 +39,6 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { AddAdminComponent } from './components/Admin-Dashboard/admin-dashboard/add-admin/add-admin.component';
 import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard/edit-admin/edit-admin.component';
 import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
-
 export const routes: Routes = [
   {
     path: 'details/:id',
