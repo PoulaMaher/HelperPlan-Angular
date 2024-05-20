@@ -11,8 +11,9 @@ import { IPaymentFromUrl } from '../models/ipayment-from-url';
 export class PaymentService {
   constructor(private httpclient: HttpClient) {}
 
-  createSubscription(subscriptionData: ISubscribtionDto): Observable<string> {
-    return this.httpclient.post<string>(
+  createSubscription(subscriptionData: ISubscribtionDto): Observable<IPaymentFromUrl> {
+    debugger
+    return this.httpclient.post<IPaymentFromUrl>(
       `${environment.baseUrl}/api/Subscribtions/Create`,
       subscriptionData
     );

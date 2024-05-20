@@ -37,7 +37,7 @@ export class PricingComponent {
 
   handleSubscription(currentPlan: IPlan): void {
     // console.log(currentPlan.id);
-    //debugger;
+    debugger;
     // console.log(this.subscriptionData.planId);
     this.subscriptionData.planId = currentPlan.id;
 
@@ -50,6 +50,7 @@ export class PricingComponent {
     this.subscriptionData.userId = 1;
     this.paymentService
       .createSubscription(this.subscriptionData)
+      
       .subscribe((respose) => {
         // this.router.navigateByUrl(respose);
       });
