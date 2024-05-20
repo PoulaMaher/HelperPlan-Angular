@@ -109,7 +109,6 @@ export const routes: Routes = [
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: ErrorPageComponent },
   {
     path: 'dashboard',
     canActivate: [authRoutesGuard],
@@ -175,6 +174,7 @@ export const routes: Routes = [
         path: '**', // route every undefined route to the root of this feature
         redirectTo: ' ',
       },
+      { path: '**', component: ErrorPageComponent }
     ],
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
