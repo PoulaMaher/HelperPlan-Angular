@@ -13,9 +13,6 @@ import { Router } from '@angular/router';
   imports: [CommonModule, PlanDetailsComponent],
 })
 export class PlanDashboardComponent {
-  /**
-   *
-   */
   public planslst!: IPlan[];
   private currentPlanId!: number | undefined;
   private currentPlan!: IPlan;
@@ -42,6 +39,10 @@ export class PlanDashboardComponent {
 
   handleDelete(cId: number): void {
     this.currentPlanId = cId;
+    this.planService.deletePlanById(cId).subscribe((res) => {
+      //console.log(res);
+      window.location.reload();
+    })
   }
 
   goToEditPage(cId: number): void {
