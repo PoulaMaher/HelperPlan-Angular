@@ -43,7 +43,7 @@ export class PricingComponent {
 
     const date = new Date();
     this.subscriptionData.endDate.setDate(
-      date.getDate() + currentPlan.duration
+      date.getDate()
     );
     this.subscriptionData.employerId = 1;
     this.subscriptionData.isActive = false;
@@ -51,7 +51,8 @@ export class PricingComponent {
     this.paymentService
       .createSubscription(this.subscriptionData)
       .subscribe((respose) => {
-        // this.router.navigateByUrl(respose);
+        console.log(respose.url)
+         window.location.href=respose.url
       });
   }
 }

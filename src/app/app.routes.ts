@@ -41,6 +41,14 @@ import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard
 import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
 export const routes: Routes = [
   {
+    path: 'success/:message',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'fail/:message',
+    component: PaymentFailedComponent,
+  },
+  {
     path: 'details/:id',
     component: CandidateDetailsComponent,
   },
