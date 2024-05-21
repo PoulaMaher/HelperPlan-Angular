@@ -42,21 +42,19 @@ export class PricingComponent {
     this.subscriptionData.planId = currentPlan.id;
 
     const date = new Date();
-    // this.subscriptionData.endDate.setDate(
-    //   date.getDate() + currentPlan.duration
-    // );
-    this.subscriptionData.endDate.setDate(date.getDate());
+
+    this.subscriptionData.endDate.setDate(
+      date.getDate()
+    );
     this.subscriptionData.employerId = 1;
     this.subscriptionData.isActive = false;
     this.subscriptionData.userId = 1;
-    this.paymentService.createSubscription(this.subscriptionData).subscribe({
-      next: (respose) => {
-        window.location.replace(respose['url']);
-      },
-      error: (err) => {
-        console.log(err);
-        console.log('error');
-      },
-    });
+    this.paymentService
+      .createSubscription(this.subscriptionData)
+      .subscribe((respose) => {
+        console.log(respose.url)
+         window.location.href=respose.url
+      });
+
   }
 }

@@ -49,6 +49,14 @@ export const routes: Routes = [
     component: PaymentFailedComponent,
   },
   {
+    path: 'success/:message',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'fail/:message',
+    component: PaymentFailedComponent,
+  },
+  {
     path: 'details/:id',
     component: CandidateDetailsComponent,
   },

@@ -11,16 +11,15 @@ import { IPaymentFromUrl } from '../models/ipayment-from-url';
 export class PaymentService {
   constructor(private httpclient: HttpClient) {}
 
-  createSubscription(
-    subscriptionData: ISubscribtionDto
-  ): Observable<IPaymentFromUrl> {
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    // });
+  createSubscription(subscriptionData: ISubscribtionDto): Observable<IPaymentFromUrl> {
+    const api_key = localStorage.getItem("HelperPlanJWTToken");
+    const header= new HttpHeaders().set('Authorization', `Bearer ${api_key}`)
     return this.httpclient.post<IPaymentFromUrl>(
       `${environment.baseUrl}/api/Subscribtions/Create`,
-      subscriptionData
-      // { headers }
+      subscriptionData,{headers: header}
     );
+  }
+  getOrder(order:string|null):Observable<any>{
+     return this.httpclient.get<any>(`${environment.baseUrl}/api/Subscribtions/CheckStatus/${order}`)
   }
 }
