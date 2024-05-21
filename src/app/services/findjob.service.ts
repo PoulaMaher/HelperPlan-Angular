@@ -10,11 +10,11 @@ export class FindjobService {
   private apiUrl = '';
   constructor(private http: HttpClient) {}
     getAllJobs(): Observable<IJob[]> {
-    return this.http.get<IJob[]>(`${environment.baseUrl}Job/GetAll`)
+    return this.http.get<IJob[]>(`${environment.baseUrl}/Job/GetAll`)
   }
   getFilteredJobs(filters: any): Observable<IJob[]> {
     const params = this.generateParams(filters);
-    return this.http.get<IJob[]>(`${environment.baseUrl}jobs`, { params });
+    return this.http.get<IJob[]>(`${environment.baseUrl}/jobs`, { params });
   }
 
   private generateParams(filters: any): { [param: string]: string } {
