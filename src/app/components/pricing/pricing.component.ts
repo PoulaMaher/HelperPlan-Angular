@@ -4,6 +4,7 @@ import { PlanService } from '../../services/plan.service';
 import { PaymentService } from '../../services/payment.service';
 import { ISubscribtionDto } from '../../models/isubscribtion-dto';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-pricing',
@@ -15,9 +16,9 @@ import { Router } from '@angular/router';
 export class PricingComponent {
   public plansLst!: IPlan[];
   public subscriptionData: ISubscribtionDto = {
-    id: 0,
+    id: 1,
     endDate: new Date(),
-    employerId: 0,
+    employerId: 1,
     planId: 1,
     userId: 1,
     isActive: false,
@@ -37,11 +38,11 @@ export class PricingComponent {
 
   handleSubscription(currentPlan: IPlan): void {
     // console.log(currentPlan.id);
-    //debugger;
     // console.log(this.subscriptionData.planId);
     this.subscriptionData.planId = currentPlan.id;
 
     const date = new Date();
+
     this.subscriptionData.endDate.setDate(
       date.getDate()
     );
@@ -54,5 +55,6 @@ export class PricingComponent {
         console.log(respose.url)
          window.location.href=respose.url
       });
+
   }
 }
