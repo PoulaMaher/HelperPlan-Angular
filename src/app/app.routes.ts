@@ -40,6 +40,14 @@ import { AddAdminComponent } from './components/Admin-Dashboard/admin-dashboard/
 import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard/edit-admin/edit-admin.component';
 import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
 export const routes: Routes = [
+   {
+    path: 'success/:message',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'fail/:message',
+    component: PaymentFailedComponent,
+  },
   {
     path: 'details/:id',
     component: CandidateDetailsComponent,
@@ -176,5 +184,7 @@ export const routes: Routes = [
       { path: '**', component: ErrorPageComponent }
     ],
   },
+ 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 ];
