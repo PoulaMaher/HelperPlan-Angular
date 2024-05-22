@@ -1,3 +1,3 @@
 export interface IPaymentFromUrl {
-  Url: string;
+  url: string;
 }

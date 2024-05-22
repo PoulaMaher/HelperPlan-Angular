@@ -16,7 +16,7 @@
                     <mdb-form-control class="p-2 col-md-12 mb-3">
                       <input
                         mdbInput
-                        formControlName="Name"
+                        formControlName="UserName"
                         name="Name"
                         type="text"
                         id="form3Example1c"
@@ -24,25 +24,83 @@
                         required="Enter Your Name"
                       />
                       <label mdbLabel class="form-label" for="form3Example1c"
-                        >Your Name
+                        >Your User Name
                       </label>
                       <div
                         *ngIf="
-                          RegisterForm.controls['Name'].invalid &&
-                          (RegisterForm.controls['Name'].dirty ||
-                            RegisterForm.controls['Name'].touched)
+                          RegisterForm.controls['UserName'].invalid &&
+                          (RegisterForm.controls['UserName'].dirty ||
+                            RegisterForm.controls['UserName'].touched)
                         "
                       >
                         <small
                           *ngIf="
-                            RegisterForm.controls['Name'].errors!['required']
+                            RegisterForm.controls['UserName'].errors!['required']
                           "
                           >Username is required.</small
                         >
                       </div>
                     </mdb-form-control>
                   </div>
-
+                  <div class="d-flex justify-content-between align-items-center">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <mdb-form-control class="p-2 col-md-5 mb-3">
+                      <input
+                        mdbInput
+                        formControlName="FirstName"
+                        name="Name"
+                        type="text"
+                        id="form3Example1c"
+                        class="form-control"
+                        required="Enter Your Name"
+                      />
+                      <label mdbLabel class="form-label" for="form3Example1c"
+                        >First Name
+                      </label>
+                      <div
+                        *ngIf="
+                          RegisterForm.controls['FirstName'].invalid &&
+                          (RegisterForm.controls['FirstName'].dirty ||
+                            RegisterForm.controls['FirstName'].touched)
+                        "
+                      >
+                        <small
+                          *ngIf="
+                            RegisterForm.controls['FirstName'].errors!['required']
+                          "
+                          >First Name is required.</small
+                        >
+                      </div>
+                    </mdb-form-control>
+                    <mdb-form-control class="p-2 col-md-7 mb-3">
+                      <input
+                        mdbInput
+                        formControlName="LastName"
+                        name="Name"
+                        type="text"
+                        id="form3Example1c"
+                        class="form-control"
+                        required="Enter Your Name"
+                      />
+                      <label mdbLabel class="form-label" for="form3Example1c"
+                        >Last Name 
+                      </label>
+                      <div
+                        *ngIf="
+                          RegisterForm.controls['LastName'].invalid &&
+                          (RegisterForm.controls['LastName'].dirty ||
+                            RegisterForm.controls['LastName'].touched)
+                        "
+                      >
+                        <small
+                          *ngIf="
+                            RegisterForm.controls['LastName'].errors!['required']
+                          "
+                          >Last Name is required.</small
+                        >
+                      </div>
+                    </mdb-form-control>
+                  </div>
                   <div>
                     <div class="d-flex flex-row align-items-center">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -157,7 +215,7 @@
                   </div>
                   <div class="d-flex flex-row align-items-center">
                     <select
-                      class="col-12 Alert"
+                      class="col-12 Alert form-control"
                       formControlName="Role"
                       name="Role"
                     >

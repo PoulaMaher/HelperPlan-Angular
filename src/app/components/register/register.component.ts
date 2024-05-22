@@ -19,7 +19,9 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 })
 export class RegisterComponent {
   RegisterForm = new FormGroup({
-    Name: new FormControl(null, [Validators.required,Validators.minLength(5)]),
+    UserName: new FormControl(null, [Validators.required,Validators.minLength(5)]),
+    FirstName: new FormControl(null, [Validators.required,Validators.minLength(5)]),
+    LastName: new FormControl(null, [Validators.required,Validators.minLength(5)]),
     NewPassword: new FormControl(null, [
       Validators.required,
       Validators.pattern('^(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z\\d]).{13,}$'),
@@ -35,7 +37,9 @@ export class RegisterComponent {
   constructor(public LoginService: Loginservice) {}
   AddUser(): void {
     this.LoginService.AddUser(this.RegisterForm.value['Role']!, {
-      Name: this.RegisterForm.value['Name']!,
+      UserName: this.RegisterForm.value['UserName']!,
+      FirstName:this.RegisterForm.value['FirstName']!,
+      LastName:this.RegisterForm.value['LastName']!,
       Password: this.RegisterForm.value['NewPassword']!,
       Email: this.RegisterForm.value['Email']!,
     }).subscribe({

@@ -37,21 +37,28 @@ export class PricingComponent {
 
   handleSubscription(currentPlan: IPlan): void {
     // console.log(currentPlan.id);
-    //debugger;
     // console.log(this.subscriptionData.planId);
     this.subscriptionData.planId = currentPlan.id;
 
     const date = new Date();
+    // this.subscriptionData.endDate.setDate(
+    //   date.getDate() + currentPlan.duration
+    // );
     this.subscriptionData.endDate.setDate(
-      date.getDate() + currentPlan.duration
+      date.getDate()
     );
     this.subscriptionData.employerId = 1;
     this.subscriptionData.isActive = false;
     this.subscriptionData.userId = 1;
-    this.paymentService
-      .createSubscription(this.subscriptionData)
-      .subscribe((respose) => {
-        // this.router.navigateByUrl(respose);
-      });
+    this.paymentService.createSubscription(this.subscriptionData).subscribe(
+      {
+        next: (respose) => {
+          window.location.replace(respose['url']) 
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      }
+    );
   }
 }

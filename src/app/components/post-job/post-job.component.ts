@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -16,6 +12,8 @@ import { SubscribePublishComponent } from './subscribe-publish/subscribe-publish
 import { JobClass } from './JobClass/job-class';
 import { JobDetailsClass } from './job-details/JobDetailsClass/job-details-class';
 import { PostJobService } from './post-job-service/post-job-service.service';
+import { PricingComponent } from '../pricing/pricing.component';
+import { Loginservice } from '../login/LoginService/loginservice.service';
 @Component({
   selector: 'app-post-job',
   standalone: true,
@@ -31,17 +29,32 @@ import { PostJobService } from './post-job-service/post-job-service.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    PricingComponent,
   ],
   templateUrl: './post-job.component.html',
   styleUrl: './post-job.component.css',
 })
 export class PostJobComponent {
-  AssignJobDetails($event: JobDetailsClass) {
-    this.job.JobDetails = $event;
-    console.log($event);
+  constructor(
+    private _formBuilder: FormBuilder,
+    public PostJobService: PostJobService,
+    private loginservice: Loginservice
+  ) {
+    this.job.EmployerId =
+      loginservice.LoggedUser.value![
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+      ];
   }
-  PostJobService: PostJobService = new PostJobService();
   job = new JobClass();
   isOptional = false;
-  constructor(private _formBuilder: FormBuilder) {}
+  AddJob() {
+    this.PostJobService.AddJob(this.job).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        alert("Error to Add Job")
+      },
+    });
+  }
 }
