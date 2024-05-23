@@ -42,13 +42,31 @@ export class PricingComponent {
     this.subscriptionData.planId = currentPlan.id;
 
     const date = new Date();
+<<<<<<< HEAD
+    // this.subscriptionData.endDate.setDate(
+    //   date.getDate() + currentPlan.duration
+    // );
+=======
 
+>>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
     this.subscriptionData.endDate.setDate(
       date.getDate()
     );
     this.subscriptionData.employerId = 1;
     this.subscriptionData.isActive = false;
     this.subscriptionData.userId = 1;
+<<<<<<< HEAD
+    this.paymentService.createSubscription(this.subscriptionData).subscribe(
+      {
+        next: (respose) => {
+          window.location.replace(respose['url']) 
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      }
+    );
+=======
     this.paymentService
       .createSubscription(this.subscriptionData)
       .subscribe((respose) => {
@@ -56,5 +74,6 @@ export class PricingComponent {
          window.location.href=respose.url
       });
 
+>>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
   }
 }

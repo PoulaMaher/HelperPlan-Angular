@@ -3,12 +3,10 @@
     <div class="login-container mx-auto">
       <h2>Login</h2>
       <div class="social-icons">
-        <button class="facebook-icon">
+        <button (click)="LoginService.facebookLogin()" class="facebook-icon">
           <i class="fa-brands fa-facebook"></i>
         </button>
-        <button class="google-icon"><i class="fa-brands fa-google"></i></button>
       </div>
-
       <form [formGroup]="LoginForm" action="login.php" method="POST">
         <input
           formControlName="Email"
@@ -67,3 +65,5 @@
     </div>
   </div>
 </div>
+<script>
+</script>

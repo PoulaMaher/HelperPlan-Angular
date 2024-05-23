@@ -1,5 +1,7 @@
 export class UserRegister {
-    Name: string=''
+    UserName: string=''
+    FirstName:string=''
+    LastName:string=''
     Password: string=''
     Email:string = ''
 }

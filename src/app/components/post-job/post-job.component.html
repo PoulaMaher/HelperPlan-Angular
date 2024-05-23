@@ -60,10 +60,10 @@
   <mat-step [stepControl]="PostJobService.JobDetailsForm" [optional]="false">
     <form [formGroup]="PostJobService.JobDetailsForm">
       <ng-template matStepLabel>Subscribe & Publish</ng-template>
-      <app-about-you></app-about-you>
+      <app-pricing></app-pricing>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="AddJob()">Reset</button>
       </div>
     </form>
   </mat-step>

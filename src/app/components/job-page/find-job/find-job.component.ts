@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Job } from '../JobClass/job';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
