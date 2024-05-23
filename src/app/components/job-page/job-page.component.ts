@@ -41,9 +41,14 @@ export class JobPageComponent {
   }
   constructor(_findJob:FindjobService) {
     this.Jobs = this.JobData.Jobs;
-    _findJob.getFilteredJobs({}).subscribe((data) => {
-      this.Jobs = data;
-      console.log(data)
+    _findJob.getFilteredJobs({}).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.Jobs= response
+      },
+      error:(error)=>{
+        console.log(error)  
+      }
     })
   }
 }

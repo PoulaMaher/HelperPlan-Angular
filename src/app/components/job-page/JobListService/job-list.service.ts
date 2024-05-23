@@ -14,33 +14,9 @@ export class JobListService {
     console.log(queryParams);
     let filteredJobs: Job[] = this.Jobs.filter((job) => {
       return (
-        job.Position == queryParams.JobPosition ||
+        job.jobPosition == queryParams.JobPosition ||
         queryParams.JobPosition == 'Any'
       );
-    });
-    filteredJobs = filteredJobs.filter((job) => {
-      return job.Gender == queryParams.gender || queryParams.gender == 'Any';
-    });
-    filteredJobs = filteredJobs.filter((job) => {
-      return job.Type == queryParams.JobType || queryParams.JobType == 'Any';
-    });
-    filteredJobs = filteredJobs.filter((job) => {
-      return job.StartDate>new Date(queryParams.startdate);
-    });
-    filteredJobs = filteredJobs.filter((job) => {
-      return (
-        queryParams.countrysSelectedItems.includes(job.Country) ||
-        queryParams.countrysSelectedItems.length == 0
-      );
-    });
-    filteredJobs = filteredJobs.filter((job) => {
-      return (
-        queryParams.contractSelectedItems.includes(job.contract) ||
-        queryParams.contractSelectedItems.length == 0
-      );
-    });
-    filteredJobs = filteredJobs.filter((job) => {
-      return job.YearsOfExperience >= Number(queryParams.WorkingExperience);
     });
     return filteredJobs;
   }

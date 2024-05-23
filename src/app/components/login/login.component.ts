@@ -34,7 +34,9 @@ export class LoginComponent {
         this.LoginService.DecodeUser(res['token']);
         this.LoginService.RouteConsideringToRole();
       },
-      error: (err) => {},
+      error: (err) => {
+        alert(err['error']['msg'])
+      },
     });
   }
 }

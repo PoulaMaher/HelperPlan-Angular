@@ -55,7 +55,7 @@ export class RegisterComponent {
         });
       },
       error: (err) => {
-        console.log(err);
+        alert(err['error']['msg']);
       },
     });
   }
