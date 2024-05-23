@@ -40,7 +40,17 @@ import { AddAdminComponent } from './components/Admin-Dashboard/admin-dashboard/
 import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard/edit-admin/edit-admin.component';
 import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
 import { ContactDetailsComponent } from './components/candidateCrud/Details/candidate-details/contact-details/contact-details.component';
+import { roledashboardguardGuard } from '../AuthRoutes/roledashboardguard.guard';
+
 export const routes: Routes = [
+   {
+    path: 'success/:message',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'fail/:message',
+    component: PaymentFailedComponent,
+  },
   {
     path: 'contactDetails',
     component: ContactDetailsComponent,
@@ -122,7 +132,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'dashboard',
-    canActivate: [authRoutesGuard],
+    canActivate: [roledashboardguardGuard],
     component: DashboardLayoutComponent,
     children: [
       {
@@ -188,5 +198,7 @@ export const routes: Routes = [
       { path: '**', component: ErrorPageComponent }
     ],
   },
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 ];

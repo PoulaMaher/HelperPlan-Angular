@@ -30,6 +30,7 @@
   transform: translateX(-100px); /* Initially off-screen to the left */
   animation: slideIn 1.5s forwards; /* Slide-in animation */
 }
+
 .layout{
   background-size: contain;
   background-color: #0056b3;

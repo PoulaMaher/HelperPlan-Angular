@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ICandAndFile } from '../models/i-cand-and-file';
 import { ICandidates } from '../models/icandidates';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';

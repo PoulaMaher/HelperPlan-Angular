@@ -23,6 +23,7 @@ export class CandidateDashboardComponent implements OnInit {
     this.candidatesservice.getAllCandidates().subscribe({
       next: (data: ICandidates[]) => {
         this.allcandidates = data; // Assign the fetched candidates to the candidates array
+        console.log(this.allcandidates);
       },
       error: (error) => {
         console.error('Error fetching candidates:', error); // Log any errors

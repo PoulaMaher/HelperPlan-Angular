@@ -9,6 +9,10 @@ import {
   Range,
 } from '../about-you/AboutYouClass/about-you-class';
 import { JobDetailsClass } from '../job-details/JobDetailsClass/job-details-class';
+import { HttpClient } from '@angular/common/http';
+import { JobClass } from '../JobClass/job-class';
+import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -194,6 +198,8 @@ export class PostJobService {
     console.log(jobdetails);
     return jobdetails;
   }
-
-  constructor() {}
+  AddJob(AddedJob:JobClass):Observable<any>{
+    return this.HTTP.post(`${environment.baseUrl}/Job/Insert`,AddedJob)
+  }
+  constructor(private HTTP:HttpClient) {}
 }

@@ -22,7 +22,7 @@ import { FindjobService } from '../../services/findjob.service';
 })
 export class JobPageComponent {
   JobData: JobListService = new JobListService();
-  Jobs: Job[] = [];
+  Jobs!: Job[];
   receivequery(val: any) {
     this.Jobs = this.JobData.Filter(val);
   }
@@ -41,8 +41,14 @@ export class JobPageComponent {
   }
   constructor(_findJob:FindjobService) {
     this.Jobs = this.JobData.Jobs;
-    _findJob.getAllJobs().subscribe((data) => {
-      console.log(data)
+    _findJob.getFilteredJobs({}).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.Jobs= response;
+      },
+      error:(error)=>{
+        console.log(error)
+      }
     })
   }
 }
