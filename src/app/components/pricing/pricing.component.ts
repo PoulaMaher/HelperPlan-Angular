@@ -4,6 +4,7 @@ import { PlanService } from '../../services/plan.service';
 import { PaymentService } from '../../services/payment.service';
 import { ISubscribtionDto } from '../../models/isubscribtion-dto';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-pricing',
@@ -15,9 +16,9 @@ import { Router } from '@angular/router';
 export class PricingComponent {
   public plansLst!: IPlan[];
   public subscriptionData: ISubscribtionDto = {
-    id: 0,
+    id: 1,
     endDate: new Date(),
-    employerId: 0,
+    employerId: 1,
     planId: 1,
     userId: 1,
     isActive: false,
@@ -41,15 +42,20 @@ export class PricingComponent {
     this.subscriptionData.planId = currentPlan.id;
 
     const date = new Date();
+<<<<<<< HEAD
     // this.subscriptionData.endDate.setDate(
     //   date.getDate() + currentPlan.duration
     // );
+=======
+
+>>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
     this.subscriptionData.endDate.setDate(
       date.getDate()
     );
     this.subscriptionData.employerId = 1;
     this.subscriptionData.isActive = false;
     this.subscriptionData.userId = 1;
+<<<<<<< HEAD
     this.paymentService.createSubscription(this.subscriptionData).subscribe(
       {
         next: (respose) => {
@@ -60,5 +66,14 @@ export class PricingComponent {
         },
       }
     );
+=======
+    this.paymentService
+      .createSubscription(this.subscriptionData)
+      .subscribe((respose) => {
+        console.log(respose.url)
+         window.location.href=respose.url
+      });
+
+>>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
   }
 }

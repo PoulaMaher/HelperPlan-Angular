@@ -41,6 +41,22 @@ import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard
 import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
 import { roledashboardguardGuard } from '../AuthRoutes/roledashboardguard.guard';
 export const routes: Routes = [
+   {
+    path: 'success/:message',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'fail/:message',
+    component: PaymentFailedComponent,
+  },
+  {
+    path: 'success/:message',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'fail/:message',
+    component: PaymentFailedComponent,
+  },
   {
     path: 'details/:id',
     component: CandidateDetailsComponent,
@@ -177,5 +193,7 @@ export const routes: Routes = [
       { path: '**', component: ErrorPageComponent }
     ],
   },
+ 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 ];
