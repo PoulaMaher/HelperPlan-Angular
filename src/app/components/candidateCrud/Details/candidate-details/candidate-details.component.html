@@ -2,14 +2,14 @@
  <div class="row  rounded  " id="main">
   <div class="row">
   <div class="col-md-3">
-<img [src]="'https://localhost:44376'+mycandidate.photoURL "  alt="image" style="width: 150px;height: 150px;" class="rounded-circle m-2">
+<img [src]="url+mycandidate.photoURL "  alt="image" style="width: 150px;height: 150px;" class="rounded-circle m-2">
   </div>
-  <div class="col-9">
+  <div class="col-6">
 <div class="row mt-md-3 mb-1">
-  <h4 class="col-6" style="color: #054a84">{{mycandidate.fname}} {{mycandidate.lname}}   ( {{mycandidate.age}} years)</h4>
+  <h4 class="col-12" style="color: #054a84">{{mycandidate.fname}} {{mycandidate.lname}}   ( {{mycandidate.age}} years)</h4>
 </div>
 <div class="row mb-2">
-  <div class="col-md-6" style="color: black;"> {{mycandidate.gender}}|{{mycandidate.martialStatus}}|{{mycandidate.noKids}} kids |{{mycandidate.religion}}|{{mycandidate.location}} </div>
+  <div class="col-md-12" style="color: black;"> {{mycandidate.gender}}|{{mycandidate.martialStatus}}|{{mycandidate.noKids}} kids |{{mycandidate.religion}}|{{mycandidate.location}} </div>
 </div>
 <!-- <div class="row">
   <div class="col-md-12 mb-3" >
@@ -19,6 +19,9 @@
 </div>
 </div> -->
 
+  </div>
+  <div class="col-3">
+       <button class="btn btn-success" (click)="handleContact(mycandidate.id)">Cotact me </button>
   </div>
 </div>
 <!-- <div class="row">

@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from 'ng-bootstrap';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-candidate-card',
@@ -21,7 +23,8 @@ export class CandidateCardComponent {
   @Input() recievedtest!:IFiltercandidate
   @Input() recievedchange!:boolean
   count!:number
-constructor(private candidatesservice:FcandidateService){
+  env:string = environment.baseUrl;
+constructor(private candidatesservice:FcandidateService, private router: Router){
 
 
 }
@@ -65,6 +68,9 @@ ngOnInit(): void {
     }
   });
 }
+navigateToDetails(id: number) {
+  this.router.navigate(['/details', id]);
+}
 pageChange(page:PageEvent){
 
   console.log(page.pageIndex)
@@ -89,7 +95,10 @@ pageChange(page:PageEvent){
   });
 
 }
-
+handleDate(date:any)
+{
+  return new Date(date)
+}
 
     }
 

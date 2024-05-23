@@ -39,7 +39,12 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { AddAdminComponent } from './components/Admin-Dashboard/admin-dashboard/add-admin/add-admin.component';
 import { EditAdminComponent } from './components/Admin-Dashboard/admin-dashboard/edit-admin/edit-admin.component';
 import { AdminDetailsComponent } from './components/Admin-Dashboard/admin-dashboard/admin-details/admin-details.component';
+import { ContactDetailsComponent } from './components/candidateCrud/Details/candidate-details/contact-details/contact-details.component';
 export const routes: Routes = [
+  {
+    path: 'contactDetails',
+    component: ContactDetailsComponent,
+  },
   {
     path: 'success/:message',
     component: PaymentSuccessComponent,
@@ -65,7 +70,6 @@ export const routes: Routes = [
   { path: 'aboutus', component: AboutusComponent },
   {
     path: 'contactus',
-    canActivate: [authRoutesGuard],
     component: ContactusComponent,
   },
   {
@@ -109,10 +113,10 @@ export const routes: Routes = [
   },
   {
     path: 'candidatepage',
-    canActivate: [authRoutesGuard],
     component: WholeCandidateComponent,
   },
-  { path: 'job', canActivate: [authRoutesGuard], component: JobPageComponent },
+  { path: 'job', component: JobPageComponent },
+  { path: 'contactDetails/:id', component: ContactDetailsComponent },
   { path: 'agency', component: WholeAgencyPageComponent },
   { path: 'Error', component: ErrorPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

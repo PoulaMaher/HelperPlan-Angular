@@ -1,48 +1,90 @@
+/* Existing Styles */
+.container-fluid{
+  overflow-x:hidden;
+}
 .container-fluid {
-    display: flex;
-    justify-content: space-around;
-    background-image: url('../../../assets/Images/home/div.webp');
-    background-size: 100% auto;
-    background-position: center;
-    padding: 20px;
-    margin: 0%;
-    margin-bottom: 5%;
-    height: 80%;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-image: url("../../../assets/Images/home/Helper.jpg");
+  background-size: cover; /* Cover the entire container */
+  background-position: center;
+  background-repeat: no-repeat; /* Ensure the background doesn't repeat */
+  padding: 20px;
+  margin-bottom : 30px;
+  height: 100vh; /* Full viewport height */
 }
+
 .container {
-    margin: 5%;
+  margin: 5%;
+  overflow-x:hidden;
 }
+
 .content {
-    padding: 20px;
-    padding-top: 15%;
-    border-radius: 10px;
-    text-align: center;
-    width: 45%;
+  padding: 20px;
+  padding-top: 15%;
+  border-radius: 10px;
+  text-align: center;
+  width: 50%;
+  opacity: 0; /* Initially invisible */
+  transform: translateX(-100px); /* Initially off-screen to the left */
+  animation: slideIn 1.5s forwards; /* Slide-in animation */
+}
+.layout{
+  background-size: contain;
+  background-color: #0056b3;
+  z-index: 10;
+  overflow-x:hidden;
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); /* Start off-screen */
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(0); /* Move to center */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End in the center */
+  }
 }
 
 h2 {
-    color: white;
-    font-size: 24px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 p {
-    color: white;
-    font-size: 16px;
-    margin-bottom: 15px;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 button {
-    background-color: #007bff;
-    margin: 5%;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: white;
+  margin: 5%;
+  color: #0056b3;
+  padding: 15px 30px; /* Increased padding for height and width */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: Arial, sans-serif; /* Change font family */
+  font-size: 20px; /* Adjust font size */
 }
 
 button:hover {
-    background-color: #0056b3;
-    /* Darker blue on hover */
+  background-color: #0056b3;
+  color: white; /* Darker blue on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .content {
+    width: 80%; /* Adjust width for smaller screens */
+  }
 }
