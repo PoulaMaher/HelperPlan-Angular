@@ -22,10 +22,12 @@ export class LoginComponent {
   LoginForm = new FormGroup({
     Email: new FormControl(null, Validators.required),
     Password: new FormControl(null, Validators.required),
+
   });
   constructor(public LoginService: Loginservice, private router: Router) {}
   LoggedUser: Loggeduser = new Loggeduser();
   LogUser() {
+    debugger
     this.LoginService.LogUser({
       Email: this.LoginForm.value['Email']!,
       Password: this.LoginForm.value['Password']!,
@@ -35,7 +37,7 @@ export class LoginComponent {
         this.LoginService.RouteConsideringToRole();
       },
       error: (err) => {
-        alert(err['error']['msg'])
+       // alert(err['error']['msg'])
       },
     });
   }

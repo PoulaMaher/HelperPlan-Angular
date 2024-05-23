@@ -4,7 +4,7 @@
             <div class="row rounded mx-auto mb-3 col-8 card p-2">
                 <div class="row col-12">
                     <div class="col-md-3">
-                        <img src="/assets/Images/1.png" alt="image" class="rounded-circle img-fluid m-2">
+                        <img [src]="env+item.photoURL " alt="image" class="rounded-circle img-fluid m-2">
                     </div>
                     <div class="col-9">
                         <div class="row mt-md-3 mb-1">
@@ -13,7 +13,7 @@
                         <div class="row mb-2">
                             <div class="col-md-6" style="color: darkgray;"> {{ item.position }} </div>
                             <div class="col-md-6" style="color: darkgray;"><i class="fa-solid fa-location-dot"></i>
-                                address</div>
+                                {{item.location}}</div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 mb-3" style="font-weight: 200;">
@@ -35,10 +35,10 @@
                                 {{ item.workExperience }} years
                             </div>
                             <div class="col-md-4" style="color: #054a84">
-                                <i class="fa-solid fa-calendar-days"></i>
+                                <i class="fa-solid fa-calendar-days"></i> {{handleDate( item.availabilityDate).toLocaleDateString()}}
                             </div>
                             <div class="col-md-4" style="color: #25ae88">
-                                <i class="fa-solid fa-circle"></i> dot
+                               <a (click)="navigateToDetails(item.id)" style="cursor: pointer;"><i class="fa-solid fa-circle"></i> Details  </a>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ import { PlanService } from '../../services/plan.service';
 import { PaymentService } from '../../services/payment.service';
 import { ISubscribtionDto } from '../../models/isubscribtion-dto';
 import { Router } from '@angular/router';
+import { Loginservice } from '../login/LoginService/loginservice.service';
 import { HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -24,11 +25,30 @@ export class PricingComponent {
     isActive: false,
   };
 
+  IsLogged: boolean = false;
+  Role:string = '';
   constructor(
     private planService: PlanService,
     private paymentService: PaymentService,
-    private router: Router
-  ) {}
+    private router: Router,
+    public loginService: Loginservice
+  ) {
+    this.loginService.LoggedUser.subscribe({
+      next: () => {
+        if (this.loginService.LoggedUser.value != null) {
+          this.Role =
+            this.loginService.LoggedUser.value[
+              'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+            ];
+            this.IsLogged = true;
+          } else {
+          this.IsLogged = false;
+          this.Role = '';
+        }
+      },
+      error: () => {},
+    });
+  }
 
   ngOnInit(): void {
     this.planService.getAllPlans().subscribe((response) => {
@@ -37,36 +57,47 @@ export class PricingComponent {
   }
 
   handleSubscription(currentPlan: IPlan): void {
-    // console.log(currentPlan.id);
-    // console.log(this.subscriptionData.planId);
+
+    if(this.loginService.IsLogged)
+      {
+        this.subscriptionData.planId = currentPlan.id;
+
+        const date = new Date();
+        this.subscriptionData.endDate.setDate(
+          date.getDate()
+        );
+        this.subscriptionData.employerId = 1;
+        this.subscriptionData.isActive = false;
+        this.subscriptionData.userId = 1;
+        this.paymentService
+          .createSubscription(this.subscriptionData)
+          .subscribe((respose) => {
+            console.log(respose.url)
+             window.location.href=respose.url;
+          });
+      }else{
+        this.router.navigateByUrl('/Login')
+      }
     this.subscriptionData.planId = currentPlan.id;
 
     const date = new Date();
-<<<<<<< HEAD
-    // this.subscriptionData.endDate.setDate(
-    //   date.getDate() + currentPlan.duration
-    // );
-=======
 
->>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
     this.subscriptionData.endDate.setDate(
       date.getDate()
     );
     this.subscriptionData.employerId = 1;
     this.subscriptionData.isActive = false;
     this.subscriptionData.userId = 1;
-<<<<<<< HEAD
     this.paymentService.createSubscription(this.subscriptionData).subscribe(
       {
         next: (respose) => {
-          window.location.replace(respose['url']) 
+          window.location.replace(respose['url'])
         },
         error: (err) => {
           console.log(err);
         },
       }
     );
-=======
     this.paymentService
       .createSubscription(this.subscriptionData)
       .subscribe((respose) => {
@@ -74,6 +105,5 @@ export class PricingComponent {
          window.location.href=respose.url
       });
 
->>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
   }
 }

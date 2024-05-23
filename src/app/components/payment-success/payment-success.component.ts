@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-payment-success',
   standalone: true,
-  imports: [],
+  imports: [RouterLink,RouterOutlet],
   templateUrl: './payment-success.component.html',
   styleUrl: './payment-success.component.css'
 })
