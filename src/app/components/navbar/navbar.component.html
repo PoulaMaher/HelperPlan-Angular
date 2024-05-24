@@ -24,7 +24,7 @@
         <a class="nav-link" routerLink="/home">Home</a>
       </li>
       <li class="nav-item" *ngIf="Role == 'Employer'">
-        <a class="nav-link" routerLink="/AddJob">Add Job</a>
+        <a class="nav-link" (click)="handleAddJob()">Add Job</a>
       </li>
       <li class="nav-item" *ngIf="Role != 'Employer'">
         <a class="nav-link" routerLink="/job">Find Job</a>

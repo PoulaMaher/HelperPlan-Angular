@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Changes } from './ChangesClass/changes';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -55,10 +56,18 @@ export class ProfileComponent {
       next: (res) => {
         this.AuthService.DecodeUser(res['token']);
         this.AuthService.RouteConsideringToRole()
-        alert('Account Updated Successfully');
+        Swal.fire({
+          title: 'Done',
+          text:'Account Updated Successfully',
+          showCancelButton: true,
+        });  
       },
       error: (error) => {
-        alert(error.error);
+        Swal.fire({
+          title: 'Error',
+          text:error.error.msg,
+          showCancelButton: true,
+        });  
       },
     });
   }

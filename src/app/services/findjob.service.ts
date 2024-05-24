@@ -17,7 +17,7 @@ export class FindjobService {
   }
   getFilteredJobs(filters: any): Observable<Job[]> {
     const params = this.generateParams(filters);
-    return this.http.get<Job[]>(`${environment.baseUrl}/jobs`, { params });
+    return this.http.get<Job[]>(`${environment.baseUrl}/Job/GetFilteredJobs`, { params });
   }
 
   private generateParams(filters: any): { [param: string]: string } {

@@ -8,6 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-change-password',
@@ -32,10 +33,18 @@ export class ChangePasswordComponent {
       NewPassword: this.PasswordForm.value['NewPassword']!,
     }).subscribe({
       next: (res) => {
-        alert('Password Updated Successfully');
+        Swal.fire({
+          title: 'Done',
+          text:'Password Updated Successfully',
+          showCancelButton: true,
+        });  
       },
       error: (err) => {
-        alert('Failed To Update Password');
+        Swal.fire({
+          title: 'Error',
+          text:err.error.msg,
+          showCancelButton: true,
+        });  
       },
     });
     this.AuthService.RouteConsideringToRole();
