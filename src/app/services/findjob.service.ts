@@ -11,12 +11,13 @@ import { Job } from '../components/job-page/JobClass/job';
 export class FindjobService {
   private apiUrl = '';
   constructor(private http: HttpClient) {}
+
     getAllJobs(): Observable<IJob[]> {
     return this.http.get<IJob[]>(`${environment.baseUrl}/Job/GetAll`)
   }
   getFilteredJobs(filters: any): Observable<Job[]> {
     const params = this.generateParams(filters);
-    return this.http.get<Job[]>(`${environment.baseUrl}/Job/GetFilteredJobs`, { params });
+    return this.http.get<Job[]>(`${environment.baseUrl}/jobs`, { params });
   }
 
   private generateParams(filters: any): { [param: string]: string } {

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light  ">
   <a class="navbar-brand" href="#">
     <a class="nav-link" href="#"
       ><img
@@ -39,7 +39,6 @@
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
-          href="#"
           id="navbarDropdown"
           role="button"
           data-bs-toggle="dropdown"
@@ -54,6 +53,9 @@
           <li class="nav-item">
             <a class="dropdown-item" routerLink="/pricing">Pricing</a>
           </li>
+          <li class="nav-item">
+            <a class="dropdown-item" routerLink="/contactus">Contact Us</a>
+          </li>
           <div *ngIf="IsLogged">
           <li *ngIf="Role=='Candidate'" class="nav-item">
             <a
@@ -62,9 +64,6 @@
               >add resume</a
             >
           </li>
-            <li class="nav-item">
-              <a class="dropdown-item" routerLink="/contactus">Contact Us</a>
-            </li>
             <li class="nav-item">
               <a class="dropdown-item" routerLink="myaccount/profile"
                 >My Profile</a
@@ -79,26 +78,33 @@
         </ul>
       </li>
     </ul>
+    <!-- <ul  class="navbar-nav Buttons">
+
+    </ul> -->
     <ul *ngIf="!loginService.IsLogged" class="navbar-nav Buttons">
-      <li class="nav-item">
-        <a class="btn btn-danger" routerLink="/dashboard">Admin Dashboard</a
+      <li *ngIf="Role == 'Admin'" class="nav-item">
+        <a class="btn btn-outline-danger" routerLink="/dashboard">Admin Dashboard</a
         ><!-- *ngIf="Role == 'Admin'" -->
       </li>
       <li class="nav-item">
-        <a class="btn btn-success" routerLink="/register">Register</a>
+        <a class="btn btn-outline-success" routerLink="/register">Register</a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-warning" style="color: azure" routerLink="/Login"
+        <a class="btn btn-outline-warning" routerLink="/Login"
           >Login</a
         >
       </li>
     </ul>
     <ul *ngIf="loginService.IsLogged" class="navbar-nav Buttons">
+      <li *ngIf="Role == 'Admin'" class="nav-item">
+        <a class="btn btn-outline-danger"    routerLink="/dashboard">Admin Dashboard</a
+        ><!-- *ngIf="Role == 'Admin'" -->
+      </li>
       <li class="nav-item">
         <a
           (click)="loginService.LogOutUser()"
-          class="btn btn-warning"
-          style="color: azure"
+          class="btn btn-outline-warning"
+
           routerLink="/Login"
           >Logout</a
         >

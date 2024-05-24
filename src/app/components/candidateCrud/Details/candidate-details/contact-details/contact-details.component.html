@@ -1,0 +1,33 @@
+
+<section>
+  <div class="container">
+    <div class="row justify-content-center">
+
+        <div class="card profile-card-2">
+          <div class="card-img-block">
+            <img
+              class="img-fluid"
+              [src]="photoUrl+ mycandidate.photoURL"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body text-center">
+            <img [src]="photoUrl+ mycandidate.photoURL" alt="profile-image" class="profile"/>
+            <h5 class="card-title">{{ mycandidate.fname }} {{mycandidate.lname}}</h5>
+            <p class="card-text">{{ mycandidate.location }}</p>
+            <div class="contact-info">
+              <p><i class="fa fa-envelope"></i> {{ mycandidate.contactEmail }}</p>
+              <p><i class="fa fa-phone"></i> {{ mycandidate.phoneNumber }}</p>
+              <p><i class="fa fa-whatsapp"></i> {{ mycandidate.whatappNumber }}</p>
+            </div>
+            <div class="icon-block">
+              <a [href]="'mailto:' + mycandidate.contactEmail"><i class="fa fa-envelope"></i></a>
+              <a [href]="'tel:' + mycandidate.phoneNumber"><i class="fa fa-phone"></i></a>
+              <a [href]="'https://wa.me/' + mycandidate.whatappNumber"><i class="fa fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>

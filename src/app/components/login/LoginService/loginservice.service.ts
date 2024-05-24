@@ -9,7 +9,6 @@ import { UserRegister } from '../../register/UserRegister/user-register';
 import { Changes } from '../../profile/ChangesClass/changes';
 import { PasswordChanges } from '../../change-password/PasswordChanges/password-changes';
 import { AbstractControl } from '@angular/forms';
-import Swal from 'sweetalert2';
 declare global {
   interface Window {
     fbAsyncInit: () => void;

@@ -4,21 +4,28 @@ img {
 }
 .navbar {
   padding: 1%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
 }
 .nav-item,
 .btn,
 .navbar-brand {
   font-size: 1.1vw;
+  margin-right: 10px;
 }
 .navbar-collapse {
   justify-content: space-between;
 }
+ul{
+  justify-content: end;
+}
 .navbar-collapse .Buttons {
   width: 30%;
-  justify-content: space-around;
+
 }
 .navbar-collapse .MainLinks {
   width: 50%;
-  width: 40.5%;
   justify-content: space-between;
 }

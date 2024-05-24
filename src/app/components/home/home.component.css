@@ -1,19 +1,23 @@
 /* Existing Styles */
+.container-fluid{
+  overflow-x:hidden;
+}
 .container-fluid {
   display: flex;
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  background-image: url("../../../assets/Images/home/Home.jpg");
+  background-image: url("../../../assets/Images/home/Helper.jpg");
   background-size: cover; /* Cover the entire container */
   background-position: center;
   background-repeat: no-repeat; /* Ensure the background doesn't repeat */
   padding: 20px;
-  margin: 0;
+  margin-bottom : 30px;
   height: 100vh; /* Full viewport height */
 }
 
 .container {
   margin: 5%;
+  overflow-x:hidden;
 }
 
 .content {
@@ -27,6 +31,12 @@
   animation: slideIn 1.5s forwards; /* Slide-in animation */
 }
 
+.layout{
+  background-size: contain;
+  background-color: #0056b3;
+  z-index: 10;
+  overflow-x:hidden;
+}
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -43,21 +53,21 @@
 }
 
 h2 {
-  color: red;
+  color: white;
   font-size: 35px;
   font-weight: bold;
 }
 
 p {
-  color: red;
+  color: white;
   font-size: 25px;
   margin-bottom: 15px;
 }
 
 button {
-  background-color: red;
+  background-color: white;
   margin: 5%;
-  color: #fff;
+  color: #0056b3;
   padding: 15px 30px; /* Increased padding for height and width */
   border: none;
   border-radius: 10px;
@@ -68,7 +78,8 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
+  color: white; /* Darker blue on hover */
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 

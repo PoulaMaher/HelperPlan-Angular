@@ -44,10 +44,10 @@ export class JobPageComponent {
     _findJob.getFilteredJobs({}).subscribe({
       next: (response) => {
         console.log(response)
-        this.Jobs= response
+        this.Jobs= response;
       },
       error:(error)=>{
-        console.log(error)  
+        console.log(error)
       }
     })
   }
