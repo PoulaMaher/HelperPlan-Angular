@@ -4,5 +4,28 @@
 }
  .card:hover {
      box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.1);
-     transition: box-shadow 0.5s ease-in-out;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+     transition: box-shadow 0s ease-in-out;
+ }
+ .card {
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+ }
+
+ .card-body {
+     flex-grow: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+ }
+
+ .card-img-top {
+     align-self: center;
+ }
+
+ .card:hover {
+     box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.1);
+     transform: scale(1.05);
  }
