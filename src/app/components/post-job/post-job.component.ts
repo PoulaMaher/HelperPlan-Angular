@@ -53,7 +53,7 @@ export class PostJobComponent {
         console.log(response);
       },
       error: (error) => {
-        alert("Error to Add Job")
+        console.log(error)
       },
     });
   }

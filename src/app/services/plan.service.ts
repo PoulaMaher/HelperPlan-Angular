@@ -26,7 +26,6 @@ export class PlanService {
       plan
     );
   }
-
   getPlanById(id: number): Observable<IPlan> {
     console.log(id);
     return this.httpclient.get<IPlan>(

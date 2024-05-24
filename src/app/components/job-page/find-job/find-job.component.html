@@ -9,7 +9,9 @@
         </div>
         <div class="row mb-2">
           <div class="col-md-4" style="color: darkgray">
+
             {{ Job.jobType}}
+
           </div>
           <div class="col-md-2" style="color: darkgray">
             <i class="fa-solid fa-location-dot"></i> {{Job.location}}
@@ -24,12 +26,26 @@
         </div>
       </div>
     </div>
+    <div class="col-md-8">
+      <div class="row mt-md-3 mb-1">
+        <h4 class="col-4" style="color: #054a84">{{ Job.jobPosition }}</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4" style="color: darkgray">
+          {{ Job.jobType }}
+        </div>
+        <div class="col-md-4" style="color: darkgray">
+          Location {{Job.location }}
+        </div>
+
+      </div>
+    </div>
+  </div>
     <div class="row">
       <div class="col-md-3 px-0">
         <div id="trian" class="text-center">Direct</div>
       </div>
       </div>
-    </div>
   <div class="row">
     <div class="col-md-3 px-0">
       <div id="trian" class="text-center">Direct</div>

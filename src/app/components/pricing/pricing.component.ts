@@ -55,7 +55,6 @@ export class PricingComponent {
       this.plansLst = response;
     });
   }
-
   handleSubscription(currentPlan: IPlan): void {
 
     if(this.loginService.IsLogged)
@@ -78,10 +77,9 @@ export class PricingComponent {
       }else{
         this.router.navigateByUrl('/Login')
       }
+
     this.subscriptionData.planId = currentPlan.id;
-
     const date = new Date();
-
     this.subscriptionData.endDate.setDate(
       date.getDate()
     );
@@ -101,9 +99,8 @@ export class PricingComponent {
     this.paymentService
       .createSubscription(this.subscriptionData)
       .subscribe((respose) => {
-        console.log(respose.url)
-         window.location.href=respose.url
+        console.log(respose.url);
+        window.location.href = respose.url;
       });
-
   }
 }
