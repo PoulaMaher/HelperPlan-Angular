@@ -12,11 +12,8 @@ export class PaymentService {
   constructor(private httpclient: HttpClient) {}
 
   createSubscription(subscriptionData: ISubscribtionDto): Observable<IPaymentFromUrl> {
-<<<<<<< HEAD
-=======
     const api_key = localStorage.getItem("HelperPlanJWTToken");
     const header= new HttpHeaders().set('Authorization', `Bearer ${api_key}`)
->>>>>>> e45a571591bf702b88a34a0726a6aeeb919786d5
     return this.httpclient.post<IPaymentFromUrl>(
       `${environment.baseUrl}/api/Subscribtions/Create`,
       subscriptionData,{headers: header}
