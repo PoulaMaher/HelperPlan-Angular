@@ -39,6 +39,12 @@
                           "
                           >Username is required.</small
                         >
+                        <small
+                        *ngIf="
+                          RegisterForm.controls['UserName'].errors!['minlength']
+                        "
+                        >Username should be more than 5 char.</small
+                      >
                       </div>
                     </mdb-form-control>
                   </div>
@@ -70,6 +76,12 @@
                           "
                           >First Name is required.</small
                         >
+                        <small
+                        *ngIf="
+                          RegisterForm.controls['FirstName'].errors!['minlength']
+                        "
+                        >FirstName should be more than 5 char.</small
+                      >
                       </div>
                     </mdb-form-control>
                     <mdb-form-control class="p-2 col-md-7 mb-3">
@@ -98,6 +110,12 @@
                           "
                           >Last Name is required.</small
                         >
+                        <small
+                        *ngIf="
+                          RegisterForm.controls['LastName'].errors!['minlength']
+                        "
+                        >LastName should be more than 5 char.</small
+                      >
                       </div>
                     </mdb-form-control>
                   </div>
@@ -130,6 +148,12 @@
                             "
                             >Email is required.</small
                           >
+                          <small
+                          *ngIf="
+                            RegisterForm.controls['Email'].errors!['email']
+                          "
+                          >in Email Pattern</small
+                        >
                         </div>
                       </mdb-form-control>
                     </div>

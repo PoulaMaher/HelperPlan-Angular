@@ -10,10 +10,10 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { JobRequirmentComponent } from './job-requirment/job-requirment.component';
 import { SubscribePublishComponent } from './subscribe-publish/subscribe-publish.component';
 import { JobClass } from './JobClass/job-class';
-import { JobDetailsClass } from './job-details/JobDetailsClass/job-details-class';
 import { PostJobService } from './post-job-service/post-job-service.service';
 import { PricingComponent } from '../pricing/pricing.component';
 import { Loginservice } from '../login/LoginService/loginservice.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-post-job',
   standalone: true,
@@ -36,9 +36,9 @@ import { Loginservice } from '../login/LoginService/loginservice.service';
 })
 export class PostJobComponent {
   constructor(
-    private _formBuilder: FormBuilder,
     public PostJobService: PostJobService,
-    private loginservice: Loginservice
+    private loginservice: Loginservice,
+    private router:Router
   ) {
     this.job.EmployerId =
       loginservice.LoggedUser.value![
@@ -49,8 +49,8 @@ export class PostJobComponent {
   isOptional = false;
   AddJob() {
     this.PostJobService.AddJob(this.job).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
+        this.router.navigateByUrl('/job')
       },
       error: (error) => {
         console.log(error)

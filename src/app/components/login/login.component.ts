@@ -11,6 +11,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -37,7 +38,11 @@ export class LoginComponent {
         this.LoginService.RouteConsideringToRole();
       },
       error: (err) => {
-       // alert(err['error']['msg'])
+       Swal.fire({
+        title: 'Error',
+        text:err['error']['msg'],
+        showCancelButton: true,
+      });
       },
     });
   }

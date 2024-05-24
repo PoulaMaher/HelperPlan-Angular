@@ -92,7 +92,7 @@ export class Loginservice {
                     location.reload();
                   },
                   error: (err:any)=>{
-                    alert("Failed To Login")
+                    console.log(err)
                   }
                 });
 

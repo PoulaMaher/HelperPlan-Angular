@@ -5,8 +5,6 @@ import { PaymentService } from '../../services/payment.service';
 import { ISubscribtionDto } from '../../models/isubscribtion-dto';
 import { Router } from '@angular/router';
 import { Loginservice } from '../login/LoginService/loginservice.service';
-import { HttpHeaders } from '@angular/common/http';
-
 @Component({
   selector: 'app-pricing',
   standalone: true,
@@ -17,7 +15,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class PricingComponent {
   public plansLst!: IPlan[];
   public subscriptionData: ISubscribtionDto = {
-    id: 1,
+    id: 0,
     endDate: new Date(),
     employerId: 1,
     planId: 1,
