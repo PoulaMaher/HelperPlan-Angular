@@ -13,16 +13,17 @@ import { IMainSkills } from '../models/IMainSkills';
 import { IEducation } from '../models/IEducation';
 import { IExperience } from '../models/IExperience';
 import { ICandAndFile } from '../models/i-cand-and-file';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class FcandidateService {
-  private apiUrl = 'https://localhost:44376/Cadidate/GetFilteredCandidates';
-  private postapiUrl = 'https://localhost:44376/Candidate/Insert';
-  private countApi='https://localhost:44376/Candidate/Count'
-  private getbyidAPIURL='https://localhost:44376/Candidate/GetById/'
-  private deleteAPIURL='https://localhost:44376/Candidate/Delete/'
-  private updateAPIURL='https://localhost:44376/Cadidate/Update'
+  private apiUrl = `${environment.baseUrl}/Cadidate/GetFilteredCandidates`;
+  private postapiUrl = `${environment.baseUrl}/Candidate/Insert`;
+  private countApi =`${environment.baseUrl}/Candidate/Count`
+  private getbyidAPIURL =`${environment.baseUrl}/Candidate/GetById/`
+  private deleteAPIURL =`${environment.baseUrl}/Candidate/Delete/`
+  private updateAPIURL =`${environment.baseUrl}/Cadidate/Update`
   testingfilter:IFiltercandidate
   mycandidate!:ICandidates///--------------->
 
@@ -187,7 +188,7 @@ export class FcandidateService {
   }
   //////////////getall
   getAllCandidates(): Observable<ICandidates[]> {
-    return this.http.get<ICandidates[]>(`https://localhost:44376/Candidate/GetAll`);
+    return this.http.get<ICandidates[]>(`${environment.baseUrl}/Candidate/GetAll`);
   }
   /////////////update
   updateCandidate(candidate: FormData): Observable<FormData>
