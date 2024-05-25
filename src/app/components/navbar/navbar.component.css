@@ -18,14 +18,16 @@ img {
 .navbar-collapse {
   justify-content: space-between;
 }
-ul{
+ul {
   justify-content: end;
 }
 .navbar-collapse .Buttons {
   width: 30%;
-
 }
 .navbar-collapse .MainLinks {
   width: 50%;
   justify-content: space-between;
+}
+.addJob {
+  cursor: pointer;
 }
