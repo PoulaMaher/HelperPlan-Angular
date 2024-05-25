@@ -5,7 +5,7 @@ import { FcandidateService } from '../../../services/fcandidate.service';
 import { IFiltercandidate } from '../../../models/ifiltercandidate';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { PaginationComponent } from 'ng-bootstrap';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment.development';
