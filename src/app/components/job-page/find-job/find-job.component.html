@@ -1,39 +1,42 @@
-  <div class="row rounded" id="main">
-    <div class="row  justify-content-around">
-      <div class="col-md-3">
-        <img src="https://fakeimg.pl/300/" alt="" style="width: 150px; height: 150px" class="rounded-circle m-2" />
+<div class="row rounded" id="main">
+  <div class="row justify-content-around">
+    <div class="col-md-3">
+      <img
+        src="../../../../assets/Images/family_images/Family.png"
+        alt=""
+        style="width: 150px; height: 150px"
+        class="rounded-circle m-2"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="row mt-md-3 mb-1">
+        <h4 class="col-4" style="color: #054a84">{{ Job.jobPosition }}</h4>
       </div>
-      <div class="col-md-8">
-        <div class="row mt-md-3 mb-1">
-          <h4 class="col-4" style="color: #054a84">{{ Job.jobPosition }}</h4>
+      <div class="row mb-2">
+        <div class="col-md-4" style="color: darkgray">
+          {{ Job.jobType }}
         </div>
-        <div class="row mb-2">
-          <div class="col-md-4" style="color: darkgray">
-
-            {{ Job.jobType}}
-
-          </div>
-          <div class="col-md-2" style="color: darkgray">
-            <i class="fa-solid fa-location-dot"></i> {{Job.location}}
-          </div>
+        <div class="col-md-2" style="color: darkgray">
+          <i class="fa-solid fa-location-dot"></i> {{ Job.location }}
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3 px-0">
-        <div id="trian" class="text-center">Direct</div>
-      </div>
-      <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-4" style="color: #054a84">
-            <i class="fa-solid fa-hourglass-start"></i>
-             {{Job.gender}} gender required
-          </div>
-          <div class="col-md-4" style="color: #054a84">
-            <i class="fa-solid fa-calendar-days"></i>
-            Job Start Date {{ Job.startDate }}
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 px-0">
+      <div id="trian" class="text-center">Direct</div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4" style="color: #054a84">
+          <i class="fa-solid fa-hourglass-start"></i>
+          {{ Job.gender }} gender required
+        </div>
+        <div class="col-md-4" style="color: #054a84">
+          <i class="fa-solid fa-calendar-days"></i>
+          Job Start Date {{ Job.startDate }}
         </div>
       </div>
-    </div>  
+    </div>
   </div>
+</div>
